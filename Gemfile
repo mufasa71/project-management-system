@@ -6,8 +6,9 @@ gem 'rails', '3.2.2'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
-
+gem 'devise', '~> 2.0.4'
+gem 'twitter-bootstrap-rails', '~> 2.0.6'
+gem 'haml-rails', '~> 0.3.4'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -36,3 +37,15 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :test, :development do
+  gem 'cucumber-rails', '~> 1.3.0'
+  gem 'database_cleaner', '~> 0.7.2'
+  gem 'rspec-rails', '~> 2.9.0'
+  gem 'capybara', '~> 1.1.2'
+  gem 'spork-rails'
+  gem 'guard-rails'
+  gem 'guard-cucumber'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'libnotify'
+end
