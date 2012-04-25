@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'devise', '~> 2.0.4'
 gem 'twitter-bootstrap-rails', '~> 2.0.6'
 gem 'haml-rails', '~> 0.3.4'
+gem 'simple_form'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -48,4 +50,7 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'libnotify'
+  gem 'factory_girl'
+  gem 'faker'
+  gem 'launchy'
 end
