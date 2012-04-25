@@ -16,6 +16,7 @@ FactoryGirl.define do
     password "any_password"
   end
 
+
   factory :unique_user, class: User do
     email
     password "any_password"

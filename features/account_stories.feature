@@ -18,7 +18,7 @@ Feature: Account management
         | foo@bar.com     | fr33z3     |
 
   Scenario: Attempt to edit profile
-    Given I am signed in
+    Given I am signed in as user
     When I go to my account page
     And I follow "Do it now!"
     And I fill in "Username" with "Shukhrat Mukimov"
@@ -26,10 +26,16 @@ Feature: Account management
     When I press "Update"
     Then I should see "Profile was successfully updated."
 
-  @break_point
   Scenario: Hide message to update account
-    Given I am signed in
+    Given I am signed in as user
     And I already update profile
     When I go to my account page
     And I should not see "Do it now!"
     But I should see "Edit profile"
+
+  @break_point
+  Scenario: Remove an account
+    Given I am signed in as user
+    And I go to my account page
+    When I follow "Cancel my account"
+    Then I should see "Bye! Your account was successfully cancelled. We hope to see you again soon."

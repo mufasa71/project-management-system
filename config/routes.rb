@@ -1,9 +1,10 @@
 ProjectManagementSystem::Application.routes.draw do
+
   resources :profiles
 
-  get "users/update"
-
   devise_for :users
+
+  resources :users
 
   root :to => 'project_management#main'
 

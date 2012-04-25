@@ -27,6 +27,8 @@ module NavigationHelpers
       edit_user_registration_path(User.find_by_email(@me.email))
     when /^my edit profile page$/
       edit_profile_path(@me.profile)
+    when /^show user page$/
+      user_path(@me)
     else
       begin
         page_name =~ /the (.*) page/

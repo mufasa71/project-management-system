@@ -1,6 +1,7 @@
 =edit_profile_link(resource)
 %h2
   Edit #{resource_name.to_s.humanize}
+%p Type: #{resource.admin == true ? "Admin" : "Student"}
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = f.error_notification
   .inputs
