@@ -1,0 +1,11 @@
+-if flash[:notice]
+  .alert.alert-success
+    =content_tag :div, flash[:notice]
+
+-if flash[:error]
+  .alert.alert-error
+    =content_tag :div, flash[:error]
+
+-if flash[:alert]
+  .alert.alert-info
+    =content_tag :div, flash[:warning]
