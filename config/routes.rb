@@ -1,10 +1,15 @@
 ProjectManagementSystem::Application.routes.draw do
-
-  resources :profiles
+  resources :roles
 
   devise_for :users
 
-  resources :users
+  resources :profiles
+  match 'users/:id' => 'users#show', :as => :user
+
+  namespace :admin do
+    resources :users, :roles
+    get "home/index"
+  end
 
   root :to => 'project_management#main'
 

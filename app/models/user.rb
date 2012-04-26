@@ -9,4 +9,10 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
   before_create :build_profile
+  has_and_belongs_to_many :roles
+
+
+  def role?(role)
+    return !!self.roles.find_by_name(role.to_s.camelize)
+  end
 end

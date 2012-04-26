@@ -24,11 +24,14 @@
             %a.brand{:href => "#{root_path}"} Project Management System
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link1", "/path1"
-              %li= link_to "Link2", "/path2"
-              %li= link_to "Sign out", destroy_user_session_path, :method => :delete
               -if user_signed_in?
                 %li.account-email= link_to current_user.email, edit_user_registration_path 
+                %li= link_to "Admin page", admin_home_index_path if current_user.admin? 
+                %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+              -else
+                %li= link_to "Sign in", new_user_session_path
+                %li= link_to "Sign up", new_user_registration_path
+              
           / /.nav-collapse
     .container
       .content

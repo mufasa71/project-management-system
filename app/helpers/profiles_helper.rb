@@ -5,7 +5,7 @@ module ProfilesHelper
         content_tag(:p, "Your account has not been initialized yet.") << content_tag(:a, "Do it now!",  :href => edit_profile_path(user.profile)) 
       end
     else
-      link_to "Edit profile", edit_profile_path(user.profile)
+      render :partial => 'profiles/profile', :object => user.profile
     end
   end
 end

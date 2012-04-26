@@ -1,2 +1,14 @@
-%p #{profile.username.blank? ? "No name" : profile.username}
-%p #{profile.skype.blank? ? "No skype" : profile.skype}
+#profile.well
+  %table
+    %tr
+      %td
+        = image_tag "user.jpeg"
+      %td
+        %p 
+          %i.icon-user
+          #{profile.username.blank? ? "No name" : profile.username}
+        %p
+          %i.icon-envelope
+          #{profile.skype.blank? ? "No skype" : profile.skype}
+
+        =button_to "Edit profile", edit_profile_path(profile),  :class => "btn-mini btn-primary", :method => :get 

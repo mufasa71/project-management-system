@@ -1,12 +1,20 @@
-%p#notice= notice
+- model_class = @profile.class
+%h1=t '.title', :default => model_class.model_name.human
 
 %p
-  %b Username:
+  %strong= model_class.human_attribute_name(:username) + ':'
+  %br
   = @profile.username
 %p
-  %b Skype:
+  %strong= model_class.human_attribute_name(:skype) + ':'
+  %br
   = @profile.skype
+%p
+  %strong= model_class.human_attribute_name(:user_id) + ':'
+  %br
+  = @profile.user_id
 
-= link_to 'Edit', edit_profile_path(@profile)
-\|
-= link_to 'Back', profiles_path
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), profiles_path, :class => 'btn'
+  = link_to t('.edit', :default => t("helpers.links.edit")), edit_profile_path(@profile), :class => 'btn'
+  = link_to t('.destroy', :default => t("helpers.links.destroy")), profile_path(@profile), :method => "delete", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')), :class => 'btn btn-danger'

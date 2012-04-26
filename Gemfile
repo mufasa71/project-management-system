@@ -53,4 +53,5 @@ group :test, :development do
   gem 'factory_girl'
   gem 'faker'
   gem 'launchy'
+  gem 'cancan'
 end

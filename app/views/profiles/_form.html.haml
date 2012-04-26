@@ -1,9 +1,6 @@
-= simple_form_for(@profile) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :username
-    = f.input :skype
-
+= simple_form_for @profile, :html => { :class => 'form-horizontal' } do |f|
+  = f.input :username
+  = f.input :skype
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => 'btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), profiles_path, :class => 'btn'

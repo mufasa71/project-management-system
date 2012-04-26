@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
   respond_to :html, :xml
+  before_filter :authenticate_user!, :except => [:show]
 
   def index
+    @users = User.all
+    authorize! :read, @users
   end
 
   def edit
