@@ -1,0 +1,16 @@
+Final Year Project: Project Management System for APIIT
+
+Author: Shukhrat Mukimov
+Email: mukimov@gmail.com
+
+Project date started: Apr 24 2012
+Estimated: 1 month 7 days
+Project date finished: Jun 1 2012
+
+Project written on Ruby on Rails 3
+Gems used:
+
+cucumber
+rspec
+devise
+cancan
