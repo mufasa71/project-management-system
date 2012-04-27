@@ -1,13 +1,15 @@
 require 'spec_helper'
 
-describe "roles/index" do
+describe "admin/roles/index" do
   before(:each) do
     assign(:roles, [
       stub_model(Role,
-        :name => "Name"
+        :name => "Name",
+        :created_at => Date.today
       ),
       stub_model(Role,
-        :name => "Name"
+        :name => "Name",
+        :created_at => Date.today
       )
     ])
   end

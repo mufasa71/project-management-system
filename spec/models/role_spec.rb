@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe Role do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should now save invalid role" do
+    r = Role.create
+    assert r.new_record?.should be_true
+  end
 end

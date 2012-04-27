@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should not save invalid user" do
+    user = User.create
+    assert user.new_record?.should be_true
+  end
 end

@@ -1,7 +1,8 @@
 ProjectManagementSystem::Application.routes.draw do
   devise_for :users
 
-  resources :profiles
+  resources :profiles, :only => [:show, :edit, :update]
+
   match 'users/:id' => 'users#show', :as => :user
 
   namespace :admin do
