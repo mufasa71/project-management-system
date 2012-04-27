@@ -34,3 +34,7 @@ end
 Then /^I should be redirected to ([\w ]+) page$/ do |path|
   current_path.should == eval("#{path.gsub(/\W+/, '_')}_path")
 end
+
+Then /^show me the page$/ do
+  save_and_open_page
+end

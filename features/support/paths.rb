@@ -22,7 +22,12 @@ module NavigationHelpers
     when /path "(.+)"/
       $1
     when /^the ([\w ]+) page$/
-      send("#{$1.gsub(/\W+/, '_')}_path")
+      page = $1.slice(0..$1.index(" ")-1) 
+      if page.eql?("show")
+        eval("#{$1.slice(($1.index(" ")+1)..-1)}_path(#{@me.id})")
+      else
+        send("#{$1.gsub(/\W+/, '_')}_path")
+      end
     when /^my account page$/
       email = @me.nil? ? @admin.email : @me.email
       edit_user_registration_path(User.find_by_email(email))
@@ -34,6 +39,9 @@ module NavigationHelpers
       else
         eval("#{$1}_admin_#{$2}_path(#{@me.id})")
       end
+    when /^other (\w+) (\w+) page$/
+      @other = FactoryGirl.create(:unique_user)
+      eval("#{$1}_#{$2}_path(#{@other.id})")
     else
       begin
         page_name =~ /the (.*) page/
