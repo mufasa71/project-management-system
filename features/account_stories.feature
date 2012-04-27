@@ -31,9 +31,19 @@ Feature: Account management
     When I go to my account page
     And I should not see "Do it now!"
 
-  @break_point
   Scenario: Remove an account
     Given I am signed in as user
     And I go to my account page
     When I follow "Cancel my account"
     Then I should see "Bye! Your account was successfully cancelled. We hope to see you again soon."
+
+  Scenario: Attempts to see lists of users
+    Given I am signed in as user
+    When I go to the admin users page
+    Then I should see "You are not authorized to access this page."
+
+  @break_point
+  Scenario: Attempts to manipulate restricted accounts
+    Given I am signed in as user
+    When I go to admin show user page
+    Then I should see "You are not authorized to access this page."

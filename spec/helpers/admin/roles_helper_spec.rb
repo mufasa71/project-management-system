@@ -10,6 +10,6 @@ require 'spec_helper'
 #     end
 #   end
 # end
-describe RolesHelper do
+describe Admin::RolesHelper do
   pending "add some examples to (or delete) #{__FILE__}"
 end

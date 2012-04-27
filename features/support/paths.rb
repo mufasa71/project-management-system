@@ -24,11 +24,16 @@ module NavigationHelpers
     when /^the ([\w ]+) page$/
       send("#{$1.gsub(/\W+/, '_')}_path")
     when /^my account page$/
-      edit_user_registration_path(User.find_by_email(@me.email))
+      email = @me.nil? ? @admin.email : @me.email
+      edit_user_registration_path(User.find_by_email(email))
     when /^my edit profile page$/
       edit_profile_path(@me.profile)
-    when /^show user page$/
-      user_path(@me)
+    when /^admin (\w+) (\w+) page$/
+      if $1.eql?("show")
+        eval("admin_#{$2}_path(#{@me.id})")
+      else
+        eval("#{$1}_admin_#{$2}_path(#{@me.id})")
+      end
     else
       begin
         page_name =~ /the (.*) page/

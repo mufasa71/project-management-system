@@ -8,7 +8,7 @@ When /^I go to (.+)$/ do |page_name|
 end
 
 Given /^a user exists with email: "([^"]*)", password: "([^"]*)"$/ do |email, password|
-  FactoryGirl.create(:user, email: email, password: password)
+  @me ||= FactoryGirl.create(:user, email: email, password: password)
 end
 
 Given /^a user exists with email: "([^"]*)", password: "([^"]*)", username: "([^"]*)"$/ do |email, password, username|
@@ -17,20 +17,28 @@ Given /^a user exists with email: "([^"]*)", password: "([^"]*)", username: "([^
   @me.save!
 end
 
+Given /^the following users exists$/ do |expected_table|
+  # table is a Cucumber::Ast::Table
+  users = expected_table.hashes
+  users.each do |user_attrs|
+    FactoryGirl.create(:user, user_attrs)
+  end
+end   
+
 Given /^I am signed in as (.+)$/ do |type|
   step %(I try to sign in as #{type})
-  find_link("#{@me.email}")
 end
 
 Given /^I try to sign in as admin$/ do
   password = "abcdefr"
-  @me ||= FactoryGirl.create(:admin, password: password)
+  @admin ||= FactoryGirl.create(:admin, password: password)
   steps %Q{
     When I go to the new user session page
-    And I fill in "user_email" with "#{@me.email}"
+    And I fill in "user_email" with "#{@admin.email}"
     And I fill in "user_password" with "#{password}"
     And I press "Sign in"
   }
+  find_link("#{@admin.email}")
 end
 
 Given /^I try to sign in as user$/ do
@@ -42,6 +50,7 @@ Given /^I try to sign in as user$/ do
     And I fill in "user_password" with "#{password}"
     And I press "Sign in"
   }
+  find_link("#{@me.email}")
 end
 
 Given /^I already update profile$/ do
