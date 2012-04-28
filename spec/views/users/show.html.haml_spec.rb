@@ -2,10 +2,7 @@ require 'spec_helper'
 
 describe "users/show" do
   before(:each) do
-    @user = assign(:user, stub_model(User,
-      :email => "mukimov@gmail.com",
-      :profile => Profile.new(:username => "Shukhrat Mukimov", :skype => "skype")
-    ))
+    @user = FactoryGirl.create(:user, email: "mukimov@gmail.com") 
   end
 
   it "renders attributes in <p>" do

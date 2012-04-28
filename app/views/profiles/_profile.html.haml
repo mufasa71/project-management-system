@@ -11,4 +11,4 @@
           %i.icon-envelope
           #{profile.skype.blank? ? "No skype" : profile.skype}
 
-        =button_to "Edit profile", edit_profile_path(profile),  :class => "btn-mini btn-primary", :method => :get 
+        =button_to "Edit profile", edit_user_profile_path(profile),  :class => "btn-mini btn-primary", :method => :get 

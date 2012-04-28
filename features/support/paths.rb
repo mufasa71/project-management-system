@@ -10,6 +10,26 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
+    # the following are admin paths
+    when /^the admin users page$/
+      admin_users_path
+    when /^the admin #{capture_model}'s (\w+) page$/
+      send("#{$2}_admin_user_path", model($1))
+    when /^the admin #{capture_model}'s page$/
+      send("admin_user_path", model($1))
+
+    # the following are examples using path_to_pickle
+    when /^#{capture_model}(?:'s)? page$/                           # eg. the forum's page
+      path_to_pickle $1
+
+    when /^#{capture_model}(?:'s)? #{capture_model}(?:'s)? page$/   # eg. the forum's post's page
+      path_to_pickle $1, $2
+
+    when /^#{capture_model}(?:'s)? #{capture_model}'s (.+?) page$/  # eg. the forum's post's comments page
+      path_to_pickle $1, $2, :extra => $3                           #  or the forum's post's edit page
+
+    when /^#{capture_model}(?:'s)? (.+?) page$/                     # eg. the forum's posts page
+      path_to_pickle $1, :extra => $2                               #  or the forum's edit page
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -17,31 +37,12 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
 
-    # Devise paths mappings here.
-
-    when /path "(.+)"/
-      $1
-    when /^the ([\w ]+) page$/
-      page = $1.slice(0..$1.index(" ")-1) 
-      if page.eql?("show")
-        eval("#{$1.slice(($1.index(" ")+1)..-1)}_path(#{@me.id})")
-      else
-        send("#{$1.gsub(/\W+/, '_')}_path")
-      end
-    when /^my account page$/
-      email = @me.nil? ? @admin.email : @me.email
-      edit_user_registration_path(User.find_by_email(email))
-    when /^my edit profile page$/
-      edit_profile_path(@me.profile)
-    when /^admin (\w+) (\w+) page$/
-      if $1.eql?("show")
-        eval("admin_#{$2}_path(#{@me.id})")
-      else
-        eval("#{$1}_admin_#{$2}_path(#{@me.id})")
-      end
-    when /^other (\w+) (\w+) page$/
-      @other = FactoryGirl.create(:unique_user)
-      eval("#{$1}_#{$2}_path(#{@other.id})")
+    when /^the sign up page$/
+      new_user_registration_path
+    when /^the sign in page$/
+      new_user_session_path
+    when /^the edit account page$/
+      edit_user_registration_path(model("that user"))
     else
       begin
         page_name =~ /the (.*) page/

@@ -31,8 +31,8 @@ When /^I follow "([^"]*)"$/ do |link|
  click_link(link)
 end
 
-Then /^I should be redirected to ([\w ]+) page$/ do |path|
-  current_path.should == eval("#{path.gsub(/\W+/, '_')}_path")
+Then /^I should be redirected to ([\w ]+)$/ do |page_name|
+  current_path.should == path_to(page_name)
 end
 
 Then /^show me the page$/ do

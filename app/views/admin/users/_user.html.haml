@@ -1,4 +1,4 @@
 %h1 #{user.email}
 
-=render :partial => "profiles/profile", :object => user.profile
+=render :partial => "profiles/profile", :object => user.profile if user.profile
 

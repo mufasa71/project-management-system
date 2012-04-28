@@ -19,4 +19,8 @@ class ProfilesController < ApplicationController
 
     respond_with @profile, :location => root_path
   end
+
+  def new
+    @profile = current_user.profile.build
+  end
 end

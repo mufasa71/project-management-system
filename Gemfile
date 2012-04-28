@@ -54,4 +54,5 @@ group :test, :development do
   gem 'faker'
   gem 'launchy'
   gem 'cancan'
+  gem 'pickle'
 end

@@ -10,7 +10,6 @@ require 'spork'
 Spork.prefork do
   require 'cucumber/rails'
   Capybara.default_selector = :css
-  Dir[Rails.root.join("spec/support/factories/*.rb")].each {|f| require f}
 end
  
 Spork.each_run do
@@ -59,3 +58,11 @@ Spork.each_run do
   # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
   Cucumber::Rails::Database.javascript_strategy = :truncation
 end
+
+module MeHelper
+  def me
+    me ||= FactoryGirl.create(:unique_user)
+  end
+end
+
+#World(MeHelper)

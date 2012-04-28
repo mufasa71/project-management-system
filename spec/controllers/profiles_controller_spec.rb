@@ -12,7 +12,7 @@ describe ProfilesController do
   login_user
 
   before(:each) do
-    @profile = subject.current_user.profile
+    @profile = FactoryGirl.create(:profile)
   end
 
   describe "GET show" do
@@ -31,15 +31,6 @@ describe ProfilesController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested profile" do
-        # Assuming there are no other profiles in the database, this
-        # specifies that the Profile created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Profile.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => @profile.to_param, :profile => {'these' => 'params'}}
-      end
-
       it "assigns the requested profile as @profile" do
         put :update, {:id => @profile.to_param, :profile => valid_attributes}
         assigns(:profile).should eq(@profile)
