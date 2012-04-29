@@ -1,4 +1,4 @@
 %h1 #{user.email}
-
+= friendship_button(user) unless current_user == user
 -if user.profile
   =render user.profile 

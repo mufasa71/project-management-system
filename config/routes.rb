@@ -3,6 +3,7 @@ ProjectManagementSystem::Application.routes.draw do
 
   resources :users, :only => [:show] do
     resources :profiles, :except => [:index, :destroy]
+    resources :friends, :except => [:edit]
   end
 
   namespace :admin do

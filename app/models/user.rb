@@ -8,8 +8,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :profile_attributes
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
-  #before_create :build_profile
   has_and_belongs_to_many :roles
+  has_many :friendships, :dependent => :destroy
+  has_many :friends, :through => :friendships, :conditions => "status = '#{Friendship::ACCEPTED}'"
+  has_many :requested_friends, :through => :friendships, :source => :friend, :conditions => "status = '#{Friendship::REQUESTED}'", :order => "friendships.created_at"
+  has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = '#{Friendship::PENDING}'", :order => "friendships.created_at"
 
   scope :not_admins, where("admin = ?", false)
 
