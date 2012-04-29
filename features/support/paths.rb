@@ -11,10 +11,14 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
     # the following are admin paths
-    when /^the admin users page$/
-      admin_users_path
+    when /^the admin (\w+) page$/
+      send("admin_#{$1}_path")
     when /^the admin #{capture_model}'s (\w+) page$/
-      send("#{$2}_admin_user_path", model($1))
+      if $2.eql?("new")
+        send("#{$2}_admin_#{$1}_path")
+      else
+        send("#{$2}_admin_#{$1}_path", model($1))
+      end
     when /^the admin #{capture_model}'s page$/
       send("admin_user_path", model($1))
 

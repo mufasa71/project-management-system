@@ -63,6 +63,7 @@ class Admin::RolesController < ApplicationController
   # DELETE /roles/1.json
   def destroy
     @role.destroy
+    flash[:notice] = "Role successfully deleted."
     respond_with @role, :location => admin_roles_url
   end
 

@@ -1,6 +1,6 @@
 - model_class = Role.new.class
 %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
+%table.table.table-striped#roles
   %thead
     %tr
       %th= model_class.human_attribute_name(:id)

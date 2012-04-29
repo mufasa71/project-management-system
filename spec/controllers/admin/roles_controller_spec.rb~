@@ -12,7 +12,13 @@ describe Admin::RolesController do
   login_admin
 
   before(:each) do
-    @role = FactoryGirl.create(:role)
+    @role = Role.new
+    Role.stub(:find).and_return(@role)
+    Role.stub(:all).and_return([@role])
+    Role.stub(:save).and_return(:true)
+    Role.stub(:destroy).and_return(:true)
+    Role.stub(:count).and_return(1)
+    @role.stub(:update_attributes).and_return(:true)
   end
 
   describe "GET index" do
@@ -24,7 +30,7 @@ describe Admin::RolesController do
 
   describe "GET show" do
     it "assigns the requested role as @role" do
-      get :show, {:id => @role.to_param}
+      get :show, {:id => 23}
       assigns(:role).should eq(@role)
     end
   end
@@ -38,7 +44,7 @@ describe Admin::RolesController do
 
   describe "GET edit" do
     it "assigns the requested role as @role" do
-      get :edit, {:id => @role.to_param}
+      get :edit, {:id => 12}
       assigns(:role).should eq(@role)
     end
   end
@@ -87,17 +93,17 @@ describe Admin::RolesController do
         # specifies that the Role created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Role.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => @role.to_param, :role => {'these' => 'params'}}
+        Role.any_instance.should_recZZeive(:update_attributes).with({'these' => 'params'})
+        put :update, {:id => 2, :role => {'these' => 'params'}}
       end
 
       it "assigns the requested role as @role" do
-        put :update, {:id => @role.to_param, :role => valid_attributes}
+        put :update, {:id => 2, :role => valid_attributes}
         assigns(:role).should eq(@role)
       end
 
       it "redirects to the role" do
-        put :update, {:id => @role.to_param, :role => valid_attributes}
+        put :update, {:id => 54, :role => valid_attributes}
         response.should redirect_to([:admin, @role])
       end
     end
@@ -106,14 +112,14 @@ describe Admin::RolesController do
       it "assigns the role as @role" do
         # Trigger the behavior that occurs when invalid params are submitted
         Role.any_instance.stub(:save).and_return(false)
-        put :update, {:id => @role.to_param, :role => {}}
+        put :update, {:id => 54, :role => {}}
         assigns(:role).should eq(@role)
       end
 
       it "re-renders the 'edit' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Role.any_instance.stub(:save).and_return(false)
-        put :update, {:id => @role.to_param, :role => {}}
+        put :update, {:id => 98, :role => {}}
         response.should render_template("edit")
       end
     end
@@ -122,15 +128,14 @@ describe Admin::RolesController do
   describe "DELETE destroy" do
     it "destroys the requested role" do
       expect {
-        delete :destroy, {:id => @role.to_param}
+        delete :destroy, {:id => 32}
       }.to change(Role, :count).by(-1)
     end
 
     it "redirects to the roles list" do
-      delete :destroy, {:id => @role.to_param}
+      delete :destroy, {:id => 34}
       response.should redirect_to(admin_roles_url)
     end
   end
 
 end
-
