@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426101735) do
+ActiveRecord::Schema.define(:version => 20120429091750) do
 
   create_table "profiles", :force => true do |t|
     t.string   "username"
     t.string   "skype"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
+    t.boolean  "getting_started", :default => true
   end
 
   create_table "roles", :force => true do |t|
@@ -45,7 +46,6 @@ ActiveRecord::Schema.define(:version => 20120426101735) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
-    t.boolean  "getting_started",        :default => true
     t.boolean  "admin",                  :default => false
   end
 

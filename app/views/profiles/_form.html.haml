@@ -1,5 +1,6 @@
-= simple_form_for [:user, @profile], :html => { :class => 'form-horizontal' } do |f|
+= simple_form_for [@user, @profile], :html => { :class => 'form-horizontal' } do |f|
   = f.input :username
   = f.input :skype
+  = f.input :getting_started, :as => :hidden, :input_html => { :value => false }
   .form-actions
     = f.button :submit, :class => 'btn-primary'

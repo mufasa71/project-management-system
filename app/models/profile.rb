@@ -1,7 +1,5 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
-  attr_protected :user_id
-
   validates_presence_of :username
 end
 # == Schema Information

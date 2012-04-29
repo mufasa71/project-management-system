@@ -1,9 +1,28 @@
 require 'spec_helper'
+require 'cancan/matchers'
 
 describe User do
-  it "should not save invalid user" do
-    user = User.create
-    assert user.new_record?.should be_true
+  describe "user create" do
+    it "should not save invalid user" do
+      user = User.create
+      assert user.new_record?.should be_true
+    end
+  end
+  describe "abilities" do
+    subject { ability }
+    let(:ability) { Ability.new(user) }
+
+    context "when is an normal user" do
+      let(:user) { FactoryGirl.create(:user_with_profile) }
+
+      it {should be_able_to(:show, User.new) }
+      it {should be_able_to(:update, user.profile) }
+      it {should be_able_to(:edit, user.profile) }
+      it {should be_able_to(:show, Profile.new) }
+      it {should be_able_to(:new, Profile.new) }
+      it {should_not be_able_to(:update, User.new) }
+      it {should_not be_able_to(:edit, User.new) }
+    end
   end
 end
 # == Schema Information

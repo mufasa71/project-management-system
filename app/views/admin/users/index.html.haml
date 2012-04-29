@@ -5,8 +5,6 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:email)
-      %th= model_class.human_attribute_name(:encrypted_password)
-      %th= model_class.human_attribute_name(:reset_password_token)
       %th= model_class.human_attribute_name(:reset_password_sent_at)
       %th= model_class.human_attribute_name(:remember_created_at)
       %th= model_class.human_attribute_name(:sign_in_count)
@@ -14,7 +12,6 @@
       %th= model_class.human_attribute_name(:last_sign_in_at)
       %th= model_class.human_attribute_name(:current_sign_in_ip)
       %th= model_class.human_attribute_name(:last_sign_in_ip)
-      %th= model_class.human_attribute_name(:getting_started)
       %th= model_class.human_attribute_name(:admin)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
@@ -23,8 +20,6 @@
       %tr
         %td= link_to user.id, admin_user_path(user)
         %td= user.email
-        %td= user.encrypted_password
-        %td= user.reset_password_token
         %td= user.reset_password_sent_at
         %td= user.remember_created_at
         %td= user.sign_in_count
@@ -32,7 +27,6 @@
         %td= user.last_sign_in_at
         %td= user.current_sign_in_ip
         %td= user.last_sign_in_ip
-        %td= user.getting_started
         %td= user.admin
         %td=l user.created_at
         %td

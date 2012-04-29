@@ -31,6 +31,7 @@ class Ability
     elsif user.role? :project_admin
       can :manage, [Project]
     else
+      can [:show], User
       can [:new, :create, :show], Profile
       can [:edit, :update], Profile do |profile|
         profile.try(:user_id) == user.id
