@@ -2,18 +2,49 @@ require 'spec_helper'
 require 'cancan/matchers'
 
 describe User do
+  let(:user) { FactoryGirl.create(:user_with_profile) }
+  
+  subject { user }
+
   describe "user create" do
     it "should not save invalid user" do
       user = User.create
       assert user.new_record?.should be_true
     end
   end
+  
+  describe "relationships" do
+    it { should respond_to(:relationships) }
+    it { should respond_to(:followed_users) }
+    it { should respond_to(:follow!) }
+    it { should respond_to(:following?) }
+  end
+
+  describe "following" do
+    let(:other_user) { FactoryGirl.create(:unique_user) }
+    before do
+      user.follow!(other_user)
+    end
+
+    it { should be_following(other_user) }
+    its(:followed_users) { should include(other_user) }
+    describe "followed user" do
+      subject { other_user }
+      its(:followers) { should include(user) }
+    end
+    describe "unfollowing" do
+      before { user.unfollow!(other_user) }
+
+      it { should_not be_following(other_user) }
+      its(:followed_users) { should_not include(other_user) }
+    end
+  end
+
   describe "abilities" do
     subject { ability }
     let(:ability) { Ability.new(user) }
 
     context "when is an normal user" do
-      let(:user) { FactoryGirl.create(:user_with_profile) }
 
       it {should be_able_to(:show, User.new) }
       it {should be_able_to(:update, user.profile) }

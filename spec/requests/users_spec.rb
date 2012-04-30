@@ -11,4 +11,5 @@ describe "home page" do
 
     page.should have_selector(".account-email", :text => user.email)
   end
+
 end

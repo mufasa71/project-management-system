@@ -3,8 +3,12 @@ ProjectManagementSystem::Application.routes.draw do
 
   resources :users, :only => [:show] do
     resources :profiles, :except => [:index, :destroy]
-    resources :friends, :except => [:edit]
+    member do
+      get :following, :followers
+    end
   end
+
+  resources :relationships, :only => [:create, :destroy]
 
   namespace :admin do
     resources :users, :roles

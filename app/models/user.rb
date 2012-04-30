@@ -9,15 +9,27 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
   has_and_belongs_to_many :roles
-  has_many :friendships, :dependent => :destroy
-  has_many :friends, :through => :friendships, :conditions => "status = '#{Friendship::ACCEPTED}'"
-  has_many :requested_friends, :through => :friendships, :source => :friend, :conditions => "status = '#{Friendship::REQUESTED}'", :order => "friendships.created_at"
-  has_many :pending_friends, :through => :friendships, :source => :friend, :conditions => "status = '#{Friendship::PENDING}'", :order => "friendships.created_at"
+  has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
+  has_many :followed_users, :through => :relationships, :source => :followed
+  has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
+  has_many :followers, :through => :reverse_relationships, :source => :follower
 
   scope :not_admins, where("admin = ?", false)
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
+  end
+
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
   end
 end
 # == Schema Information
