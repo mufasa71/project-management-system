@@ -21,4 +21,32 @@ describe UsersController do
       assigns(:user).should eq(@user)
     end
   end
+
+  describe "GET 'followers/following'" do
+    before(:each) { @user = FactoryGirl.create(:unique_user) }
+
+    describe "GET 'following'" do
+      before(:each) do
+        @user.follow!(FactoryGirl.create(:unique_user))
+        get 'following', {:id => @user.to_param}
+      end
+
+      subject { response }
+
+      it { should be_success }
+      it { assigns(:users).should eq(@user.followed_users) }
+    end
+
+    describe "GET 'followers'" do
+      before(:each) do
+        FactoryGirl.create(:unique_user).follow!(@user)
+        get 'followers', {:id => @user.to_param}
+      end
+
+      subject { response }
+
+      it { should be_success }
+      it { assigns(:users).should eq(@user.followers) }
+    end
+  end
 end

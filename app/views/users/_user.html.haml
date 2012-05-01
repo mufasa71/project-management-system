@@ -1,6 +1,2 @@
-%h1 #{user.email}
-= follow_button_for(user) unless current_user == user
--if user.profile
-  =render user.profile 
-
-=render 'common/stats' if user_signed_in?
+#user
+  =link_to user.email, user_path(user)

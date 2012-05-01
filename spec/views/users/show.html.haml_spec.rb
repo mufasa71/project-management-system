@@ -13,9 +13,9 @@ describe "users/show" do
   end
 
   describe "for signed-in users" do
-    describe "follower/following counts" do
-      let(:other_user) { FactoryGirl.create(:unique_user) }
+    let(:other_user) { FactoryGirl.create(:unique_user) }
 
+    describe "follower/following counts" do
       before do
         other_user.follow!(@user)
       end

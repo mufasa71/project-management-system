@@ -51,6 +51,7 @@ group :test, :development do
   gem 'guard-spork'
   gem 'libnotify'
   gem 'factory_girl'
+  gem 'factory_girl_rails'
   gem 'faker'
   gem 'launchy'
   gem 'cancan'

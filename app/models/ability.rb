@@ -36,6 +36,7 @@ class Ability
       can [:edit, :update], Profile do |profile|
         profile.try(:user_id) == user.id
       end
+      can [:create, :destroy], Relationship
     end
   end
 end
