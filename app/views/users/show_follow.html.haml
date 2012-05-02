@@ -1,0 +1,5 @@
+-provide(:header, @header)
+#row
+  .span4
+    %h3 #{yield(:header)}
+    =render @users
