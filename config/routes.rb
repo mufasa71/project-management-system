@@ -1,4 +1,6 @@
 ProjectManagementSystem::Application.routes.draw do
+  resources :members
+
   resources :projects
 
   devise_for :users

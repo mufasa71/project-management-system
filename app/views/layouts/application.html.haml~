@@ -24,7 +24,6 @@
             %a.brand{:href => root_path} Project Management System
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Projects", projects_path
               -if user_signed_in?
                 %li.account-email= link_to current_user.email, edit_user_registration_path 
                 %li= link_to "Admin page", admin_home_index_path if current_user.admin? 

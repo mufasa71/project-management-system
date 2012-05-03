@@ -1,10 +1,7 @@
-= simple_form_for(@project) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :name
-    = f.input :identifier
-    = f.input :homepage
-
-  .form-actions
-    = f.button :submit
+= f.input :name
+= f.input :description
+= f.input :identifier
+= f.input :homepage
+= f.input :is_public, :label => "Public"
+.form-actions
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), projects_path, :class => 'btn'

@@ -1,0 +1,9 @@
+= simple_form_for(@member) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id
+    = f.input :project_id
+
+  .form-actions
+    = f.button :submit

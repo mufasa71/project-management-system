@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120430062103) do
+ActiveRecord::Schema.define(:version => 20120503085225) do
+
+  create_table "member_roles", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "role_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "profiles", :force => true do |t|
     t.string   "username"
@@ -20,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20120430062103) do
     t.datetime "updated_at",                        :null => false
     t.integer  "user_id"
     t.boolean  "getting_started", :default => true
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "identifier"
+    t.string   "homepage"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.text     "description"
+    t.boolean  "is_public",   :default => true
   end
 
   create_table "relationships", :force => true do |t|

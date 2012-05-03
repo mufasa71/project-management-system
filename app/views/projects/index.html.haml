@@ -1,23 +1,8 @@
-%h1 Listing projects
-
-%table
-  %tr
-    %th Name
-    %th Identifier
-    %th Homepage
-    %th
-    %th
-    %th
-
-  - @projects.each do |project|
-    %tr
-      %td= project.name
-      %td= project.identifier
-      %td= project.homepage
-      %td= link_to 'Show', project
-      %td= link_to 'Edit', edit_project_path(project)
-      %td= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Project', new_project_path
+#navbar
+  %h1 Projects
+  #contextual
+    =link_to "New project", new_project_path, :class => "btn btn-success"
+#project_list
+  %ul
+    - @projects.each do |project|
+      %li.project= link_to project.name, project_path(project)

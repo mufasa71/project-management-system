@@ -1,15 +1,16 @@
-%p#notice= notice
-
-%p
-  %b Name:
-  = @project.name
-%p
-  %b Identifier:
-  = @project.identifier
-%p
-  %b Homepage:
-  = @project.homepage
-
-= link_to 'Edit', edit_project_path(@project)
-\|
-= link_to 'Back', projects_path
+%h2 Overview
+#row
+  .span2
+    .well.sidebar-nav
+      %ul.nav.nav-list
+        %li.nav-header General
+        %li #{ link_to(@project) { content_tag(:i, "", :class => "icon-home") << "Overview" }}
+  .span6
+    #project
+      %h3= @project.name
+      %table
+        %tr
+          %td
+            %h4 Issue tracking
+          %td
+            %h4 Members
