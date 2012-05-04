@@ -17,6 +17,7 @@ describe "projects/new" do
       assert_select "input#project_name", :name => "project[name]"
       assert_select "input#project_identifier", :name => "project[identifier]"
       assert_select "input#project_homepage", :name => "project[homepage]"
+      assert_select "input#project_is_public", :name => "project[is_public]"
     end
   end
 end

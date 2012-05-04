@@ -5,6 +5,10 @@ class Project < ActiveRecord::Base
   validates_length_of :homepage, :maximum => 255
   validates_length_of :identifier, :maximum => 255
   validates_exclusion_of :identifier, :in => %w(new)
+
+  has_many :members, :include => [:user, :roles]
+  has_many :memberships, :class_name => 'Member'
+  has_many :users, :through => :members
 end
 # == Schema Information
 #

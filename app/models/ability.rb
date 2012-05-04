@@ -37,6 +37,7 @@ class Ability
         profile.try(:user_id) == user.id
       end
       can [:create, :destroy], Relationship
+      can :manage, Project
     end
   end
 end

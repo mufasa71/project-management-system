@@ -1,12 +1,10 @@
-%h1 Members
-
 #members
   %table
     %tr
       %th User
       %th Roles
       %th
-    - @members.each do |member|
+    - members.each do |member|
       %tr
         %td= member.user.email
         %td= member.roles

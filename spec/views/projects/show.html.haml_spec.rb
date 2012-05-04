@@ -13,7 +13,5 @@ describe "projects/show" do
     render
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     rendered.should match(/Name/)
-    rendered.should match(/Identifier/)
-    rendered.should match(/Homepage/)
   end
 end

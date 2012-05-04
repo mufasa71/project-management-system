@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Member do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "member create" do
+    it "should not save invalid member" do
+      member = Member.new
+      assert member.new_record?.should be_true
+    end
+  end
 end
 # == Schema Information
 #

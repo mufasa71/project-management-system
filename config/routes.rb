@@ -1,7 +1,12 @@
 ProjectManagementSystem::Application.routes.draw do
-  resources :members
-
-  resources :projects
+  resources :projects do
+    resources :members
+    member do
+      get :settings
+      get "settings/members" => 'settings#members'
+      get "settings/information" => 'settings#information'
+    end
+  end
 
   devise_for :users
 

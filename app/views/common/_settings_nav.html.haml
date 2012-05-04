@@ -1,0 +1,5 @@
+.span3
+  %ul.nav.nav-list
+    %li.nav-header Settings
+    %li{:class => is_active?("information")} #{ link_to (settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-info-sign") << "Information" }}
+    %li{:class => is_active?("members")} #{ link_to (settings_members_project_path(@project)) { content_tag(:i, "", :class => "icon-user") << "Members" }}

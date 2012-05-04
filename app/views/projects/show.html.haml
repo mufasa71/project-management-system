@@ -1,11 +1,6 @@
-%h2 Overview
+=render 'common/project_tabs'
 #row
-  .span2
-    .well.sidebar-nav
-      %ul.nav.nav-list
-        %li.nav-header General
-        %li #{ link_to(@project) { content_tag(:i, "", :class => "icon-home") << "Overview" }}
-  .span6
+  .span12
     #project
       %h3= @project.name
       %table
