@@ -1,5 +1,5 @@
 = f.input :name
-= f.input :description
+= f.input :description, :input_html => { :class => 'ckeditor'}
 = f.input :identifier
-= f.input :homepage
+= f.input :homepage, :hint => "Length between 1 and 100 characters. Only lower case letters (a-z), numbers, dashes and underscores are allowed"
 = f.input :is_public, :label => "Public"

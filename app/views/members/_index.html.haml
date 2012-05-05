@@ -1,11 +1,15 @@
 #members
-  %table
-    %tr
-      %th User
-      %th Roles
-      %th
-    - members.each do |member|
+  %table.table.table-striped
+    %thead
       %tr
-        %td= member.user.email
-        %td= member.roles
-        %td= link_to 'Destroy', project_members_path(member), :confirm => 'Are you sure?', :method => :delete
+        %th User
+        %th Roles
+        %th
+    %tbody
+      -members.each do |member|
+        %tr
+          %td= member.user.email
+          %td= render member.roles
+          %td
+            = link_to(edit_project_member_path(member), :class => "btn btn-small btn-inverse") { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+            = link_to(project_members_path(member), :class => "btn btn-small btn-danger", :confirm => 'Are you sure?', :method => :delete) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

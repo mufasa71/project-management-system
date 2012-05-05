@@ -1,9 +1,5 @@
-= simple_form_for(@member) do |f|
-  = f.error_notification
-
+= simple_form_for([:project, @member]) do |f|
   .form-inputs
-    = f.input :user_id
-    = f.input :project_id
-
-  .form-actions
-    = f.button :submit
+    = f.association :roles, :as => :check_boxes
+  = f.button :submit, :value => "Change"
+  = link_to "Cancel", settings_members_project_path(:id => @member.project_id)

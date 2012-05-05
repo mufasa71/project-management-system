@@ -29,6 +29,11 @@ class ProjectsController < ApplicationController
   def create
     respond_to do |format|
       if @project.save
+        if user_signed_in?
+          r = Role.first == nil ? Role.create(:name => "Manager") : Role.first
+          m = Member.new(:user => current_user, :roles => [r])
+          @project.members << m
+        end
         format.html { redirect_to @project, notice: 'Successful creation.' }
         format.json { render json: @project, status: :created, location: @project }
       else
