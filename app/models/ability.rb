@@ -32,10 +32,6 @@ class Ability
       can :manage, [Project]
     else
       can [:show, :following, :followers], User
-      can [:new, :create, :show], Profile
-      can [:edit, :update], Profile do |profile|
-        profile.try(:user_id) == user.id
-      end
       can [:create, :destroy], Relationship
       can :manage, Project
     end

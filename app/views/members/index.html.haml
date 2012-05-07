@@ -1,13 +1,8 @@
-%h1 Members
-
-#members
-  %table
-    %tr
-      %th User
-      %th Roles
-      %th
-    - @members.each do |member|
-      %tr
-        %td= member.user.email
-        %td= member.roles
-        %td= link_to 'Delete', project_members_path(member), :confirm => 'Are you sure?', :method => :delete
+#add_member
+  =simple_form_for(project_members_path(@project), :html => { :class => "form-horizontal" }) do |f|
+    -@users.each do |user|
+      .controls
+        =label_tag(dom_id(user), :class => "checkbox") do
+          =check_box_tag("project[user_ids][]", user.id, @project.member_ids.include?(user.id), id: dom_id(user)) << user
+    =f.button :submit, :value => "Add"
+    =link_to "Cancel", settings_members_project_path(@project)

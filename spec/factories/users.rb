@@ -16,12 +16,6 @@ FactoryGirl.define do
     password "any_password"
   end
 
-  factory :user_with_profile, class: User do
-    email
-    password "any_password"
-    association :profile
-  end
-
   factory :unique_user, class: User do
     email
     password "any_password"

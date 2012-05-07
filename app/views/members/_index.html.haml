@@ -8,8 +8,9 @@
     %tbody
       -members.each do |member|
         %tr
-          %td= member.user.email
+          %td= member.user
           %td= render member.roles
           %td
-            = link_to(edit_project_member_path(member), :class => "btn btn-small btn-inverse") { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
-            = link_to(project_members_path(member), :class => "btn btn-small btn-danger", :confirm => 'Are you sure?', :method => :delete) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}
+            = link_to(edit_project_member_path(:project_id => member.project.id, :id => member), :class => "btn btn-small btn-inverse") { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+            
+            = link_to(project_member_path(:project_id => member.project.id, :id => member), :class => "btn btn-small btn-danger", :confirm => 'Are you sure?', :method => :delete) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

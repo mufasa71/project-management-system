@@ -6,7 +6,6 @@ Feature: Admin features
 
   Scenario: Verify that I am admin
     Given a admin exists
-    And a profile exists with user: the admin
     And I am logged in as that admin
     When I go to the edit account page
     Then I should see "Type: Admin"

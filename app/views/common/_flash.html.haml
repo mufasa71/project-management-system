@@ -1,11 +1,14 @@
 -if flash[:notice]
   .alert.alert-success
+    %a{:class => "close", "data-dismiss" => "alert", :href => "#"} &times;
     =content_tag :div, flash[:notice]
 
 -if flash[:error]
   .alert.alert-error
+    %a{:class => "close", "data-dismiss" => "alert", :href => "#"} &times;
     =content_tag :div, flash[:error]
 
 -if flash[:alert]
   .alert.alert-error
+    %a{:class => "close", "data-dismiss" => "alert", :href => "#"} &times;
     =content_tag :div, flash[:alert]

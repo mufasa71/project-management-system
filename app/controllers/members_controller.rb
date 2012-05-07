@@ -1,13 +1,9 @@
 class MembersController < ApplicationController
-  # GET /members
-  # GET /members.json
-  def index
-    @members = Member.all
+  respond_to :html, :xml
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @members }
-    end
+  def index
+    @project = Project.find_by_id(params[:project_id])
+    @users = User.find(:all, :conditions => ['id not in (?)', @project.members.map(&:user_id)])
   end
 
   # GET /members/1
@@ -21,36 +17,17 @@ class MembersController < ApplicationController
     end
   end
 
-  # GET /members/new
-  # GET /members/new.json
-  def new
-    @member = Member.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @member }
-    end
-  end
-
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
   end
 
-  # POST /members
-  # POST /members.json
   def create
-    @member = Member.new(params[:member])
-
-    respond_to do |format|
-      if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        format.json { render json: @member, status: :created, location: @member }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
+    @project = Project.find(params[:project_id])
+    params[:project][:user_ids].each do |user_id|
+      @project.members << Member.new(:user_id => user_id)
     end
+    redirect_to settings_members_project_path(@project), :notice => "Successful updated."
   end
 
   # PUT /members/1
@@ -72,11 +49,12 @@ class MembersController < ApplicationController
   # DELETE /members/1
   # DELETE /members/1.json
   def destroy
+    @project = Project.find(params[:project_id])
     @member = Member.find(params[:id])
     @member.destroy
 
     respond_to do |format|
-      format.html { redirect_to members_url }
+      format.html { redirect_to settings_members_project_path(@project), :notice => "Successful updated." }
       format.json { head :no_content }
     end
   end

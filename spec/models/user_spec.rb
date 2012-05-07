@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'cancan/matchers'
 
 describe User do
-  let(:user) { FactoryGirl.create(:user_with_profile) }
+  let(:user) { FactoryGirl.create(:user) }
   
   subject { user }
 
@@ -47,10 +47,6 @@ describe User do
     context "when is an normal user" do
 
       it {should be_able_to(:show, User.new) }
-      it {should be_able_to(:update, user.profile) }
-      it {should be_able_to(:edit, user.profile) }
-      it {should be_able_to(:show, Profile.new) }
-      it {should be_able_to(:new, Profile.new) }
       it {should_not be_able_to(:update, User.new) }
       it {should_not be_able_to(:edit, User.new) }
     end

@@ -2,41 +2,43 @@ Feature: Project members
   Successfully add and remove project members and roles
 
   Background: 
-    Given a user exists with email: "user@email.com"
+    Given a user exists with name: "Jakie Lowerens"
     And I am logged in as that user
-
-  Scenario: View project members
-    Given a project exists
-    And a member exists with user_id: the user, project_id: the project
-    And I go to the project page
-    And I follow "Settings"
-    When I follow "Members"
-    Then I should see "user@email.com" within "#members"
-
-  Scenario: View members roles
-    Given I go to the projects page
+    And I go to the projects page
     And I follow "New project"
     And I fill in "Name" with "Project name"
     And I fill in "Identifier" with "project_name"
-    And a role exists with name: "Manager"
-    When I press "Create"
+    And I press "Create"
     And I follow "Settings"
-    And I follow "Members"
+
+  Scenario: View project members
+    When I follow "Members"
+    Then I should see "Jakie Lowerens" within "#members"
+
+  Scenario: View members roles
+    When I follow "Members"
     Then I should see "Manager" within "#members"
 
   Scenario: Edit members roles
-    Given I go to the projects page
-    And I follow "New project"
-    And I fill in "Name" with "Project name"
-    And I fill in "Identifier" with "project_name"
-    And a role exists with name: "Manager"
-    And a role exists with name: "Developer"
-    When I press "Create"
-    And I follow "Settings"
-    And I follow "Members"
+    Given a role exists with name: "Developer"
+    When I follow "Members"
     And I follow "Edit" within "#members"
     And I check "Developer"
     And I press "Change"
     Then I should see "Successful updated."
-    And I should see "Manager Developer" within "#members"
+    And I should see "Developer" within "#members"
 
+  Scenario: Add members to project
+    Given a unique user exists with name: "Tom Jones"
+    When I follow "Members"
+    And I follow "Add"
+    And I check "Tom Jones" within "#add_member"
+    And I press "Add"
+    Then I should see "Tom Jones" within "#members"
+    And I should see "Successful updated."
+
+  Scenario: Delete members from project
+    When I follow "Members"
+    And I follow "Delete"
+    Then I should not see "Jakie Lowerens" within "#members"
+    And I should see "Successful updated."

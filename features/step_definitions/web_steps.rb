@@ -1,8 +1,14 @@
 module WithinHelpers
-  def with_scope(locator)
-    locator ? within(locator) { yield } : yield
+  def with_scope(locator) 
+    if(locator)
+      find(locator)
+      within(locator) { yield }
+    else
+      yield
+    end
   end
 end
+
 World(WithinHelpers)
 
 When /^I fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
@@ -23,7 +29,7 @@ Then /^(?:|I )should see "([^"]*)"(?: within "([^"]*)")?$/ do |text, selector|
   end
 end
 
-Then /^(?:|I )should not see \/([^\/]*)\/(?: within "([^"]*)")?$/ do |regexp, selector|
+Then /^(?:|I )should not see "([^"]*)"(?: within "([^"]*)")?$/ do |regexp, selector|
   regexp = Regexp.new(regexp)
   with_scope(selector) do
     if page.respond_to? :should

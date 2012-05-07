@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120503085225) do
+ActiveRecord::Schema.define(:version => 20120507114839) do
 
   create_table "member_roles", :force => true do |t|
     t.integer  "member_id"
@@ -25,15 +25,6 @@ ActiveRecord::Schema.define(:version => 20120503085225) do
     t.integer  "project_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "profiles", :force => true do |t|
-    t.string   "username"
-    t.string   "skype"
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.integer  "user_id"
-    t.boolean  "getting_started", :default => true
   end
 
   create_table "projects", :force => true do |t|
@@ -82,6 +73,13 @@ ActiveRecord::Schema.define(:version => 20120503085225) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
+    t.string   "name"
+    t.string   "number"
+    t.string   "intake"
+    t.string   "skype"
+    t.string   "msn"
+    t.string   "twitter"
+    t.string   "facebook"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

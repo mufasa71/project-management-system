@@ -2,16 +2,17 @@ require 'spec_helper'
 
 describe SettingsController do
 
-  describe "GET 'overview'" do
+  before(:each) { @project = FactoryGirl.create(:project) }
+  describe "GET 'information'" do
     it "returns http success" do
-      get 'overview'
+      get 'information', {:id => @project.to_param}
       response.should be_success
     end
   end
 
   describe "GET 'members'" do
     it "returns http success" do
-      get 'members'
+      get 'members', {:id => @project.to_param}
       response.should be_success
     end
   end
