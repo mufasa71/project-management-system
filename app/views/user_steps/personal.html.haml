@@ -1,0 +1,6 @@
+%h1 Account details
+
+=render layout: 'form' do |f|
+  =f.input :name
+  =f.input :number
+  =f.association :intake, :prompt => "Select your intake"

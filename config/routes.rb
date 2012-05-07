@@ -1,4 +1,5 @@
 ProjectManagementSystem::Application.routes.draw do
+  resources :user_steps
   resources :projects do
     resources :members
     member do
@@ -8,7 +9,7 @@ ProjectManagementSystem::Application.routes.draw do
     end
   end
 
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => "registrations" }
 
   resources :users, :only => [:show] do
     resources :profiles, :except => [:index, :destroy]

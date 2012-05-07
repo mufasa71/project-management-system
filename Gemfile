@@ -12,6 +12,9 @@ gem 'haml-rails', '~> 0.3.4'
 gem 'simple_form'
 gem 'ckeditor_rails', :require => 'ckeditor-rails'
 gem 'redcarpet'
+gem 'jquery-rails'
+gem 'bourbon'
+gem 'wicked'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,11 +28,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'normalize-rails'
 end
-
-gem 'jquery-rails'
-gem 'bourbon'
-gem 'wicked'
-
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'

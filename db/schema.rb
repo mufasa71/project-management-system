@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507114839) do
+ActiveRecord::Schema.define(:version => 20120507154515) do
+
+  create_table "intakes", :force => true do |t|
+    t.string   "number"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "member_roles", :force => true do |t|
     t.integer  "member_id"
@@ -75,11 +81,11 @@ ActiveRecord::Schema.define(:version => 20120507114839) do
     t.boolean  "admin",                  :default => false
     t.string   "name"
     t.string   "number"
-    t.string   "intake"
     t.string   "skype"
     t.string   "msn"
     t.string   "twitter"
     t.string   "facebook"
+    t.integer  "intake_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
