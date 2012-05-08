@@ -1,7 +1,11 @@
 #account.well
+  =link_to " View details", details_user_path(resource), :class => "btn btn-info icon-list-alt"
+  %br
+  %br
   %h4 Your Account
   %br
   %span.label.label-info Type: #{resource.admin == true ? "Admin" : "Student"}
+  %br
   %br
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
     = f.error_notification

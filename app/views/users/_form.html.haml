@@ -1,0 +1,15 @@
+= simple_form_for(@user, :html => { :class => "form-horizontal" }) do |f|
+  = f.error_notification
+  .inputs
+    = f.input :name, :required => true, :autofocus => true
+    = f.input :number, :required => true
+    = f.association :intake, :required => true
+    = f.input :facebook
+    = f.input :twitter
+    = f.input :msn
+    = f.input :facebook
+    = f.input :skype
+  .actions
+    = f.button :submit, "Update", :class => "btn btn-success"
+    or
+    =link_to "Cancel", details_user_path(@user)

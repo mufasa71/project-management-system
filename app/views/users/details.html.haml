@@ -1,0 +1,43 @@
+#details.well
+  =link_to " Edit details", edit_user_path(@user), :class => "btn btn-success icon-pencil"
+  %br
+  %br
+  %h2 Account details
+  %h3=link_to user_url(@user), user_url(@user)
+  %dl
+    %dt Student Name:
+    %dd=@user.name
+    %dt Student Number:
+    %dd=@user.number
+    %dt Intake:
+    %dd=@user.intake
+    %dt Facebook:
+    %dd
+      -if @user.facebook.present?
+        =link_to @user.facebook, @user.facebook
+      -else
+        %span.none None given
+    %dt Twitter:
+    %dd
+      -if @user.twitter.present?
+        =link_to @user.twitter, "http://twitter.com/#{@user.twitter}"
+      -else
+        %span.none None given
+    %dt MSN:
+    %dd
+      -if @user.msn.present?
+        =link_to @user.msn, "http://msn.com/#{@user.msn}"
+      -else
+        %span.none None given
+    %dt Skype:
+    %dd
+      -if @user.skype.present?
+        =link_to @user.skype, "http://skype.com/#{@user.skype}"
+      -else
+        %span.none None given
+    %dt Email:
+    %dd
+      -if @user.email.present?
+        =link_to @user.email, "mailto:#{@user.email}"
+      -else
+        %span.none None given

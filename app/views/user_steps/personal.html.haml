@@ -1,6 +1,7 @@
-%h1 Account details
+.well
+  %h2 Account details
 
-=render layout: 'form' do |f|
-  =f.input :name
-  =f.input :number
-  =f.association :intake, :prompt => "Select your intake"
+  =render layout: 'form' do |f|
+    =f.input :name
+    =f.input :number
+    =f.association :intake, :prompt => "Select your intake"

@@ -5,6 +5,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:name)
       %th= model_class.human_attribute_name(:reset_password_sent_at)
       %th= model_class.human_attribute_name(:remember_created_at)
       %th= model_class.human_attribute_name(:sign_in_count)
@@ -12,7 +13,6 @@
       %th= model_class.human_attribute_name(:last_sign_in_at)
       %th= model_class.human_attribute_name(:current_sign_in_ip)
       %th= model_class.human_attribute_name(:last_sign_in_ip)
-      %th= model_class.human_attribute_name(:admin)
       %th= model_class.human_attribute_name(:created_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
@@ -20,6 +20,7 @@
       %tr
         %td= link_to user.id, admin_user_path(user)
         %td= user.email
+        %td= user.name
         %td= user.reset_password_sent_at
         %td= user.remember_created_at
         %td= user.sign_in_count
@@ -27,7 +28,6 @@
         %td= user.last_sign_in_at
         %td= user.current_sign_in_ip
         %td= user.last_sign_in_ip
-        %td= user.admin
         %td=l user.created_at
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_user_path(user), :class => 'btn btn-mini'
