@@ -34,3 +34,9 @@ Feature: Users stories
   Scenario: View "Edit details" link
     When I go to the user's details page
     Then "Edit details" should link to "the user's edit page"
+
+  Scenario: Upload an profile image
+    When I go to the user's edit page
+    And I attach the file "/home/hawk/Pictures/profile.jpg" to "Profile picture"
+    And I press "Update"
+    Then I should see "Details successful updated."

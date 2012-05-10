@@ -1,6 +1,6 @@
 Given /^a project exists for that user$/ do
-  project = FactoryGirl.create(:project)
-  member = project.members.build(:user_id => model("that user")).save!
+  project = create_model("project")
+  project.members.build(:user_id => model("that user")).save!
 end
 
 Given /^I created a project$/ do

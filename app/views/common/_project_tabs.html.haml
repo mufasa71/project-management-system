@@ -3,3 +3,4 @@
     %ul.nav.nav-tabs
       %li{:class => is_active?("show")} #{ link_to(@project) { content_tag(:i, "", :class => "icon-home") << "Overview" }}
       %li{:class => params[:controller] == "settings" ? "active" : "" } #{ link_to(settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-cog") << "Settings" }}
+      %li{:class => is_active?("new")} #{ link_to(new_project_issue_path(@project)) { content_tag(:i, "", :class => "icon-plus-sign") << "New issue" }}

@@ -1,7 +1,10 @@
 ProjectManagementSystem::Application.routes.draw do
+  resources :issues
+
   resources :user_steps
   resources :projects do
     resources :members
+    resources :issues
     member do
       get :settings
       get "settings/members" => 'settings#members'

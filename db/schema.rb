@@ -11,12 +11,30 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120507154515) do
+ActiveRecord::Schema.define(:version => 20120510093108) do
 
   create_table "intakes", :force => true do |t|
     t.string   "number"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "issues", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "tracker_id"
+    t.integer  "status_id"
+    t.integer  "author_id"
+    t.integer  "assigned_to_id"
+    t.integer  "fixed_version_id"
+    t.integer  "priority_id"
+    t.integer  "category_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.date     "start_date"
+    t.date     "due_date"
+    t.integer  "estimated_time"
+    t.integer  "done"
+    t.string   "file"
   end
 
   create_table "member_roles", :force => true do |t|
@@ -86,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120507154515) do
     t.string   "twitter"
     t.string   "facebook"
     t.integer  "intake_id"
+    t.string   "profile_picture"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -73,6 +73,12 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)"(?: within "([^"]*)")?$/ do |value,
   end
 end
 
+When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"(?: within "([^"]*)")?$/ do |path, field, selector|
+  with_scope(selector) do
+    attach_file(field, path)
+  end
+end
+
 Then /^"([^"]*)" should link to "([^"]*)"(?: within "([^"]*)")?$/ do |link_text, page_name, container|
   with_scope(container) do
     URI.parse(page.find_link(link_text)['href']).path.should == path_to(page_name)

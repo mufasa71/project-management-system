@@ -1,4 +1,4 @@
-= simple_form_for(@user, :html => { :class => "form-horizontal" }) do |f|
+= simple_form_for(@user, :html => { :class => "form-horizontal", :multipart => true }) do |f|
   = f.error_notification
   .inputs
     = f.input :name, :required => true, :autofocus => true
@@ -9,6 +9,7 @@
     = f.input :msn
     = f.input :facebook
     = f.input :skype
+    = f.input :profile_picture
   .actions
     = f.button :submit, "Update", :class => "btn btn-success"
     or

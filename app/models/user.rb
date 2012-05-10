@@ -11,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
   belongs_to :intake
+  
+  #Carrierwave uploader
+  mount_uploader :profile_picture, ProfilePictureUploader
 
   scope :not_admins, where("admin = ?", false)
 
@@ -52,5 +55,13 @@ end
 #  created_at             :datetime        not null
 #  updated_at             :datetime        not null
 #  admin                  :boolean         default(FALSE)
+#  name                   :string(255)
+#  number                 :string(255)
+#  skype                  :string(255)
+#  msn                    :string(255)
+#  twitter                :string(255)
+#  facebook               :string(255)
+#  intake_id              :integer
+#  profile_picture        :string(255)
 #
 
