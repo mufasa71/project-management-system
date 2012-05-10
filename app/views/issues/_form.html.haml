@@ -1,17 +1,22 @@
 = simple_form_for(@issue, :html => { :class => "form-horizontal", :multipart => true }) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :subject, :input_html => { :style => "width: 500px"}
-    = f.input :description, :input_html => { :class => 'ckeditor' }
-    .span5
-      = f.association :status
-      = f.association :priority
-    .span5
-      = f.input :start_date, :as => :string
-      = f.input :due_date, :as => :string
-      = f.input :estimated_time
-      = f.input :done, :collection => (10..100).step(10).map { |num| num.to_s << "%"}, :default => 1
-      = f.input :file
+    .row
+      .span9
+        = f.input :subject, :input_html => { :style => "width: 500px"}
+        = f.input :description, :input_html => { :class => 'ckeditor', :size => "20" }
+    .row
+      .span5
+        = f.association :status, :prompt => "Select status"
+        = f.association :priority, :prompt => "Select priority"
+      .span6
+        = f.input :start_date, :as => :date_picker, :placeholder => "Select date"
+        = f.input :due_date, :as => :date_picker, :placeholder => "Select date"
+        = f.input :estimated_time, :placeholder => "hours"
+        = f.input :done, :collection => (10..100).step(10).map { |num| [num.to_s << "%", num] }, :prompt => "Select %"
+    .row
+      .span12
+        = f.input :file
 
   .form-actions
     = f.button :submit
