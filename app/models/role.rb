@@ -1,5 +1,4 @@
 class Role < ActiveRecord::Base
-  has_and_belongs_to_many :users
   has_many :member_roles, :dependent => :destroy
   has_many :members, :through => :member_roles
 

@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  has_and_belongs_to_many :roles
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
   has_many :followed_users, :through => :relationships, :source => :followed
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy

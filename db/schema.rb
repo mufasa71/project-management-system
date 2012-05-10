@@ -11,10 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510093108) do
+ActiveRecord::Schema.define(:version => 20120510102215) do
 
   create_table "intakes", :force => true do |t|
     t.string   "number"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "issue_priorities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "issue_statuses", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20120510093108) do
     t.integer  "estimated_time"
     t.integer  "done"
     t.string   "file"
+    t.string   "subject"
+    t.text     "description"
   end
 
   create_table "member_roles", :force => true do |t|
@@ -76,11 +90,6 @@ ActiveRecord::Schema.define(:version => 20120510093108) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "roles_users", :id => false, :force => true do |t|
-    t.integer "role_id"
-    t.integer "user_id"
   end
 
   create_table "users", :force => true do |t|

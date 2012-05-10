@@ -24,8 +24,8 @@ class IssuesController < ApplicationController
   # GET /issues/new
   # GET /issues/new.json
   def new
-    @issue = Issue.new
     @project = Project.find(params[:project_id])
+    @issue = @project.issues.build
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @issue }
