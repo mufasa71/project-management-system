@@ -1,21 +1,23 @@
-%h1 Listing issues
+=render 'common/project_tabs'
+.row
+  .span11
+    #issues
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Status
+            %th Priority
+            %th Subject
+            %th Assignee
+            %th Updated
+        %tbody
+        - @issues.each do |issue|
+          %tr
+            %td= issue.id
+            %td= issue.status.name
+            %td= issue.priority.name
+            %td= issue.subject
+            %td= issue.author.name
+            %td= issue.updated_at
 
-%table
-  %tr
-    %th Project
-    %th Tracker
-    %th
-    %th
-    %th
-
-  - @issues.each do |issue|
-    %tr
-      %td= issue.project_id
-      %td= issue.tracker_id
-      %td= link_to 'Show', issue
-      %td= link_to 'Edit', edit_issue_path(issue)
-      %td= link_to 'Destroy', issue, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Issue', new_issue_path

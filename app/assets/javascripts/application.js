@@ -15,6 +15,7 @@
 //= require jquery.ui.datepicker
 //= require twitter/bootstrap
 //= require ckeditor-jquery
+//= require simple_nested_form
 //= require_tree .
 //
 //

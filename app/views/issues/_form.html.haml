@@ -1,10 +1,10 @@
-= simple_form_for(@issue, :html => { :class => "form-horizontal", :multipart => true }) do |f|
+= nested_form_for([:project, @issue], :html => { :class => "form-horizontal", :multipart => true }) do |f|
   = f.error_notification
   .form-inputs
     .row
       .span9
         = f.input :subject, :input_html => { :style => "width: 500px"}
-        = f.input :description, :input_html => { :class => 'ckeditor', :size => "20" }
+        = f.input :description, :input_html => { :class => 'ckeditor' }
     .row
       .span5
         = f.association :status, :prompt => "Select status"
@@ -15,8 +15,18 @@
         = f.input :estimated_time, :placeholder => "hours"
         = f.input :done, :collection => (10..100).step(10).map { |num| [num.to_s << "%", num] }, :prompt => "Select %"
     .row
-      .span12
-        = f.input :file
+      = f.simple_fields_for :attachments do |a|
+        .row
+          .span4
+            =a.input :file, :as => :file
+          .span4
+            =a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
+          .span2
+            =a.link_to_remove " Remove",  :class => "icon-trash"
+    .row
+      =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, :class => "btn-success"
+
+=debug @issue

@@ -23,5 +23,7 @@ end
 #  estimated_time   :integer
 #  done             :integer
 #  file             :string(255)
+#  subject          :string(255)
+#  description      :text
 #
 

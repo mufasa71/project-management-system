@@ -11,6 +11,7 @@ class Ability
       can [:edit, :details, :update], User, :user_id == user.id
       can [:create, :destroy], Relationship
       can :manage, Project
+      can :manage, Issue
     end
   end
 end

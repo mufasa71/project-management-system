@@ -1,50 +1,33 @@
 class IssuesController < ApplicationController
-  # GET /issues
-  # GET /issues.json
+
+  before_filter :authenticate_user!
+  load_and_authorize_resource :project
+  load_and_authorize_resource :issue, :through => :project
+  respond_to :xml, :html
+  
   def index
-    @issues = Issue.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @issues }
-    end
+    respond_with @issues
   end
 
-  # GET /issues/1
-  # GET /issues/1.json
   def show
-    @issue = Issue.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @issue }
-    end
+    respond_with @issue
   end
 
-  # GET /issues/new
-  # GET /issues/new.json
   def new
-    @project = Project.find(params[:project_id])
-    @issue = @project.issues.build
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @issue }
-    end
+    @issue.attachments.build
+    respond_with @issue
   end
 
-  # GET /issues/1/edit
   def edit
-    @issue = Issue.find(params[:id])
+    respond_with @issue
   end
 
-  # POST /issues
-  # POST /issues.json
   def create
-    @issue = Issue.new(params[:issue])
+    @issue.author_id = current_user.id
 
     respond_to do |format|
       if @issue.save
-        format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
+        format.html { redirect_to [@project, @issue], notice: 'Issue was successfully created.' }
         format.json { render json: @issue, status: :created, location: @issue }
       else
         format.html { render action: "new" }
@@ -53,11 +36,7 @@ class IssuesController < ApplicationController
     end
   end
 
-  # PUT /issues/1
-  # PUT /issues/1.json
   def update
-    @issue = Issue.find(params[:id])
-
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
         format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
@@ -69,14 +48,11 @@ class IssuesController < ApplicationController
     end
   end
 
-  # DELETE /issues/1
-  # DELETE /issues/1.json
   def destroy
-    @issue = Issue.find(params[:id])
     @issue.destroy
 
     respond_to do |format|
-      format.html { redirect_to issues_url }
+      format.html { redirect_to issues_project_path(@project) }
       format.json { head :no_content }
     end
   end
