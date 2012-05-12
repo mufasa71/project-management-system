@@ -8,6 +8,10 @@ class Member < ActiveRecord::Base
   #validates_presence_of :principal, :project
   validates_presence_of :project
   validates_uniqueness_of :user_id, :scope => :project_id
+
+  def to_s
+    user.name
+  end
 end
 # == Schema Information
 #

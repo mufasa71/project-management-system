@@ -28,3 +28,14 @@ Feature: Issues management
     And I go to the project's page
     When I follow "Issues"
     Then I should see "New bug" within "#issues"
+
+  Scenario: Selecting assignee for issue
+    Given a project exists for that user
+    When I go to the project new issue page
+    Then I should see "John Smith" within "#issue_assigned_to_id"
+
+  Scenario: Selecting category
+    Given a project exists for that user
+    And a issue category exists with name: "Web site"
+    When I go to the project new issue page
+    Then I should see "Web site" within "#issue_category_id"

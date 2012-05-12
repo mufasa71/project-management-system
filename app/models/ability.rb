@@ -12,6 +12,7 @@ class Ability
       can [:create, :destroy], Relationship
       can :manage, Project
       can :manage, Issue
+      can :manage, IssueCategory
     end
   end
 end

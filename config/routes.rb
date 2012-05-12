@@ -1,9 +1,8 @@
 ProjectManagementSystem::Application.routes.draw do
-  resources :issues
-
   resources :user_steps
   resources :projects do
     resources :members
+    resources :issue_categories
     resources :issues
     member do
       get :settings

@@ -10,6 +10,7 @@ class Project < ActiveRecord::Base
   has_many :memberships, :class_name => 'Member'
   has_many :users, :through => :members
   has_many :issues, :dependent => :destroy
+  has_many :issue_categories, :dependent => :destroy, :order => "#{IssueCategory.table_name}.name"
 end
 # == Schema Information
 #

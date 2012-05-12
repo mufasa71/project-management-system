@@ -3,6 +3,8 @@ class Issue < ActiveRecord::Base
   belongs_to :status, :class_name => 'IssueStatus', :foreign_key => 'status_id'
   belongs_to :priority, :class_name => 'IssuePriority', :foreign_key => 'priority_id'
   belongs_to :author, :class_name => 'User', :foreign_key => 'author_id'
+  belongs_to :assigned_to, :class_name => 'User', :foreign_key => 'assigned_to_id'
+  belongs_to :category, :class_name => 'IssueCategory', :foreign_key => 'category_id'
   has_many :attachments, :as => :attachable
   validates_presence_of :subject, :status, :priority, :project
 
@@ -30,5 +32,4 @@ end
 #  file             :string(255)
 #  subject          :string(255)
 #  description      :text
-#
 

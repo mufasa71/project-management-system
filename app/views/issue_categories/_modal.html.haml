@@ -1,0 +1,11 @@
+#new_issue_category.modal.hide
+  .modal-header
+    =button_tag "×", :class => "close close-modal"
+    %h3 Add new category
+  .modal-body
+    =simple_form_for([:project, @project.issue_categories.build], :html => {:class => "form-horizontal"}) do |f|
+      =render :partial => "issue_categories/form", :locals => {:f => f}
+      .modal-footer
+        =link_to "Close", "#", :class => "btn close-modal"
+        =f.button :submit, "Create", :class => "btn btn-success"
+

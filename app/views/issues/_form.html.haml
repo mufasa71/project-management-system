@@ -9,6 +9,11 @@
       .span5
         = f.association :status, :prompt => "Select status"
         = f.association :priority, :prompt => "Select priority"
+        = f.association :assigned_to, :collection => @project.members
+        %p
+          = f.input :category do
+            =f.collection_select :category, IssueCategory.all, :id, :name
+            =link_to "", new_project_issue_category_path(@project), :class => "icon-plus-sign", :remote => true
       .span6
         = f.input :start_date, :as => :date_picker, :placeholder => "Select date"
         = f.input :due_date, :as => :date_picker, :placeholder => "Select date"
@@ -28,5 +33,5 @@
 
   .form-actions
     = f.button :submit, :class => "btn-success"
-
+=render 'issue_categories/modal'
 =debug @issue

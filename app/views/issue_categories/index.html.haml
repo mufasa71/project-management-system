@@ -1,0 +1,19 @@
+%h1 Listing issue_categories
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @issue_categories.each do |issue_category|
+    %tr
+      %td= issue_category.name
+      %td= link_to 'Show', issue_category
+      %td= link_to 'Edit', edit_issue_category_path(issue_category)
+      %td= link_to 'Destroy', issue_category, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Issue category', new_issue_category_path
