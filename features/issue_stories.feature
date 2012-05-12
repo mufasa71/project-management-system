@@ -36,6 +36,6 @@ Feature: Issues management
 
   Scenario: Selecting category
     Given a project exists for that user
-    And a issue category exists with name: "Web site"
+    And a issue category exists with name: "Web site", project_id: the project
     When I go to the project new issue page
-    Then I should see "Web site" within "#issue_category_id"
+    Then I should see "Web site" within "#issue_category"

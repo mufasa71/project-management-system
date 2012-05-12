@@ -24,7 +24,7 @@ class IssueCategoriesController < ApplicationController
   def new
     respond_to do |format|
       format.html
-      format.js {render 'new'}
+      format.js
     end
   end
 
@@ -35,8 +35,10 @@ class IssueCategoriesController < ApplicationController
     respond_to do |format|
       if @issue_category.save
         format.html { redirect_to new_project_issue_path(params[:project_id]), notice: 'Category was successfully created.' }
+        format.js
       else
         format.html { render action: "new" }
+        format.js
       end
     end
   end
