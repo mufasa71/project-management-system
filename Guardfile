@@ -1,6 +1,8 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
+notification :libnotify, :timeout => 2, :transiet => true, :urgency => :critical, :append => true
+
 group :specs do 
   guard 'spork', :rspec_env => { 'RAILS_ENV' => 'test' }, :cucumber => false do
     watch('config/application.rb')

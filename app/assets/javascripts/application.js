@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
+//= require rails-timeago
 //= require twitter/bootstrap
 //= require ckeditor-jquery
 //= require simple_nested_form

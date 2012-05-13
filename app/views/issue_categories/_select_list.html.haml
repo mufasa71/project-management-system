@@ -1,3 +1,0 @@
-= f.input :category do
-  =f.collection_select :category, @project.issue_categories, :id, :name
-  =link_to "", new_project_issue_category_path(@project), :class => "icon-plus-sign", :remote => true

@@ -1,7 +1,11 @@
-%h1 Editing issue
-
-= render 'form'
-
-= link_to 'Show', @issue
-\|
-= link_to 'Back', issues_path
+=render 'common/project_tabs'
+.row
+  .span12
+    #issue.well
+      %h3 Update
+      = nested_form_for([@project, @issue], :html => { :class => "form-horizontal", :multipart => true }) do |f|
+        = render :partial => 'issues/form', :locals => { :f => f }
+        .form-actions
+          = link_to "Cancel", project_issue_path(@project, @issue), :class => "btn"
+          = f.button :submit, "Update", :class => "btn-success"
+=render 'issue_categories/modal'

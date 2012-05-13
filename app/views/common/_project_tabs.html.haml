@@ -1,5 +1,6 @@
 #row
   .span11
+    %h2=@project.name
     %ul.nav.nav-tabs
       %li{:class => is_active?("show")} #{ link_to(@project) { content_tag(:i, "", :class => "icon-home") << "Overview" }}
       %li{:class => is_active?("index")} #{ link_to(project_issues_path(@project)) { content_tag(:i, "", :class => "icon-check") << "Issues" }}

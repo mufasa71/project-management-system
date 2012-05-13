@@ -13,11 +13,11 @@
             %th Updated
         %tbody
         - @issues.each do |issue|
-          %tr
-            %td= issue.id
-            %td= issue.status.name
-            %td= issue.priority.name
-            %td= issue.subject
-            %td= issue.author.name
-            %td= issue.updated_at
-
+          - present issue do |issue_presenter|
+            %tr
+              %td= issue_presenter.id
+              %td= issue_presenter.status
+              %td= issue_presenter.priority
+              %td= issue_presenter.subject
+              %td= issue_presenter.assignee
+              %td= issue_presenter.updated

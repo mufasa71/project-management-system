@@ -39,21 +39,17 @@ class IssuesController < ApplicationController
   def update
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
-        format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to [@project, @issue], notice: 'Successful updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def destroy
     @issue.destroy
-
     respond_to do |format|
-      format.html { redirect_to issues_project_path(@project) }
-      format.json { head :no_content }
+      format.html { redirect_to @project, notice: 'Successful deleted.' }
     end
   end
 end

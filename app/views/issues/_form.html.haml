@@ -1,36 +1,30 @@
-= nested_form_for([:project, @issue], :html => { :class => "form-horizontal", :multipart => true }) do |f|
-  = f.input :author, :as => :hidden, :input_html => {:value => current_user.id}
-  = f.error_notification
-  .form-inputs
-    .row
-      .span9
-        = f.input :subject, :input_html => { :style => "width: 500px"}
-        = f.input :description, :input_html => { :class => 'ckeditor' }
-    .row
-      .span5
-        = f.association :status, :prompt => "Select status"
-        = f.association :priority, :prompt => "Select priority"
-        = f.association :assigned_to, :collection => @project.members
-        %span#select_category
-          =render :partial => "issue_categories/select_list", :locals => {:f => f}
-      .span6
-        = f.input :start_date, :as => :date_picker, :placeholder => "Select date"
-        = f.input :due_date, :as => :date_picker, :placeholder => "Select date"
-        = f.input :estimated_time, :placeholder => "hours"
-        = f.input :done, :collection => (10..100).step(10).map { |num| [num.to_s << "%", num] }, :prompt => "Select %"
-    .row
-      = f.simple_fields_for :attachments do |a|
-        .row
-          .span4
-            =a.input :file, :as => :file
-          .span4
-            =a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
-          .span2
-            =a.link_to_remove " Remove",  :class => "icon-trash"
-    .row
-      =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
-
-  .form-actions
-    = f.button :submit, "Create", :class => "btn-success"
-=render 'issue_categories/modal'
-=debug @issue
+= f.error_notification
+.form-inputs
+  .row
+    .span9
+      = f.input :subject, :input_html => { :style => "width: 500px"}
+      = f.input :description, :input_html => { :class => 'ckeditor' }
+  .row
+    .span5
+      = f.association :status, :prompt => "Select status"
+      = f.association :priority, :prompt => "Select priority"
+      = f.association :assigned_to, :collection => @project.members
+      = f.input :category_id do
+        =f.collection_select :category_id, @project.issue_categories, :id, :name
+        =link_to "", new_project_issue_category_path(@project), :class => "icon-plus-sign", :id => "add_category", :remote => true
+    .span6
+      = f.input :start_date, :as => :date_picker, :placeholder => "Select date"
+      = f.input :due_date, :as => :date_picker, :placeholder => "Select date"
+      = f.input :estimated_time, :placeholder => "hours"
+      = f.input :done, :collection => (10..100).step(10).map { |num| [num.to_s << "%", num] }, :prompt => "Select %"
+  .row
+    = f.simple_fields_for :attachments do |a|
+      .row
+        .span4
+          =a.input :file, :as => :file
+        .span4
+          =a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
+        .span2
+          =a.link_to_remove " Remove",  :class => "icon-trash"
+  .row
+    =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"

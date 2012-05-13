@@ -1,0 +1,9 @@
+=render 'common/project_tabs'
+#row
+  .span3
+    =render 'common/settings_nav'
+  .span8
+    #settings
+      =render :partial => 'issue_categories/index', :locals => { :issue_categories => @project.issue_categories }
+      =link_to " Add", new_project_issue_category_path(@project), :class => "btn btn btn-success icon-plus-sign"
+      

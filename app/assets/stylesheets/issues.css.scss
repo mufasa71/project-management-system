@@ -1,3 +1,15 @@
 // Place all the styles related to the issues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+dl{
+  &.dl-horizontal{
+    dt{
+      padding: 5px;
+    }
+    dd{
+      padding: 5px;
+    }
+  }
+}

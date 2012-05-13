@@ -1,9 +1,27 @@
-%p#notice= notice
-
-%p
-  %b Project:
-  = @issue.project_id
-%p
-  %b Tracker:
-  = @issue.tracker_id
-
+=render 'common/project_tabs'
+.row
+  .span10.well
+    #issue
+      %h3=@issue.subject
+      %p.added_by Added by #{@issue.author} #{timeago_tag @issue.created_at, :nojs => true, :limit => 10.days.ago} 
+      =link_to " Update | ", edit_project_issue_path(:project_id => @issue.project, :id => @issue), :class => "icon-pencil"
+      =link_to " Delete", project_issue_path(:project_id => @issue.project, :id => @issue), :class => "icon-trash", :method => :delete
+      -present @issue do |issue_presenter|
+        .span4
+          %dl.dl-horizontal.issue
+            %dt Status:
+            %dd= issue_presenter.status
+            %dt Priority:
+            %dd= issue_presenter.priority
+            %dt Assignee:
+            %dd= issue_presenter.assignee
+            %dt Category:
+            %dd= issue_presenter.category
+        .span4
+          %dl.dl-horizontal
+            %dt Start date:
+            %dd= issue_presenter.start_date
+            %dt Due date:
+            %dd= issue_presenter.due_date
+            %dt % Done:
+            %dd= issue_presenter.done

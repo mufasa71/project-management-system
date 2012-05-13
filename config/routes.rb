@@ -8,6 +8,7 @@ ProjectManagementSystem::Application.routes.draw do
       get :settings
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
+      get "settings/issue_categories" => 'settings#issue_categories'
     end
   end
 

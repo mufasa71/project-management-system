@@ -46,7 +46,7 @@ class IssueCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @issue_category.update_attributes(params[:issue_category])
-        format.html { redirect_to @issue_category, notice: 'Issue category was successfully updated.' }
+        format.html { redirect_to settings_issue_categories_project_path(@project), notice: 'Issue category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -58,8 +58,7 @@ class IssueCategoriesController < ApplicationController
   def destroy
     @issue_category.destroy
     respond_to do |format|
-      format.html { redirect_to issue_categories_url }
-      format.json { head :no_content }
+      format.html { redirect_to settings_issue_categories_project_path(@project), notice: 'Issue category was successfully deleted.' }
     end
   end
 end

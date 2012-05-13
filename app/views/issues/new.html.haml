@@ -1,5 +1,9 @@
 =render 'common/project_tabs'
 .row
   .span12
-    #project
-      = render 'form'
+    #project.well
+      = nested_form_for([:project, @issue], :html => { :class => "form-horizontal", :multipart => true }) do |f|
+        = render :partial => 'issues/form', :locals => { :f => f }
+        .form-actions
+          = f.button :submit, "Create", :class => "btn-success"
+=render 'issue_categories/modal'
