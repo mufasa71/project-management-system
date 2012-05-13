@@ -65,5 +65,7 @@ module ProjectManagementSystem
     config.generators do |g|
       g.test_framework :rspec, :fixture => true, :fixture_replacement => :factory_girl
     end
+
+    PublicActivity::Activity.template = YAML.load_file("#{::Rails.root.to_s}/config/pba.yml")
   end
 end

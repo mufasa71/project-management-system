@@ -19,7 +19,7 @@ gem 'bourbon'
 gem 'wicked'
 gem 'carrierwave'
 gem 'mini_magick'
-
+gem 'public_activity'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

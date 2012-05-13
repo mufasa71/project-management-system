@@ -10,6 +10,7 @@ class IssuesController < ApplicationController
   end
 
   def show
+    @activities = @issue.activities.sort_by{|value| -value.created_at.to_i}.take(5)
     respond_with @issue
   end
 
@@ -37,8 +38,18 @@ class IssuesController < ApplicationController
   end
 
   def update
+    @issue.attributes = params[:issue]
+    if @issue.changed?
+      tmp_params = {}
+      @issue.changed.each do |field|
+        tmp_params.merge! eval(":issue_#{field}") => eval("@issue.#{field}")
+      end
+      @issue.activity_params = tmp_params
+      @issue.activity_owner = current_user
+    end
+
     respond_to do |format|
-      if @issue.update_attributes(params[:issue])
+      if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Successful updated.' }
       else
         format.html { render action: "edit" }

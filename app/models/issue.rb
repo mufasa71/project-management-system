@@ -1,4 +1,6 @@
 class Issue < ActiveRecord::Base
+  tracked
+
   belongs_to :project
   belongs_to :status, :class_name => 'IssueStatus', :foreign_key => 'status_id'
   belongs_to :priority, :class_name => 'IssuePriority', :foreign_key => 'priority_id'
