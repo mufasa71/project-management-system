@@ -1,5 +1,4 @@
 class IssuesController < ApplicationController
-
   before_filter :authenticate_user!
   load_and_authorize_resource :project
   load_and_authorize_resource :issue, :through => :project
@@ -24,15 +23,13 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue.author_id = current_user.id
-
+    @issue.activity_params = { :issue_subject => @issue.subject }
+    @issue.activity_owner = current_user
     respond_to do |format|
       if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Issue was successfully created.' }
-        format.json { render json: @issue, status: :created, location: @issue }
       else
         format.html { render action: "new" }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
       end
     end
   end

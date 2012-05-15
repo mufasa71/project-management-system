@@ -1,0 +1,9 @@
+=render 'common/project_tabs'
+.row
+  .span12
+    #activities
+      %h3 Activity
+      -if @issue.present?
+        .span4.well
+          %h4 Issues
+          =render :partial => "common/activities", :locals => { :activities => @issues }

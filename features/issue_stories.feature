@@ -62,3 +62,12 @@ Feature: Issues management
     And I press "Add"
     Then I should see "Category was successfully created."
     And a issue category should exist with project: the project
+
+  Scenario: View issue history
+    Given I go to the project the issue page
+    When I follow "Update"
+    And I fill in "Subject" with "New subject"
+    And I press "Update"
+    Then I should see "Updated by" within "#history"
+    And I should be on the project issue page
+

@@ -1,0 +1,11 @@
+-activities.each do |activity|
+  =activity.text
+  =link_to activity.owner.to_s, user_path(activity.owner)
+  =timeago_tag(activity.updated_at, :nojs => true, :limit => 10.days.ago)
+  %ul
+    -if activity.parameters.present? && Rails.env != "test" #need to find solution here YAML::load in test environment
+      -activity.parameters.each do |p|
+        %li 
+          %strong= p[0].to_s.gsub(/_/, ' ').capitalize
+          set to
+          %i=truncate(sanitize(p[1].to_s, :tags => []), :length => 30)

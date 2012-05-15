@@ -1,3 +1,4 @@
 activity:
   issue:
     update: "Updated by "
+    create: "Created new issue by "
