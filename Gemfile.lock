@@ -276,7 +276,7 @@ DEPENDENCIES
   libnotify
   mini_magick
   pickle
-  public_activity
+  public_activity (= 0.3.2)
   rails (= 3.2.2)
   rails-timeago
   redcarpet
