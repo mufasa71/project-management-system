@@ -13,6 +13,7 @@ class Ability
       can :manage, Project
       can :manage, Issue
       can :manage, IssueCategory
+      can :manage, News
     end
   end
 end

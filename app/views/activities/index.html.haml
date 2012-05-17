@@ -1,9 +1,8 @@
 =render 'common/project_tabs'
 .row
-  .span12
-    #activities
-      %h3 Activity
-      -if @issue.present?
-        .span4.well
-          %h4 Issues
-          =render :partial => "common/activities", :locals => { :activities => @issues }
+  .span12#activities
+    %h3 Activity
+    .span4.well
+      %h4 Issues
+      -@issues.each do |issue|
+        =render :partial => "common/activities", :locals => { :activities => issue.activities } if issue.activities

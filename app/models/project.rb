@@ -11,6 +11,7 @@ class Project < ActiveRecord::Base
   has_many :users, :through => :members
   has_many :issues, :dependent => :destroy
   has_many :issue_categories, :dependent => :destroy, :order => "#{IssueCategory.table_name}.name"
+  has_many :news, :dependent => :destroy, :order => 'created_at DESC'
 end
 # == Schema Information
 #
