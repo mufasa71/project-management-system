@@ -14,6 +14,7 @@ class Ability
       can :manage, Issue
       can :manage, IssueCategory
       can :manage, News
+      can :manage, Comment
     end
   end
 end

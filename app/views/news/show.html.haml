@@ -1,15 +1,22 @@
-%p#notice= notice
+=render 'common/project_tabs'
+.row
+  .span12
+    #news
+      .line
+        %h3= @news.title
+        %p
+          = link_to ' Edit', edit_project_news_path(:project_id => @project, :id => @news), :class => "icon-pencil"
+          \|
+          = link_to ' Delete', project_news_path(:project_id => @project, :id => @news), :method => :delete, :class => "icon-trash"
+        %p
+          %b Summary:
+          = @news.summary.html_safe
+        %p
+          %b Description:
+          = @news.description.html_safe
+      -if @news.comments.size > 0
+        %h3 Comments
+        = render @news.comments
+      %h3 Add comment
+      = render "comments/form"
 
-%p
-  %b Title:
-  = @news.title
-%p
-  %b Summary:
-  = @news.summary
-%p
-  %b Description:
-  = @news.description
-
-= link_to 'Edit', edit_news_path(@news)
-\|
-= link_to 'Back', news_index_path

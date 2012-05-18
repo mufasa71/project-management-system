@@ -1,8 +1,14 @@
 =render 'common/project_tabs'
 .row
   .span12#activities
-    %h3 Activity
-    .span4.well
-      %h4 Issues
-      -@issues.each do |issue|
+    .line
+      %h3 Activity
+    .line
+      %h4= icon_to("Issues", "notes", project_issues_path(@project))
+      - @issues.each do |issue|
         =render :partial => "common/activities", :locals => { :activities => issue.activities } if issue.activities
+    .line
+      %h4= icon_to("News", "rss", project_news_index_path(@project))
+      - @news.each do |news|
+        =render :partial => "common/activities", :locals => { :activities => news.activities } if news.activities
+      

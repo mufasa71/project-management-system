@@ -27,6 +27,7 @@ class NewsController < ApplicationController
   end
 
   def create
+    @news.activity_params = { :news_title => @news.title }
     @news.author = current_user
     respond_to do |format|
       if @news.save
@@ -38,8 +39,16 @@ class NewsController < ApplicationController
   end
 
   def update
+    @news.attributes = params[:news]
+    if @news.changed?
+      tmp_params = {}
+      @news.changed.each do |field|
+        tmp_params.merge! eval(":news_#{field}") => eval("@news.#{field}")
+      end
+      @news.activity_params = tmp_params
+    end
     respond_to do |format|
-      if @news.update_attributes(params[:news])
+      if @news.save
         format.html { redirect_to project_news_index_path(@project), notice: 'News was successfully updated.' }
       else
         format.html { render action: "edit" }

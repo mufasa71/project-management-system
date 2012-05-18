@@ -1,0 +1,5 @@
+=simple_form_for([@project, @news, @news.comments.build], :html => { :class => "form-vertical" }) do |f|
+  =f.input :title
+  =f.input :comment
+  =f.button :submit, "Submit", :class => "btn btn-success"
+

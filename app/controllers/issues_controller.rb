@@ -24,7 +24,6 @@ class IssuesController < ApplicationController
 
   def create
     @issue.activity_params = { :issue_subject => @issue.subject }
-    @issue.activity_owner = current_user
     respond_to do |format|
       if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Issue was successfully created.' }
@@ -42,7 +41,6 @@ class IssuesController < ApplicationController
         tmp_params.merge! eval(":issue_#{field}") => eval("@issue.#{field}")
       end
       @issue.activity_params = tmp_params
-      @issue.activity_owner = current_user
     end
 
     respond_to do |format|

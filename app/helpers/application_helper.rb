@@ -9,4 +9,8 @@ module ApplicationHelper
     yield presenter if block_given?
     presenter
   end
+
+  def icon_to(text, icon, destination)
+    link_to(text, destination, class: "#{icon}-icon", title: text)
+  end
 end

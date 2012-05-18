@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120517143822) do
+ActiveRecord::Schema.define(:version => 20120518100530) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(:version => 20120517143822) do
   end
 
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
+
+  create_table "comments", :force => true do |t|
+    t.string   "title",            :limit => 50, :default => ""
+    t.text     "comment"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
+  end
+
+  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
+  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "intakes", :force => true do |t|
     t.string   "number"
@@ -132,6 +146,17 @@ ActiveRecord::Schema.define(:version => 20120517143822) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "time_entries", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "activity_id"
+    t.integer  "project_id"
+    t.integer  "hours"
+    t.integer  "spent_on"
+    t.string   "comments"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

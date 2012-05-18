@@ -5,10 +5,54 @@
 @import "users";
 @import "issues";
 @import "news";
+@import "comments";
 
+
+@mixin icon($width: 20px, $height: 25px, $url: ''){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  height: $height;
+  width: $width;
+  padding-left: 27px;
+  overflow: hidden;
+
+  /* half transparent */
+  -khtml-opacity:.50;
+  -moz-opacity:.50;
+  -ms-filter:”alpha(opacity=50)”;
+  filter:alpha(opacity=50);
+  opacity:.50;
+  /* more opaque on hover */
+  &:hover {
+    -khtml-opacity:.80;
+    -moz-opacity:.80;
+    -ms-filter:”alpha(opacity=80)”;
+    filter:alpha(opacity=80);
+    opacity:.80;
+  }
+}
 
 a{
   &:hover{
     text-decoration:none;
   }
+  &.notes-icon { 
+    @include icon(20px, 25px, 'glyphicons/glyphicons_039_notes.png');
+  }
+  &.rss-icon {
+    @include icon(20px, 25px, 'glyphicons/glyphicons_397_rss.png');
+  }
+}
+
+.line{
+  border-bottom: 1px solid #ccc;
+  padding:24px;
+  h4{
+    margin-bottom: 10px;
+  }
+}
+
+textarea{
+  width: 70%;
+  height: 100px;
 }

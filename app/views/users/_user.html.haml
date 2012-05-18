@@ -1,2 +1,5 @@
-#user
-  =link_to user.email, user_path(user)
+#user.line
+  = image_tag(user.profile_picture)
+  %h3= user.name
+  %p
+    Member since #{user.created_at.strftime("%d %B %Y")}

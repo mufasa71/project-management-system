@@ -2,3 +2,6 @@ activity:
   issue:
     update: "Updated by "
     create: "Created new issue by "
+  news:
+    update: "Updated by "
+    create: "Created news by "

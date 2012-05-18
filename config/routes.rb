@@ -1,7 +1,15 @@
 ProjectManagementSystem::Application.routes.draw do
+  get "comments/index"
+
+  get "comments/destroy"
+
+  get "comments/create"
+
   resources :user_steps
   resources :projects do
-    resources :news
+    resources :news do
+      resources :comments
+    end
     resources :members
     resources :issue_categories
     resources :issues
