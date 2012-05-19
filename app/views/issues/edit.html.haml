@@ -8,4 +8,5 @@
         .form-actions
           = link_to "Cancel", project_issue_path(@project, @issue), :class => "btn"
           = f.button :submit, "Update", :class => "btn-success"
+          = link_to " Add log time", new_project_issue_time_entry_path(:project_id => @project, :issue_id => @issue), :remote => true, :class => 'btn btn-success icon-plus-sign'
 =render 'issue_categories/modal'

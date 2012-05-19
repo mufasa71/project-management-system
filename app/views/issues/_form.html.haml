@@ -26,18 +26,5 @@
           =a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
         .span2
           =a.link_to_remove " Remove",  :class => "icon-trash"
-  -unless @issue.new_record?
-    .row
-      .span8
-        %h3 Log time
-        -@time_entry = @issue.time_entries.build
-        = f.simple_fields_for @time_entry do |time|
-          = time.input :hours
-          = time.input :comments
-          = time.input :project_id, :as => :hidden, :input_html => { :value => @project.id  }
-          = time.input :issue_id, :as => :hidden, :input_html => { :value => @issue.id }
-          = time.input :spent_on, :as => :hidden, :input_html => { :value => Date.today }
-          = time.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
-          = time.association :activity, :collection => TimeEntryActivity.all
   .row
     =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"

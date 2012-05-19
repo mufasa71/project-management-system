@@ -24,8 +24,8 @@ class TimeEntry < ActiveRecord::Base
     if spent_on.is_a?(Time)
       self.spent_on = spent_on.to_date
     end
-    self.tyear = spent_on ? spent_on.year : nil
-    self.tmonth = spent_on ? spent_on.month : nil
+    #self.tyear = spent_on ? spent_on.year : nil
+    #self.tmonth = spent_on ? spent_on.month : nil
     #self.tweek = spent_on ? Date.civil(spent_on.year, spent_on.month, spent_on.day).cweek : nil
   end
 end

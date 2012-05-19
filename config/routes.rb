@@ -1,10 +1,4 @@
 ProjectManagementSystem::Application.routes.draw do
-  get "comments/index"
-
-  get "comments/destroy"
-
-  get "comments/create"
-
   resources :user_steps
   resources :projects do
     resources :news do
@@ -12,7 +6,9 @@ ProjectManagementSystem::Application.routes.draw do
     end
     resources :members
     resources :issue_categories
-    resources :issues
+    resources :issues do
+      resources :time_entries, :only => [:new, :create]
+    end
     member do
       get :settings
       get "settings/members" => 'settings#members'
