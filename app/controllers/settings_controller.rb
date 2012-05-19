@@ -10,6 +10,9 @@ class SettingsController < ApplicationController
   def issue_categories
   end
 
+  def activities
+  end
+
   private
 
   def load_project

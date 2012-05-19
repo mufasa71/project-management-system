@@ -14,6 +14,7 @@ ProjectManagementSystem::Application.routes.draw do
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
       get "settings/issue_categories" => 'settings#issue_categories'
+      get "settings/activities" => 'settings#activities'
       get "activities" => 'activities#index'
     end
   end

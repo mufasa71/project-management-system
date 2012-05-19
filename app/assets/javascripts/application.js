@@ -17,6 +17,7 @@
 //= require twitter/bootstrap
 //= require ckeditor-jquery
 //= require simple_nested_form
+//= require ui.achtung
 //= require_tree .
 //
 //

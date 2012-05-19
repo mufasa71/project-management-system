@@ -38,7 +38,8 @@
       .content
         .row
           .span12
-            =render :partial => 'common/flash', :object => flash
+            #flash
+              =render :partial => 'common/flash', :object => flash
             = yield
           / /span
         / /row
