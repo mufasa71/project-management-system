@@ -43,12 +43,6 @@ class IssuesController < ApplicationController
       @issue.activity_params = tmp_params
     end
 
-    #unless @issue.time_entry.nil?
-      @issue.time_entry.project_id = @project
-      @issue.time_entry.user_id = current_user
-      @issue.time_entry.spent = Time.now
-    #end
-
     respond_to do |format|
       if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Successful updated.' }

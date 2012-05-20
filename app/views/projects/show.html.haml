@@ -17,7 +17,7 @@
               = link_to member, project_member_path(:project_id => @project, :id => member)
       .span5
         %h4 Latest news
-        = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last)
+        = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last) if @project.news.present?
         %br
         = link_to "View all", project_news_index_path(@project)
 #row

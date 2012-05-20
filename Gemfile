@@ -23,6 +23,7 @@ gem 'public_activity', '0.3.2'
 gem 'thin'
 gem 'kaminari'
 gem 'acts_as_commentable'
+gem 'nifty-generators'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -56,3 +57,5 @@ group :test, :development do
   gem 'cancan'
   gem 'pickle'
 end
+
+gem "mocha", :group => :test

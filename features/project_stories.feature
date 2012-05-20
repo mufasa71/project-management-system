@@ -1,7 +1,8 @@
 Feature: Projects stories
 
   Background: Authetication
-    Given I logged in
+    Given a user exists with name: "John Smith"
+    And I am logged in as that user
   
   Scenario: Project lists
     Given I go to the home page

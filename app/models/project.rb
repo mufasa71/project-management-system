@@ -12,6 +12,9 @@ class Project < ActiveRecord::Base
   has_many :issues, :dependent => :destroy
   has_many :issue_categories, :dependent => :destroy, :order => "#{IssueCategory.table_name}.name"
   has_many :news, :dependent => :destroy, :order => 'created_at DESC'
+  has_many :attachments, :dependent => :destroy, :as => :attachable
+
+  accepts_nested_attributes_for :attachments
 end
 # == Schema Information
 #

@@ -16,6 +16,7 @@ class Ability
       can :manage, News
       can :manage, Comment
       can :manage, TimeEntry
+      can :manage, Attachment
     end
   end
 end

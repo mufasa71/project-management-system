@@ -1,0 +1,23 @@
+=render 'common/project_tabs'
+#row
+  .span12
+    #attachments
+      = link_to " Add file", new_project_attachment_path(@project), :class => "icon-plus-sign"
+      %table.table
+        %thead
+          %tr
+            %th File
+            %th Size
+            %th MD5
+            %th Downloads
+            %th Date
+            %th
+        %tbody
+          - @attachments.each do |attachment|
+            %tr
+              %td= link_to attachment.file.file.original_filename, attachment.file.url, :class => 'link_to_file'
+              %td= number_to_human_size(attachment.file.size)
+              %td= attachment.file.md5
+              %td= 0
+              %td= attachment.created_at.strftime("%d-%m-%Y")
+              %td= link_to "", [@project, attachment], :method => :delete, :class => "icon-trash", :id => "delete_#{attachment.id}"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120519130058) do
+ActiveRecord::Schema.define(:version => 20120520172921) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -26,12 +26,12 @@ ActiveRecord::Schema.define(:version => 20120519130058) do
 
   create_table "attachments", :force => true do |t|
     t.string   "description"
-    t.string   "file"
     t.integer  "attachable_id"
-    t.integer  "author_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "attachable_type"
+    t.integer  "number_of_downloads"
+    t.string   "file"
   end
 
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
