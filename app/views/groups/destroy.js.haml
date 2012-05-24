@@ -1,0 +1,3 @@
+:plain
+  $('#groups tr.group_#{@group_id}').hide('fast', function(){this.remove();});
+  $.achtung({message: 'Group was successfully deleted!', timeout: 3, className: "achtungSuccess"});

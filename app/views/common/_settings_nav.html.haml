@@ -5,3 +5,4 @@
     %li{:class => is_active?("members")} #{ link_to (settings_members_project_path(@project)) { content_tag(:i, "", :class => "icon-user") << "Members" }}
     %li{:class => is_active?("issue_categories")} #{ link_to (settings_issue_categories_project_path(@project)) { content_tag(:i, "", :class => "icon-tags") << "Issue categories" }}
     %li{:class => is_active?("activities")} #{ link_to (settings_activities_project_path(@project)) { content_tag(:i, "", :class => "icon-retweet") << "Activities (time tracking)" }}
+    %li{:class => is_active?("groups")} #{ link_to (settings_groups_project_path(@project)) { content_tag(:i, "", :class => "icon-th") << "Groups" }}

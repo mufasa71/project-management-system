@@ -11,6 +11,6 @@
           %td= member.user
           %td= render member.roles
           %td
-            = link_to(edit_project_member_path(:project_id => member.project.id, :id => member)) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+            = link_to(edit_project_group_member_path(:project_id => @project, :group_id => member.group, :id => member)) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
             
-            = link_to(project_member_path(:project_id => member.project.id, :id => member), :confirm => 'Are you sure?', :method => :delete) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}
+            = link_to(project_group_member_path(:project_id => @project, :group_id => member.group, :id => member), :confirm => 'Are you sure?', :method => :delete) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

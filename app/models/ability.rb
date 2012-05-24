@@ -17,6 +17,8 @@ class Ability
       can :manage, Comment
       can :manage, TimeEntry
       can :manage, Attachment
+      can :manage, Group
+      can :manage, Member
     end
   end
 end

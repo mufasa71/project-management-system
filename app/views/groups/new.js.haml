@@ -1,0 +1,18 @@
+- @modal = capture do
+  .modal#new_group
+    .modal-header
+      = button_tag '×', :class => "close", "data-dismiss" => "modal"
+      %h3 New group
+    .modal-body
+      %p
+        = simple_form_for([@project, @group], :html => {:class => "form-vertical"}, :remote => true) do |f|
+          = render :partial => "groups/form", :locals => { :f => f }
+          .modal-footer
+            %a.btn{:href => "#", "data-dismiss" => "modal"} Close
+            = f.button :submit, "Save", :class => "btn btn-success"
+
+:plain
+  $('#new_group').modal('hide');
+  $('#new_group').remove();
+  $('body').append("#{escape_javascript @modal}");
+  $('#new_group').modal('show');

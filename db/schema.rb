@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520172921) do
+ActiveRecord::Schema.define(:version => 20120524063002) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(:version => 20120520172921) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "groups", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "project_id"
+  end
 
   create_table "intakes", :force => true do |t|
     t.string   "number"
@@ -105,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20120520172921) do
 
   create_table "members", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "project_id"
+    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

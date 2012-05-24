@@ -5,4 +5,4 @@
   .span8
     #settings
       =render :partial => 'members/index', :locals => { :members => @project.members }
-      =link_to " Add", project_members_path(@project), :class => "btn btn-success icon-plus-sign"
+      =link_to " Add", new_project_members_path(:project_id => @project), :class => "btn btn-success icon-plus-sign"

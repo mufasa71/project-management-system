@@ -13,6 +13,10 @@ class SettingsController < ApplicationController
   def activities
   end
 
+  def groups
+    @groups = @project.groups
+  end
+
   private
 
   def load_project

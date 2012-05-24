@@ -14,7 +14,7 @@
           - @project.members.each do |member|
             %li
               %em= member.roles.first
-              = link_to member, project_member_path(:project_id => @project, :id => member)
+              = link_to member, project_group_member_path(:project_id => @project, :group_id => member.group, :id => member)
       .span5
         %h4 Latest news
         = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last) if @project.news.present?
