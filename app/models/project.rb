@@ -6,9 +6,9 @@ class Project < ActiveRecord::Base
   validates_length_of :identifier, :maximum => 255
   validates_exclusion_of :identifier, :in => %w(new)
 
-  has_many :groups
+  has_many :groups, :dependent => :destroy
   #has_many :memberships, :class_name => 'Member'
-  has_many :members, :through => :groups, :include => [:user, :roles]
+  has_many :members, :include => [:user, :roles]
   has_many :issues, :dependent => :destroy
   has_many :issue_categories, :dependent => :destroy, :order => "#{IssueCategory.table_name}.name"
   has_many :news, :dependent => :destroy, :order => 'created_at DESC'

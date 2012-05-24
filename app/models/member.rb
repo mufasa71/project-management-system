@@ -1,11 +1,12 @@
 class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
+  belongs_to :project
   has_many :member_roles, :dependent => :destroy
   has_many :roles, :through => :member_roles
 
-  validates_presence_of :group
-  validates_uniqueness_of :user_id, :scope => :group_id
+  validates_presence_of :project
+  validates_uniqueness_of :user_id, :scope => :project_id
 
   def to_s
     user.name

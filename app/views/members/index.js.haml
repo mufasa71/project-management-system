@@ -1,0 +1,20 @@
+- @modal = capture do
+  .modal#add_member
+    .modal-header
+      = button_tag '×', :class => "close", "data-dismiss" => "modal"
+      %h3 Add member
+    .modal-body
+      %p
+        =simple_form_for(project_members_path(@project), :html => { :class => "form-horizontal" }) do |f|
+          -@users.each do |user|
+            .controls
+              =label_tag(dom_id(user), :class => "checkbox") do
+                =check_box_tag("project[user_ids][]", user.id, @project.member_ids.include?(user.id), id: dom_id(user)) << user
+          .modal-footer
+            =f.button :submit, :value => " Add members", :class => "btn btn-success"
+            =link_to "Cancel", "#", "data-dismiss" => "modal"
+:plain
+  $('#add_member').modal('hide');
+  $('#add_member').remove();
+  $('body').append("#{escape_javascript @modal}");
+  $('#add_member').modal('show');

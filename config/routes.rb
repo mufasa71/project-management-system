@@ -1,14 +1,12 @@
 ProjectManagementSystem::Application.routes.draw do
-  match "projects/:project_id/members" => "members#index", :as => :new_project_members
   resources :user_steps
   resources :projects do
     resources :attachments
     resources :news do
       resources :comments
     end
-    resources :groups do
-      resources :members
-    end
+    resources :members
+    resources :groups 
     resources :issue_categories
     resources :issues do
       resources :time_entries, :only => [:new, :create]

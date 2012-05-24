@@ -1,0 +1,5 @@
+:plain
+  $('#update_member').modal('hide');
+  $.achtung({message: 'Member was successfully updated!', timeout: 3, className: "achtungSuccess"});
+  setTimeout(function(){
+    window.location.reload()}, 2000);

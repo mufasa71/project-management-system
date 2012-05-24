@@ -1,0 +1,17 @@
+- @modal = capture do
+  .modal#update_member
+    .modal-header
+      = button_tag '×', :class => "close", "data-dismiss" => "modal"
+      %h3 Update member
+    .modal-body
+      %p
+        = simple_form_for([@project, @member], :html => { :remote => true }) do |f|
+          =render :partial => "members/form", :locals => { :f => f }
+          .modal-footer
+            =f.button :submit, :value => " Update", :class => "btn btn-success"
+            =link_to "Cancel", "#", "data-dismiss" => "modal"
+:plain
+  $('#update_member').modal('hide');
+  $('#update_member').remove();
+  $('body').append("#{escape_javascript @modal}");
+  $('#update_member').modal('show');

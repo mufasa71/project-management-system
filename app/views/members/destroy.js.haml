@@ -1,0 +1,3 @@
+:plain
+  $('#members tr.member_#{@member_id}').hide('fast', function(){this.remove();});
+  $.achtung({message: 'Member was successfully deleted!', timeout: 3, className: "achtungSuccess"});

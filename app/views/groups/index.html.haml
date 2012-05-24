@@ -9,5 +9,5 @@
         %td= group.title
         %td
           = link_to(edit_project_group_path(:project_id => @project, :id => group), :remote => true) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
-            
+          |            
           = link_to(project_group_path(:project_id => @project, :id => group), :confirm => 'Are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}
