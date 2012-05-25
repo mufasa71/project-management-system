@@ -1,2 +1,3 @@
 .form-inputs
-  = f.association :roles, :as => :check_boxes
+  = f.association :roles, :as => :check_boxes, :collection => @project.roles
+  = f.association :group, :collection => @project.groups

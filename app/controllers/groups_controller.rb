@@ -10,7 +10,8 @@ class GroupsController < ApplicationController
 
   def create
     if @group.save
-        respond_with @group
+      flash[:notice] = "Group was successfully created."
+      respond_with @group, :location => settings_groups_project_path(@project)
     else
       render 'new'
     end
@@ -20,7 +21,7 @@ class GroupsController < ApplicationController
     @group_id = @group.id
     @group.delete
     respond_to do |format|
-      format.html { redirect_to settings_groups_project(@project), :notice => "Group was successfully deleted."}
+      format.html { redirect_to settings_groups_project_path(@project), :notice => "Group was successfully deleted."}
       format.js
     end
   end
@@ -32,7 +33,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update_attributes(params[:group])
-        format.html { redirect_to settings_groups_project(@project), :notice => "Group was successfully updated."}
+        format.html { redirect_to settings_groups_project_path(@project), :notice => "Group was successfully updated."}
         format.js
       else
         render 'edit'

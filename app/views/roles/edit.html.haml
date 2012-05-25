@@ -1,7 +1,4 @@
-%h1 Editing role
-
-= render 'form'
-
-= link_to 'Show', @role
-\|
-= link_to 'Back', roles_path
+= simple_form_for([@project, @role], :html => {:class => "form-vertical"}) do |f|
+  = render :partial => "roles/form", :locals => { :f => f }
+  = link_to "Back", settings_roles_project_path(@project)
+  = f.button :submit, "Update", :class => "btn btn-success"

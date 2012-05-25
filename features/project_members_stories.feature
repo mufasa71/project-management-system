@@ -1,6 +1,6 @@
 Feature: Project members
   Successfully add and remove project members and roles
-
+  
   Background: 
     Given a user exists with name: "Jakie Lowerens"
     And I am logged in as that user
@@ -20,20 +20,35 @@ Feature: Project members
     Then I should see "Manager" within "#members"
 
   Scenario: Edit members roles
-    Given a role exists with name: "Developer"
+    Given I follow "Roles"
+    And I follow "Add new role"
+    And I fill in "Name" with "Developer"
+    And I press "Save"
     When I follow "Members"
     And I follow "Edit" within "#members"
     And I check "Developer"
-    And I press "Change"
+    And I press "Update"
     Then I should see "Successful updated."
     And I should see "Developer" within "#members"
 
+  Scenario: Edit members group
+    Given I follow "Groups"
+    And I follow "Add new group"
+    And I fill in "Title" with "Develop"
+    And I press "Save"
+    When I follow "Members"
+    And I follow "Edit" within "#members"
+    And I select "Develop" from "Group"
+    When I press "Update"
+    Then I should see "Develop" within "#members"
+    And  should see "Successful updated."
+  
   Scenario: Add members to project
     Given a unique user exists with name: "Tom Jones"
     When I follow "Members"
-    And I follow "Add"
+    And I follow "Add more members"
     And I check "Tom Jones" within "#add_member"
-    And I press "Add"
+    And I press "Add members"
     Then I should see "Tom Jones" within "#members"
     And I should see "Successful updated."
 

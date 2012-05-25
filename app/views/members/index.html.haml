@@ -4,5 +4,5 @@
       .controls
         =label_tag(dom_id(user), :class => "checkbox") do
           =check_box_tag("project[user_ids][]", user.id, @project.member_ids.include?(user.id), id: dom_id(user)) << user
-    =f.button :submit, :value => "add"
+    =f.button :submit, :value => "Add members"
     =link_to "cancel", settings_members_project_path(@project)
