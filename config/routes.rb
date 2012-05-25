@@ -2,6 +2,7 @@ ProjectManagementSystem::Application.routes.draw do
   resources :user_steps
   resources :projects do
     resources :attachments
+    resources :roles
     resources :news do
       resources :comments
     end
@@ -17,6 +18,7 @@ ProjectManagementSystem::Application.routes.draw do
       get "settings/information" => 'settings#information'
       get "settings/issue_categories" => 'settings#issue_categories'
       get "settings/activities" => 'settings#activities'
+      get "settings/roles" => 'settings#roles'
       get "activities" => 'activities#index'
       get "settings/groups" => 'settings#groups'
     end

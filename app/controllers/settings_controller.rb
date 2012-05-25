@@ -17,6 +17,10 @@ class SettingsController < ApplicationController
     @groups = @project.groups
   end
 
+  def roles
+    @roles = @project.roles
+  end
+
   private
 
   def load_project

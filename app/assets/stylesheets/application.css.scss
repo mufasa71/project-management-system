@@ -43,6 +43,9 @@ a{
   &.rss-icon {
     @include icon(20px, 25px, 'glyphicons/glyphicons_397_rss.png');
   }
+  &.group-icon {
+    @include icon(4px, 4px, 'glyphicons/glyphicons_043_group.png');
+  }
 }
 
 .line{

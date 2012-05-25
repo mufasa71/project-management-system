@@ -19,6 +19,7 @@ class Ability
       can :manage, Attachment
       can :manage, Group
       can :manage, Member
+      can :manage, Role
     end
   end
 end

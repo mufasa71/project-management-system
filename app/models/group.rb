@@ -4,3 +4,14 @@ class Group < ActiveRecord::Base
 
   validates_presence_of :title
 end
+# == Schema Information
+#
+# Table name: groups
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  project_id :integer
+#
+
