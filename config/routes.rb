@@ -1,6 +1,7 @@
 ProjectManagementSystem::Application.routes.draw do
   resources :user_steps
   resources :projects do
+    resources :project_steps
     resources :attachments
     resources :roles
     resources :news do

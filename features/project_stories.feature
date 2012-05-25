@@ -26,8 +26,11 @@ Feature: Projects stories
     And I fill in "Identifier" with "simple_project"
     And I fill in "Homepage" with "http://homepage.com"
     And I check "Public"
-    When I press "Create"
-    Then I should see "Successful creation."
+    When I press "Continue >>"
+    And I follow "skip this step"
+    And I follow "skip this step"
+    And I follow "skip this step"
+    Then I should see "Project was successfully created!"
     
   Scenario: Selecting project
     Given a project exists with name: "Project 1"

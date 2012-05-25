@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
   has_many :roles, :dependent => :destroy
 
   accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :groups
+  accepts_nested_attributes_for :roles
 end
 # == Schema Information
 #

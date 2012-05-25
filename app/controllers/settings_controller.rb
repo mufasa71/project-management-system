@@ -5,6 +5,7 @@ class SettingsController < ApplicationController
   end
 
   def members
+    @members = @project.members
   end
 
   def issue_categories

@@ -1,0 +1,6 @@
+%h2 Add members
+= render layout: 'form' do |f|
+  .form-controls
+    = f.simple_fields_for :members, @project.members.build do |a|
+      = a.association :user, :collection => User.where("id != ?", current_user.id), :as => :check_boxes, :label => ""
+    

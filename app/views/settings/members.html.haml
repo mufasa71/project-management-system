@@ -4,5 +4,5 @@
     =render 'common/settings_nav'
   .span8
     #settings
-      =render :partial => 'members/index', :locals => { :members => @project.members }
+      =render :partial => 'members/index', :locals => { :members => @members }
       =link_to " Add more members", project_members_path(:project_id => @project), :class => "btn btn-success icon-plus-sign", :remote => true

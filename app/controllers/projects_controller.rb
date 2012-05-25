@@ -28,15 +28,13 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         if user_signed_in?
-          r = Role.first == nil ? Role.create(:name => "Manager") : Role.first
-          m = Member.new(:user => current_user, :roles => [r])
-          @project.members << m
+          r = @project.roles.create(:name => "Project Leader")
+          m = @project.members.create(:user => current_user)
+          m.roles << [r]
         end
-        format.html { redirect_to @project, notice: 'Successful creation.' }
-        format.json { render json: @project, status: :created, location: @project }
+        format.html { redirect_to project_project_steps_path(@project) }
       else
         format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end

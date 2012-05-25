@@ -8,7 +8,10 @@ Feature: Project members
     And I follow "New project"
     And I fill in "Name" with "Project name"
     And I fill in "Identifier" with "project_name"
-    And I press "Create"
+    And I press "Continue >>"
+    And I follow "skip this step"
+    And I follow "skip this step"
+    And I follow "skip this step"
     And I follow "Settings"
 
   Scenario: View project members
@@ -17,7 +20,7 @@ Feature: Project members
 
   Scenario: View members roles
     When I follow "Members"
-    Then I should see "Manager" within "#members"
+    Then I should see "Project Leader" within "#members"
 
   Scenario: Edit members roles
     Given I follow "Roles"

@@ -17,9 +17,11 @@
               = link_to member, project_member_path(:project_id => @project, :id => member)
       .span5
         %h4 Latest news
-        = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last) if @project.news.present?
-        %br
-        = link_to "View all", project_news_index_path(@project)
+        - if @project.news.any?
+          = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last) if @project.news.present?
+          = timeago_tag @project.news.last.created_at, :nojs => true, :limit => 10.days.ago 
+          %br
+          = link_to "View all", project_news_index_path(@project)
 #row
   .span12
     =simple_format(@project.description)

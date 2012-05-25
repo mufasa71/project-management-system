@@ -1,0 +1,12 @@
+%h2 Add roles
+= render layout: 'form' do |f|
+  .form-controls
+    .row
+      = f.simple_fields_for :roles, Role.new do |a|
+        .row
+          .span4
+            = a.input :name
+          .span2
+            = a.link_to_remove " Remove",  :class => "icon-trash"
+    .row
+      = f.link_to_add "", :roles, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
