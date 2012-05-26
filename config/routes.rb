@@ -1,6 +1,8 @@
 ProjectManagementSystem::Application.routes.draw do
   resources :user_steps
+  match "projects/:project_id/gantt" => "gantts#show", :as => :project_gantt
   resources :projects do
+    resources :gantts, :only => [:show]
     resources :project_steps
     resources :attachments
     resources :roles

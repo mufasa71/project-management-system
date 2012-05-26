@@ -9,3 +9,4 @@
       %li{:class => params[:controller] == "news" ? "active" : "" } #{ link_to(project_news_index_path(@project)) { content_tag(:i, "", :class => "icon-list-alt") << "News" }}
       %li{:class => params[:controller] == "attachments" ? "active" : "" } #{ link_to(project_attachments_path(@project)) { content_tag(:i, "", :class => "icon-file") << "Files" }}
       %li{:class => params[:controller] == "settings" ? "active" : "" } #{ link_to(settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-cog") << "Settings" }}
+      %li{:class => params[:controller] == "gantts" ? "active" : "" } #{ link_to(project_gantt_path(@project)) { content_tag(:i, "", :class => "icon-random") << "Gantt" }}

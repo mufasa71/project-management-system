@@ -1,5 +1,8 @@
 = f.input :name
 = f.input :description, :input_html => { :class => 'ckeditor'}
+= f.input :due_date, :as => :date_picker, :placeholder => "Select date"
 = f.input :identifier
 = f.input :homepage, :hint => "Length between 1 and 100 characters. Only lower case letters (a-z), numbers, dashes and underscores are allowed"
 = f.input :is_public, :label => "Public"
+
+= debug @project

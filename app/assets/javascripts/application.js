@@ -23,4 +23,4 @@
 //
 
 $("input.date_picker").datepicker();
-
+$.datepicker.setDefaults({ dateFormat: 'yy-mm-dd'} )

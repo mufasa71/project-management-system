@@ -1,0 +1,42 @@
+<% content_for :javascript do %>
+  <script type="text/javascript" src = "/assets/FusionCharts.js"></script>
+  <script type="text/javascript"><!--
+    var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1000", "400", "0", "1" );
+    myChart.setXMLData('<chart palette="3" dateFormat="mm/dd/yyyy" caption="Project Gantt" subCaption="From <%= @project.created_at.strftime("#{@project.created_at.day.ordinalize} %b %Y")%> - <%= @project.due_date.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
+    <categories>\n\
+    <% i = @project.due_date.month - @project.created_at.month %>
+    <% start = @project.created_at %>
+    <% en = start.next_month %>
+    <% if i > 0 %>
+      <% i.times do %>
+        <category start="<%= start.strftime("%m/01/%Y") %>" end="<%= en.strftime("%m/01/%Y")%>" label="<%=start.strftime("%b")%>" />\n\
+        <% start = start.next_month %>
+        <% en = start.next_month %>
+      <% end %>
+    <% else %>
+        <category start="<%= start.strftime("%m/01/%Y") %>" end="<%= en.strftime("%m/01/%Y")%>" label="<%=start.strftime("%b")%>" />\n\
+    <% end %>
+    </categories>\n\
+    <processes fontSize="12" isBold="1" align="right">\n\
+      <% @project.issues.each do |issue| %>
+        <process label="<%= issue.subject %>"  />\n\
+      <% end %>
+    </processes>\n\
+    <tasks>\n\
+      <% @project.issues.each do |issue| %>
+        <task start="<%= issue.start_date.strftime("%m/%d/%Y")%>" end="<%= issue.due_date.strftime("%m/%d/%Y")%>" />\n\
+      <% end %>
+    </tasks>\n\
+    <legend>\n\
+    <item label="Completed" color="4567aa" />\n\
+    <item label="Actual" color="999999" />\n\
+    </legend>\n\
+    </chart>');
+    myChart.render("chartContainer");
+  // -->
+  </script>
+<% end %>
+
+<div id = "chartContainer"> Gantt will load here </div>
+
+

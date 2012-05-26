@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  validates_presence_of :name, :identifier
+  validates_presence_of :name, :identifier, :due_date
   validates_uniqueness_of :identifier
   validates_length_of :name, :maximum => 255
   validates_length_of :homepage, :maximum => 255
