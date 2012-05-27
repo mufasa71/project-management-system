@@ -1,0 +1,55 @@
+<%= render 'common/project_tabs' %>
+<div id="row">
+  <div class="span12">
+    <% content_for :javascript do %>
+        <script type="text/javascript" src="/assets/highcharts.js"></script>
+        <script type="text/javascript">
+          $(function () {
+            var chart;
+            $(document).ready(function() {
+              chart = new Highcharts.Chart({
+                chart: {
+                  renderTo: 'container',
+                },
+                title: {
+                  text: 'Time log for project',
+                },
+                subtitle: {
+                  text: 'Source: time spent for each issue',
+                },
+                xAxis: {
+                  type: 'datetime'
+                },
+                yAxis: {
+                  maxPadding: 1,
+                  title: {
+                    text: 'hours'
+                  },
+                  plotLines:[{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                  }]
+                },
+                legend: {
+                  layout: 'vertical'
+                },
+                series: [
+                          <% @project.issues.each do |issue| %>
+                            {
+                              pointInterval: <%= 1.day * 1000 %>,
+                              pointStart: <%= @project.created_at.to_i * 1000 %>,
+                              name: '<%= issue %>',
+                              data: <%= (@project.created_at.to_date..Date.today).map {|date| issue.total_on(date).to_f}.inspect %>
+                            },
+                          <% end %>
+                        ]
+              });
+            });
+          });
+        </script>
+    <% end %>
+    <div id="container" style="width: 1000px; height: 500px;"></div>
+    <div id="pie" style="width: 1000px; height: 500px"></div>
+  </div>
+</div>

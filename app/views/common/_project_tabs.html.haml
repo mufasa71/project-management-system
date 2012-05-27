@@ -10,3 +10,4 @@
       %li{:class => params[:controller] == "attachments" ? "active" : "" } #{ link_to(project_attachments_path(@project)) { content_tag(:i, "", :class => "icon-file") << "Files" }}
       %li{:class => params[:controller] == "settings" ? "active" : "" } #{ link_to(settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-cog") << "Settings" }}
       %li{:class => params[:controller] == "gantts" ? "active" : "" } #{ link_to(project_gantt_path(@project)) { content_tag(:i, "", :class => "icon-random") << "Gantt" }}
+      %li{:class => params[:controller] == "projects" && is_active?("statistics")} #{ link_to(statistics_project_path(@project)) { content_tag(:i, "", :class => "icon-resize-horizontal") << "Statistics" }}

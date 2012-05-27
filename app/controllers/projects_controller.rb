@@ -61,4 +61,8 @@ class ProjectsController < ApplicationController
   def settings
     @project = Project.find(params[:id])
   end
+
+  def statistics
+    @project = Project.find(params[:id])
+  end
 end
