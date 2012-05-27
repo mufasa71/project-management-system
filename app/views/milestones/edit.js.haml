@@ -1,0 +1,18 @@
+- @modal = capture do
+  .modal#edit_milestone
+    .modal-header
+      = button_tag '×', :class => "close", "data-dismiss" => "modal"
+      %h3 Edit group
+    .modal-body
+      %p
+        = simple_form_for([@project, @milestone], :html => {:class => "form-vertical"}, :remote => true) do |f|
+          = render :partial => "form", :locals => { :f => f }
+          .modal-footer
+            %a.btn{:href => "#", "data-dismiss" => "modal"} Close
+            = f.button :submit, "Update", :class => "btn btn-success"
+
+:plain
+  $('#edit_milestone').modal('hide');
+  $('#edit_milestone').remove();
+  $('body').append("#{escape_javascript @modal}");
+  $('#edit_milestone').modal('show');

@@ -1,8 +1,11 @@
 ProjectManagementSystem::Application.routes.draw do
+  resources :milestones
+
   resources :user_steps
   match "projects/:project_id/gantt" => "gantts#show", :as => :project_gantt
   resources :projects do
     resources :gantts, :only => [:show]
+    resources :milestones
     resources :project_steps
     resources :attachments
     resources :roles
@@ -24,6 +27,7 @@ ProjectManagementSystem::Application.routes.draw do
       get "settings/roles" => 'settings#roles'
       get "activities" => 'activities#index'
       get "settings/groups" => 'settings#groups'
+      get "settings/milestones" => 'settings#milestones'
     end
   end
 

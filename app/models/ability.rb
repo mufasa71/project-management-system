@@ -20,6 +20,7 @@ class Ability
       can :manage, Group
       can :manage, Member
       can :manage, Role
+      can :manage, Milestone
     end
   end
 end

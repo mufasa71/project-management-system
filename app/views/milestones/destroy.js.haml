@@ -1,0 +1,3 @@
+:plain
+  $('#milestones tr.milestone_#{@milestone_id}').hide('fast', function(){this.remove();});
+  $.achtung({message: 'Milestone was successfully deleted!', timeout: 3, className: "achtungSuccess"});

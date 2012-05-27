@@ -1,0 +1,4 @@
+= simple_form_for([@project, @milestone], :html => {:class => "form-vertical"}) do |f|
+  = render :partial => "form", :locals => { :f => f }
+  = link_to "Back", settings_milestones_project_path(@project)
+  = f.button :submit, "Update", :class => "btn btn-success"

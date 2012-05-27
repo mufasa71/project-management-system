@@ -2,7 +2,7 @@
   <script type="text/javascript" src = "/assets/FusionCharts.js"></script>
   <script type="text/javascript"><!--
     var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1000", "400", "0", "1" );
-    myChart.setXMLData('<chart palette="3" dateFormat="mm/dd/yyyy" caption="Project Gantt" subCaption="From <%= @project.created_at.strftime("#{@project.created_at.day.ordinalize} %b %Y")%> - <%= @project.due_date.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
+    myChart.setXMLData('<chart slackFillColor="FF3030" palette="3" dateFormat="mm/dd/yyyy" caption="Project Gantt" subCaption="From <%= @project.created_at.strftime("#{@project.created_at.day.ordinalize} %b %Y")%> - <%= @project.due_date.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
     <categories>\n\
     <% i = @project.due_date.month - @project.created_at.month %>
     <% start = @project.created_at %>
@@ -17,20 +17,37 @@
         <category start="<%= start.strftime("%m/01/%Y") %>" end="<%= en.strftime("%m/01/%Y")%>" label="<%=start.strftime("%b")%>" />\n\
     <% end %>
     </categories>\n\
-    <processes fontSize="12" isBold="1" align="right">\n\
+    <processes fontSize="12" isBold="1" align="right" headerText="Issues" headerFontSize="12" headerVAlign="bottom" headerAlign="center">\n\
       <% @project.issues.each do |issue| %>
         <process label="<%= issue.subject %>"  />\n\
       <% end %>
     </processes>\n\
     <tasks>\n\
       <% @project.issues.each do |issue| %>
-        <task start="<%= issue.start_date.strftime("%m/%d/%Y")%>" end="<%= issue.due_date.strftime("%m/%d/%Y")%>" />\n\
+        <task start="<%= issue.start_date.strftime("%m/%d/%Y")%>" end="<%= issue.due_date.strftime("%m/%d/%Y")%>" percentComplete="<%= issue.done%>" showPercentLabel="1" id="<%=issue.id%>" color="<%=issue.done == 100 ? "7cfc00" : "999999"%>" />\n\
       <% end %>
     </tasks>\n\
+    <milestones>\n\
+        <% @project.milestones.each do |milestone| %>
+          <milestone date="<%=milestone.issue.due_date.strftime("%m/%d/%Y")%>" taskId="<%=milestone.issue_id%>" shape="Star" toolText="<%=milestone.description%>" color="FF5904" />\n\
+        <% end %>
+    </milestones>\n\
+    <datatable headerVAlign="bottom">\n\
+        <datacolumn headerText="Assignee" headerVAlign="bottom" headerAlign="center" align="center" fontSize="12">\n\
+            <% @project.issues.each do |issue| %>
+                <text label="<%=issue.assigned_to%>" />\n\
+            <% end %>
+        </datacolumn>\n\
+    </datatable>\n\
     <legend>\n\
-    <item label="Completed" color="4567aa" />\n\
+    <item label="Completed" color="7cfc00" />\n\
     <item label="Actual" color="999999" />\n\
+    <item label="Remains" color="FF3030" />\n\
+    <item label="Milestone" shape="Star" color="FF5904" />\n\
     </legend>\n\
+    <trendlines>\n\
+    <line start="<%=Date.today.strftime("%m/%d/%Y")%>" displayValue="Today is <%= Date.today.strftime("#{Date.today.day.ordinalize} of %b")%>" color="333333" thickness="2" dashed="1" />\n\
+    </trendlines>\n\
     </chart>');
     myChart.render("chartContainer");
   // -->
@@ -38,5 +55,3 @@
 <% end %>
 
 <div id = "chartContainer"> Gantt will load here </div>
-
-

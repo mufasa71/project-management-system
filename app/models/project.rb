@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
   has_many :news, :dependent => :destroy, :order => 'created_at DESC'
   has_many :attachments, :dependent => :destroy, :as => :attachable
   has_many :roles, :dependent => :destroy
+  has_many :milestones, :dependent => :destroy
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups

@@ -7,7 +7,8 @@ class Issue < ActiveRecord::Base
   belongs_to :assigned_to, :class_name => 'Member', :foreign_key => 'assigned_to_id'
   belongs_to :category, :class_name => 'IssueCategory', :foreign_key => 'category_id'
   has_many :attachments, :as => :attachable
-  has_many :time_entries, :dependent => :delete_all
+  has_many :time_entries, :dependent => :destroy
+  has_one :milestone, :dependent => :destroy
   validates_presence_of :subject, :status, :priority, :project
 
   attr_accessor :time_entry
@@ -17,6 +18,10 @@ class Issue < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :attachments
+
+  def to_s
+    subject
+  end
 end
 # == Schema Information
 #

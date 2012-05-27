@@ -22,6 +22,10 @@ class SettingsController < ApplicationController
     @roles = @project.roles
   end
 
+  def milestones
+    @milestones = @project.milestones
+  end
+
   private
 
   def load_project
