@@ -18,6 +18,14 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups
   accepts_nested_attributes_for :roles
+
+  def total_hours
+    sum = 0
+    issues.each do |issue|
+      sum += issue.time_entries.sum(:hours)
+    end
+    sum
+  end
 end
 # == Schema Information
 #

@@ -24,6 +24,7 @@ gem 'thin'
 gem 'kaminari'
 gem 'acts_as_commentable'
 gem 'nifty-generators'
+gem 'watu_table_builder', :require => 'table_builder'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -6,6 +6,7 @@
         <script type="text/javascript">
           $(function () {
             var chart;
+            var pie;
             $(document).ready(function() {
               chart = new Highcharts.Chart({
                 chart: {
@@ -44,6 +45,45 @@
                             },
                           <% end %>
                         ]
+              });
+              pie = new Highcharts.Chart({
+                chart: {
+                    renderTo: 'pie',
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: 'Overall time spent report'
+                },
+                tooltip: {
+                    formatter: function() {
+                        return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+                    }
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            color: '#000000',
+                            connectorColor: '#000000',
+                            formatter: function(){
+                                return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    type:'pie',
+                    name: 'Time spent',
+                    data: [
+                      <% @project.issues.each do |issue| %>
+                        ['<%= issue %>', <%= (issue.total.to_f / @project.total_hours.to_f) * 100 %>],
+                      <% end %>
+                    ]
+                }]
               });
             });
           });

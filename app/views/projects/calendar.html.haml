@@ -1,0 +1,12 @@
+=render 'common/project_tabs'
+#row
+  .span12
+    #project
+      #calendar
+        = calendar_for(@issues) do |t|
+          = t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+          = t.day(:day_method => :created_at) do |date, issues|
+            = date.day
+            - issues.each do |issue|
+              = h(issue)
+

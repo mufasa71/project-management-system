@@ -21,6 +21,7 @@ ProjectManagementSystem::Application.routes.draw do
     member do
       get :settings
       get :statistics
+      get :calendar
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
       get "settings/issue_categories" => 'settings#issue_categories'

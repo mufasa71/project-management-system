@@ -65,4 +65,9 @@ class ProjectsController < ApplicationController
   def statistics
     @project = Project.find(params[:id])
   end
+
+  def calendar
+    @project = Project.find(params[:id])
+    @issues = @project.issues
+  end
 end

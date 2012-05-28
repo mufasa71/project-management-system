@@ -26,6 +26,10 @@ class Issue < ActiveRecord::Base
   def total_on(date)
     time_entries.where("date(created_at) = ?", date).sum(:hours)
   end
+
+  def total
+    time_entries.sum(:hours)
+  end
 end
 # == Schema Information
 #
