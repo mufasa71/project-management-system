@@ -3,10 +3,17 @@
   .span12
     #project
       #calendar
-        = calendar_for(@issues) do |t|
+        %h2{:id => "month"}
+          = link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m-%d")
+          =h @date.strftime("%B %Y")
+          = link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m-%d")
+        = calendar_for(@issues, :year => @date.year, :month => @date.month) do |t|
           = t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
-          = t.day(:day_method => :created_at) do |date, issues|
+          = t.day(:day_method => :due_date) do |date, issues|
             = date.day
-            - issues.each do |issue|
-              = h(issue)
+            %ul
+              - issues.each do |issue|
+                %a Due date:
+                %li
+                  = link_to h(issue), project_issue_path(:project_id => @project, :id => issue)
 

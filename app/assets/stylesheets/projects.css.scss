@@ -29,5 +29,40 @@
     vertical-align: top;
     font-size: 16px;
   }
-
+  .nonmonth{
+    color: #ccc;
+  }
+  #month{
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    a,
+    a:hover{
+      text-decoration: none;
+      padding: 0 10px;
+      color: #999;
+    }
+  }
+  .today{
+    background-color: #d7f2ff;
+  }
+  ul{
+    margin: 0px;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    a{
+      color: #FF0000;
+    }
+  }
+  li{
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    text-align: center;
+    a{
+      color: #EE0000;
+    }
+  }
 }

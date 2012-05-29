@@ -69,5 +69,6 @@ class ProjectsController < ApplicationController
   def calendar
     @project = Project.find(params[:id])
     @issues = @project.issues
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
 end
