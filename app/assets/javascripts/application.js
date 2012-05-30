@@ -12,15 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
 //= require rails-timeago
 //= require twitter/bootstrap
 //= require ckeditor-jquery
 //= require simple_nested_form
 //= require ui.achtung
+//= require event_calendar
+//= require bootstrap-datepicker
 //= require_tree .
 //
 //
 
-$("input.date_picker").datepicker();
-$.datepicker.setDefaults({ dateFormat: 'yy-mm-dd'} )
+$(".datepicker").datepicker({ format: 'yyyy-mm-dd' });

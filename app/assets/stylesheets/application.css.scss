@@ -1,5 +1,4 @@
 @import "normalize";
-@import "jquery-ui";
 @import "bourbon";
 @import "bootstrap_and_overrides";
 @import "users";
@@ -7,8 +6,9 @@
 @import "news";
 @import "comments";
 @import "ui.achtung"; 
-@import "projects";
-
+@import "appointments";
+@import "datepicker";
+@import "event_calendar";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);

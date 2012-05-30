@@ -4,6 +4,8 @@ class Member < ActiveRecord::Base
   belongs_to :project
   has_many :member_roles, :dependent => :destroy
   has_many :roles, :through => :member_roles
+  has_many :appointmenizations
+  has_many :appointments, :through => :appointmenizations
 
   validates_presence_of :project
   validates_uniqueness_of :user_id, :scope => :project_id

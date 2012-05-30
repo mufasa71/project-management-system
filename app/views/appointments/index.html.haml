@@ -1,0 +1,24 @@
+=render 'common/project_tabs'
+#row
+  .span12
+    %table.table.table-striped#appointments
+      %thead
+        %tr
+          %th Description
+          %th Location
+          %th Members
+          %th Date&Time
+          %th
+      %tbody
+        -@appointments.each do |appointment|
+          %tr{:class => "appointment_#{appointment.id}"}
+            %td= link_to appointment.event, project_appointment_path(:project_id => @project, :id => appointment)
+            %td= appointment.location
+            %td= appointment.members_names
+            %td= appointment.event.start_at.strftime("%R %p %A %Y-%m-%d")
+            %td
+              = link_to(edit_project_appointment_path(:project_id => @project, :id => appointment), :remote => true) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+              |            
+              = link_to(project_appointment_path(:project_id => @project, :id => appointment), :confirm => 'are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}
+    =link_to " Add new appointment", new_project_appointment_path(:project_id => @project), :class => "btn btn-success icon-plus-sign", :remote => true
+    

@@ -25,5 +25,6 @@ end
 #  updated_at  :datetime        not null
 #  description :text
 #  is_public   :boolean         default(TRUE)
+#  due_date    :date
 #
 

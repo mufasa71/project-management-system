@@ -1,0 +1,5 @@
+:plain
+  $('#edit_appointment').modal('hide');
+  $.achtung({message: 'Appointment was successfully updated!', timeout: 3, className: "achtungSuccess"});
+  setTimeout(function(){
+    window.location.reload()}, 2000);

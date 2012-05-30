@@ -65,10 +65,4 @@ class ProjectsController < ApplicationController
   def statistics
     @project = Project.find(params[:id])
   end
-
-  def calendar
-    @project = Project.find(params[:id])
-    @issues = @project.issues
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today
-  end
 end

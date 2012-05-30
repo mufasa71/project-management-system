@@ -21,6 +21,7 @@ class Ability
       can :manage, Member
       can :manage, Role
       can :manage, Milestone
+      can :manage, Appointment
     end
   end
 end

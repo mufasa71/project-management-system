@@ -14,6 +14,7 @@ class Project < ActiveRecord::Base
   has_many :attachments, :dependent => :destroy, :as => :attachable
   has_many :roles, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
+  has_many :appointments, :dependent => :destroy
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups
@@ -39,5 +40,6 @@ end
 #  updated_at  :datetime        not null
 #  description :text
 #  is_public   :boolean         default(TRUE)
+#  due_date    :date
 #
 

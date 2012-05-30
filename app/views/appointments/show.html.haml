@@ -1,0 +1,21 @@
+=render 'common/project_tabs'
+#row
+  .span12
+    #appointment
+      %h3 Appointment
+      %p
+        %b Description:
+        = @appointment.event
+      %p
+        %b Location:
+        = @appointment.location
+      %p
+        %b Date:
+        = @appointment.event.start_at.strftime("%R %p %A %Y-%m-%d")
+      %p
+        %b Members
+        = @appointment.members_names
+
+      = link_to 'Edit', edit_project_appointment_path(:project_id => @project, :id => @appointment)
+      \|
+      = link_to 'Back', project_appointments_path(@project)

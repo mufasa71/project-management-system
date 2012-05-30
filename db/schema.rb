@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527070510) do
+ActiveRecord::Schema.define(:version => 20120530135557) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -22,6 +22,20 @@ ActiveRecord::Schema.define(:version => 20120527070510) do
     t.text     "parameters"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "appointmenizations", :force => true do |t|
+    t.integer  "appointment_id"
+    t.integer  "member_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "appointments", :force => true do |t|
+    t.string   "location"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "attachments", :force => true do |t|
@@ -49,6 +63,17 @@ ActiveRecord::Schema.define(:version => 20120527070510) do
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.boolean  "all_day",        :default => false
+    t.integer  "eventable_id"
+    t.string   "eventable_type"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
 
   create_table "groups", :force => true do |t|
     t.string   "title"
