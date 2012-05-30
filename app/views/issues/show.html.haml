@@ -19,12 +19,18 @@
             %dd= issue_presenter.category
         .span4
           %dl.dl-horizontal
-            %dt Start date:
-            %dd= issue_presenter.start_date
-            %dt Due date:
-            %dd= issue_presenter.due_date
+            %dt Start at:
+            %dd= issue_presenter.start_at
+            %dt End at:
+            %dd= issue_presenter.end_at
+            %dt Estimated time:
+            %dd= issue_presenter.estimated_time
             %dt % Done:
             %dd= issue_presenter.done
+        .row
+          .span10
+            %dt Description:
+            %dd= issue_presenter.description
 -if @activities.present?
   .row
     .span10.well#history

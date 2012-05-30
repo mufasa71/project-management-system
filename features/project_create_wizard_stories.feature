@@ -11,6 +11,7 @@ Feature: Project Wizard
     Given a user exist with name: "Michael Kill", email: "sim@sim.net"
     When I fill in "Name" with "My new project"
     And I fill in "Identifier" with "my-new-project"
+    And I fill in "Due date" with "2012-07-06"
     And I press "Continue >>"
     Then I should see "Add members"
     When I check "Michael Kill"

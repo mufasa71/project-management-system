@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :project do
-    name "MyString"
-    identifier "MyString"
-    homepage "MyString"
+    name "MyProject"
+    identifier "my-identifier"
+    due_date Date.today.next_month
   end
 end

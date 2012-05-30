@@ -6,7 +6,8 @@ Feature: Issues management
     And a issue status exists with name: "New"
     And a issue priority exists with name: "Normal"
     And a project exists for that user
-    And a issue exists with project: the project, subject: "New bug", status: the issue status, priority: the issue priority, author: the user
+    And a event exist with start_at: "2012-07-01", end_at: "2012-08-30"
+    And a issue exists with project: the project, subject: "New bug", status: the issue status, priority: the issue priority, author: the user, event: the event
 
   Scenario: Creating an issue
     Given I go to the project's page
@@ -16,8 +17,8 @@ Feature: Issues management
     And I select "New" from "Status"
     And I select "Normal" from "Priority"
     And I attach the file "/home/hawk/Pictures/profile.jpg" to "File"
-    And I fill in "Start date" with "2012-05-11"
-    And I fill in "Due date" with "2012-05-20"
+    And I fill in "Start at" with "2012-05-11"
+    And I fill in "End at" with "2012-05-20"
     And I fill in "Estimated time" with "45"
     And I select "20%" from "Done"
     And I press "Create"

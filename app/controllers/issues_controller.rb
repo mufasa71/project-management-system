@@ -18,12 +18,13 @@ class IssuesController < ApplicationController
     respond_with @issue
   end
 
-  def edit
+  def edie
     respond_with @issue
   end
 
   def create
     @issue.activity_params = { :issue_subject => @issue.subject }
+    @issue.event.name = @issue.subject
     respond_to do |format|
       if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Issue was successfully created.' }

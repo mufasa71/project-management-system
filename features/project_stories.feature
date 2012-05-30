@@ -25,6 +25,7 @@ Feature: Projects stories
     And I fill in "Description" with "Simple description"
     And I fill in "Identifier" with "simple_project"
     And I fill in "Homepage" with "http://homepage.com"
+    And I fill in "Due date" with "2012-06-23"
     And I check "Public"
     When I press "Continue >>"
     And I follow "skip this step"
@@ -33,13 +34,13 @@ Feature: Projects stories
     Then I should see "Project was successfully created!"
     
   Scenario: Selecting project
-    Given a project exists with name: "Project 1"
+    Given a project exist with name: "Project 1"
     And I go to the projects page
     When I follow "Project 1" within "#project_list"
     Then I should see "Project 1" within "#project"
 
   Scenario: Editing project
-    Given a project exists
+    Given a project exist
     And I go to the project edit page
     When I fill in "Name" with "New name"
     And I fill in "Identifier" with "foobar"

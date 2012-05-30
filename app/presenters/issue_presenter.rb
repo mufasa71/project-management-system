@@ -46,14 +46,12 @@ class IssuePresenter < BasePresenter
     end
   end
 
-  def start_date
-    issue.start_date.present? ? issue.start_date : issue.created_at.strftime("%m/%d/%Y")
+  def start_at
+    issue.event.start_at.strftime("%Y-%m-%d")
   end
 
-  def due_date
-    handle_none issue.due_date do
-      issue.due_date
-    end
+  def end_at
+    issue.event.end_at.strftime("%Y-%m-%d")
   end
 
   def done
@@ -72,6 +70,18 @@ class IssuePresenter < BasePresenter
 
   def subject
     link_to(issue.subject, project_issue_path(:project_id => issue.project, :id => issue))
+  end
+
+  def estimated_time
+    handle_none issue.estimated_time do
+      issue.estimated_time
+    end
+  end
+
+  def description
+    handle_none issue.description do
+      raw issue.description
+    end
   end
 
   private

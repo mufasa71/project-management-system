@@ -8,6 +8,7 @@ Feature: Project members
     And I follow "New project"
     And I fill in "Name" with "Project name"
     And I fill in "Identifier" with "project_name"
+    And I fill in "Due date" with "2012-07-29"
     And I press "Continue >>"
     And I follow "skip this step"
     And I follow "skip this step"

@@ -24,12 +24,12 @@
     </processes>\n\
     <tasks>\n\
       <% @project.issues.each do |issue| %>
-        <task start="<%= issue.start_date.strftime("%m/%d/%Y")%>" end="<%= issue.due_date.strftime("%m/%d/%Y")%>" percentComplete="<%= issue.done%>" showPercentLabel="1" id="<%=issue.id%>" color="<%=issue.done == 100 ? "7cfc00" : "999999"%>" />\n\
+        <task start="<%= issue.event.start_at.strftime("%m/%d/%Y")%>" end="<%= issue.event.end_at.strftime("%m/%d/%Y")%>" percentComplete="<%= issue.done%>" showPercentLabel="1" id="<%=issue.id%>" color="<%=issue.done == 100 ? "7cfc00" : "999999"%>" />\n\
       <% end %>
     </tasks>\n\
     <milestones>\n\
         <% @project.milestones.each do |milestone| %>
-          <milestone date="<%=milestone.issue.due_date.strftime("%m/%d/%Y")%>" taskId="<%=milestone.issue_id%>" shape="Star" toolText="<%=milestone.description%>" color="FF5904" />\n\
+          <milestone date="<%=milestone.issue.event.end_at.strftime("%m/%d/%Y")%>" taskId="<%=milestone.issue_id%>" shape="Star" toolText="<%=milestone.description%>" color="FF5904" />\n\
         <% end %>
     </milestones>\n\
     <datatable headerVAlign="bottom">\n\

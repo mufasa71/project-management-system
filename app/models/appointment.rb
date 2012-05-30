@@ -23,11 +23,10 @@ end
 #
 # Table name: appointments
 #
-#  id          :integer         not null, primary key
-#  description :string(255)
-#  location    :string(255)
-#  project_id  :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  id         :integer         not null, primary key
+#  location   :string(255)
+#  project_id :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
 #
 

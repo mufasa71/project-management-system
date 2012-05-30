@@ -9,9 +9,11 @@ class Issue < ActiveRecord::Base
   has_many :attachments, :as => :attachable
   has_many :time_entries, :dependent => :destroy
   has_one :milestone, :dependent => :destroy
+  has_one :event, :as => :eventable, :dependent => :destroy
   validates_presence_of :subject, :status, :priority, :project
 
   attr_accessor :time_entry
+  accepts_nested_attributes_for :event
 
   def time_entry=(t)
     time_entries << TimeEntry.create(t) unless t.nil?
@@ -46,11 +48,11 @@ end
 #  category_id      :integer
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
-#  start_date       :date
 #  due_date         :date
 #  estimated_time   :integer
 #  done             :integer
 #  file             :string(255)
 #  subject          :string(255)
 #  description      :text
+#
 

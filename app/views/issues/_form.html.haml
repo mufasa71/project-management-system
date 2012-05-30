@@ -13,8 +13,9 @@
         =f.collection_select :category_id, @project.issue_categories, :id, :name
         =link_to "", new_project_issue_category_path(@project), :class => "icon-plus-sign", :id => "add_category", :remote => true
     .span6
-      = f.input :start_date, :as => :date_picker, :placeholder => "Select date"
-      = f.input :due_date, :as => :date_picker, :placeholder => "Select date"
+      = f.simple_fields_for :event, @issue.event ? @issue.event : @issue.build_event do |event|
+        = event.input :start_at, :as => :date_picker, :required => true
+        = event.input :end_at, :as => :date_picker, :required => true
       = f.input :estimated_time, :placeholder => "hours"
       = f.input :done, :collection => (10..100).step(10).map { |num| [num.to_s << "%", num] }, :prompt => "Select %"
   .row

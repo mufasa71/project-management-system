@@ -18,7 +18,6 @@ end
 #  category_id      :integer
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
-#  start_date       :date
 #  due_date         :date
 #  estimated_time   :integer
 #  done             :integer
