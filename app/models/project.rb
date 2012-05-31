@@ -27,6 +27,10 @@ class Project < ActiveRecord::Base
     end
     sum
   end
+
+  def to_s
+    name
+  end
 end
 # == Schema Information
 #

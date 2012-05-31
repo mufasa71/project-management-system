@@ -1,9 +1,16 @@
 class UsersController < ApplicationController
   respond_to :html, :xml
-  before_filter :authenticate_user!
-  before_filter :find_user
+  before_filter :authenticate_user!, :except => :index
+  before_filter :find_user, :except => :index
   
+  respond_to :js, :html
   authorize_resource
+
+
+  def index
+    @users = User.search(params[:search]).order(:name).page(params[:page]).per(10)
+    respond_with @users
+  end
 
   def show
     respond_with @user

@@ -2,8 +2,8 @@ class UserPresenter < BasePresenter
   presents :user
   delegate :name, to: :user
 
-  def profile_picture
-    image_tag(profile_picture_file)
+  def profile_picture(size="")
+    image_tag(profile_picture_file, :size => size)
   end
 
   def name

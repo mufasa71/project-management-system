@@ -1,0 +1,7 @@
+%ul.unstyled.user
+  -@users.each do |user|
+    -present user do |user_presenter|
+      %li
+        = user_presenter.profile_picture("50x50")
+        = link_to user_presenter.name, user_path(user)
+        %b #{user_presenter.number}

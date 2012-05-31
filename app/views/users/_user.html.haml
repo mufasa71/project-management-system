@@ -1,5 +1,19 @@
 #user.line
-  = image_tag(user.profile_picture)
-  %h3= user.name
-  %p
-    Member since #{user.created_at.strftime("%d %B %Y")}
+  %table
+    %tr
+      %td
+        -present user do |user_presenter|
+          = user_presenter.profile_picture
+          %h3= user_presenter.name
+        %p
+          Member since #{user.created_at.strftime("%d %B %Y")}
+        %dt= link_to " Send him a message", "#", :class => "icon-envelope"
+      %td
+        %dt
+          Involved in 
+          %b= user.members.size
+          projects 
+        %dd
+          -user.members.each do |member|
+            = link_to member.project, project_path(member.project)
+            %br

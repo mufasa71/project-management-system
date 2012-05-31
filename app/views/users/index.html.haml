@@ -1,0 +1,13 @@
+.row
+  .span8.well
+    %h3 List of users
+    = form_tag users_path, :method => :get, :class => "navbar-search", :id => "users_search" do
+      %p
+        = text_field_tag :search, params[:search], :class => "search-query", :placeholder => "Search student by ID or Name"
+    %br
+    %br
+    = paginate @users
+    #users
+      = render :partial => "users_list"
+      
+  

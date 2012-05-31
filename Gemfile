@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'acts_as_commentable'
 gem 'nifty-generators'
 gem 'event-calendar', :require => 'event_calendar'
+gem 'mailboxer'
 
 # Gems used only for assets and not required
 # in production environments by default.
