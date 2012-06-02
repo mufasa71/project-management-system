@@ -3,12 +3,12 @@
     %li{ :class => @box == 'inbox' ? 'active' : ''}
       = link_to  messages_path(:box => "inbox") do
         %i{ :class => "icon-download" }
-        Inbox #{@messages.size}
+        Inbox #{current_user.receipts.inbox.unread.size} / #{current_user.receipts.inbox.size}
     %li{ :class => @box == 'sent' ? 'active' : ''}
       = link_to messages_path(:box => "sent") do
         %i{ :class => "icon-upload" }
-        Sent
+        Sent #{current_user.receipts.sentbox.size}
     %li{ :class => @box == 'trash' ? 'active' : ''}
       = link_to messages_path(:box => "trash") do
         %i{ :class => "icon-trash" }
-        Trash
+        Trash #{current_user.receipts.trash.unread.size} / #{current_user.receipts.trash.size}

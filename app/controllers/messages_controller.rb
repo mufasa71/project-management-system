@@ -51,6 +51,7 @@ class MessagesController < ApplicationController
     end
     @message = Message.new conversation_id: @conversation.id
     current_user.read(@conversation)
+    respond_with @conversation
   end
 
   def trash

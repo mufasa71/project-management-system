@@ -1,0 +1,7 @@
+%table#mail-panel
+  %tr
+    %td
+      = link_to " Compose", new_message_path, :class => 'btn btn-success', :remote => true
+    %td
+      = form_tag search_path do
+        %input{ type: 'search', placeholder: 'Search', name: 'search' }

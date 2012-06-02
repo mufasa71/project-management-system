@@ -39,10 +39,22 @@
                   %b.caret
                 %ul.dropdown-menu
                   -if user_signed_in?
-                    %li.account-email= link_to " My account", edit_user_registration_path, :class => "icon-user" 
+                    %li.account-email
+                      = link_to edit_user_registration_path do
+                        %i{ :class => "icon-user" }
+                        My account
+                    %li
+                      = link_to messages_path do
+                        %i{ :class => "icon-comment" }
+                        Messages
+                        -if current_user.receipts.inbox.unread.any?
+                          %span{ :class => "badge badge-info" } #{current_user.receipts.inbox.unread.size}
                     %li= link_to "Admin page", admin_home_index_path if current_user.admin? 
                     %li.divider
-                    %li= link_to " Sign out", destroy_user_session_path, :method => :delete, :class => "icon-off"
+                    %li
+                      = link_to destroy_user_session_path, :method => :delete do
+                        %i{ :class => "icon-off" }
+                        Sign out
                   -else
                     %li= link_to "Sign in", new_user_session_path
                     %li.divider

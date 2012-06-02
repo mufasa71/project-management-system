@@ -8,13 +8,7 @@
     %h2 Sent
   -if @box == 'trash'
     %h2 Trash
-  %table#mail-panel
-    %tr
-      %td
-        = link_to " Compose", new_message_path, :class => 'btn btn-success', :remote => true
-      %td
-        = form_tag search_path do
-          %input{ type: 'search', placeholder: 'Search', name: 'search' }
+  = render "mail_panel"
   #mail-container
     = form_tag trash_messages_path, :method => :delete do
       = hidden_field_tag 'current_box', @box
@@ -30,9 +24,9 @@
           %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
             - unless @box == 'trash'
               %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: 'conversations[]'
-            %td= link_to m.last_sender, message_path(m)
-            %td= link_to m.subject, message_path(m)
-            %td= link_to m.count_messages, message_path(m)
-            %td= link_to truncate(m.last_message.body), message_path(m)
+            %td= link_to m.last_sender, message_path(m), :remote => true
+            %td= link_to m.subject, message_path(m), :remote => true
+            %td= m.count_messages
+            %td= link_to truncate(m.last_message.body), message_path(m), :remote => true
       - unless @box == 'trash'
         = submit_tag "Delete checked messages", :id => "delete_multiple_button"
