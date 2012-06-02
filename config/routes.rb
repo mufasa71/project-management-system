@@ -8,7 +8,7 @@ ProjectManagementSystem::Application.routes.draw do
       delete 'trash'
     end
   end
-  post 'search' => 'messages#search'
+  get 'search' => 'messages#search'
   resources :user_steps
   match "projects/:project_id/gantt" => "gantts#show", :as => :project_gantt
   match 'projects/:project_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}, :as => :calendar
@@ -48,6 +48,8 @@ ProjectManagementSystem::Application.routes.draw do
     member do
       get :following, :followers
       get :details
+      get :send_message
+      post :send_message
     end
   end
 

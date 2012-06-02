@@ -73,4 +73,13 @@ class MessagesController < ApplicationController
     flash[:notice] = "Message untrashed."
     redirect_to messages_path(box: 'inbox')
   end
+
+  def search
+    @search = params[:search]
+    @messages = current_user.mailbox.conversations.where("conversations.subject LIKE ? or body LIKE ?", "%#{@search}%", "%#{@search}%")
+    respond_with @messages do |format|
+      format.html { render :index }
+      format.js
+    end
+  end
 end

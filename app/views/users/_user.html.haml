@@ -7,7 +7,7 @@
           %h3= user_presenter.name
         %p
           Member since #{user.created_at.strftime("%d %B %Y")}
-        %dt= link_to " Send him a message", "#", :class => "icon-envelope"
+        %dt= link_to " Send him a message", send_message_user_path(user), :class => "icon-envelope", :remote => true, :method => :get
       %td
         %dt
           Involved in 

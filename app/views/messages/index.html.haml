@@ -12,21 +12,6 @@
   #mail-container
     = form_tag trash_messages_path, :method => :delete do
       = hidden_field_tag 'current_box', @box
-      %table.table
-        %tr
-          - unless @box == 'trash'
-            %th
-          %th Sender
-          %th Subject
-          %th Messages
-          %th
-        - @messages.each do |m|
-          %tr{ class: "#{ 'unread' if m.is_unread?(current_user) }" }
-            - unless @box == 'trash'
-              %td= check_box_tag '', m.id, false, class: 'delete_multiple_checkbox', name: 'conversations[]'
-            %td= link_to m.last_sender, message_path(m), :remote => true
-            %td= link_to m.subject, message_path(m), :remote => true
-            %td= m.count_messages
-            %td= link_to truncate(m.last_message.body), message_path(m), :remote => true
+      = render 'messages'
       - unless @box == 'trash'
         = submit_tag "Delete checked messages", :id => "delete_multiple_button"
