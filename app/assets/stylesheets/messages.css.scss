@@ -1,0 +1,67 @@
+$font_a: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font_b: Georgia, serif;
+
+#mail-panel{
+  td{
+    vertical-align: top;
+    padding-right: 20px;
+}
+}
+
+.unread{
+  font-weight: bold;
+}
+
+#conversation {
+  margin-top: 27px;
+  li{
+    border-bottom: 1px dotted black;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+  .head,
+  .from {
+    float: left;
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .date{
+    float: right;
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .body{
+    clear: both;
+    padding: 20px 0;
+    line-height: 1.4;
+  }
+  .attachment{
+    margin: 10px 0;
+  }
+  .attachment:before{
+    content: 'Attachment: ';
+  }
+}
+
+#reply {
+  margin-top: 10px;
+  padding-top: 10px;
+  label{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+    display: block;
+  }
+}
+textarea, input[type='text']{
+  border: 1px solid black;
+  font-size: 16px;
+  font-family: $font_a
+}
+textarea{
+  width: 100%;
+  display: block;
+  font-family: $font_b;
+}

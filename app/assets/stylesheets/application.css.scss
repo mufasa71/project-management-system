@@ -9,6 +9,8 @@
 @import "appointments";
 @import "datepicker";
 @import "event_calendar";
+@import "messages";
+@import "jquery_ui";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);

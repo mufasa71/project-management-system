@@ -1,0 +1,14 @@
+.span2
+  %ul.nav.nav-stacked.nav-pills
+    %li{ :class => @box == 'inbox' ? 'active' : ''}
+      = link_to  messages_path(:box => "inbox") do
+        %i{ :class => "icon-download" }
+        Inbox #{@messages.size}
+    %li{ :class => @box == 'sent' ? 'active' : ''}
+      = link_to messages_path(:box => "sent") do
+        %i{ :class => "icon-upload" }
+        Sent
+    %li{ :class => @box == 'trash' ? 'active' : ''}
+      = link_to messages_path(:box => "trash") do
+        %i{ :class => "icon-trash" }
+        Trash

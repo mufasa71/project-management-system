@@ -19,6 +19,8 @@
 //= require ui.achtung
 //= require event_calendar
 //= require bootstrap-datepicker
+//= require jquery.ui.autocomplete
+//= require messages
 //= require_tree .
 //
 //
