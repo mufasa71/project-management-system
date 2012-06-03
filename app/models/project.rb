@@ -15,6 +15,7 @@ class Project < ActiveRecord::Base
   has_many :roles, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
   has_many :appointments, :dependent => :destroy
+  has_many :documents, :dependent => :destroy
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups

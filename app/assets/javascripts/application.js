@@ -21,6 +21,7 @@
 //= require bootstrap-datepicker
 //= require jquery.ui.autocomplete
 //= require messages
+//= require etherpad
 //= require_tree .
 //
 //

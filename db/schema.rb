@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531043638) do
+ActiveRecord::Schema.define(:version => 20120603081204) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -68,6 +68,15 @@ ActiveRecord::Schema.define(:version => 20120531043638) do
     t.string   "subject",    :default => ""
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "documents", :force => true do |t|
+    t.string   "title"
+    t.integer  "pad_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "group_id"
   end
 
   create_table "events", :force => true do |t|

@@ -1,0 +1,3 @@
+:plain
+  $('#documents tr.document_#{@document_id}').hide('fast', function(){this.remove();});
+  $.achtung({message: 'Document was successfully deleted!', timeout: 3, className: "achtungSuccess"});

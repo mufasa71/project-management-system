@@ -1,0 +1,20 @@
+=render 'common/project_tabs'
+.row
+  .span11
+    #app_pad
+      = link_to " Add document", new_project_document_path(@project), :class => "icon-plus-sign", :remote => true
+      %table.table#documents
+        %thead
+          %tr
+            %th Title
+            %th Group
+            %th
+        %tbody
+          -@documents.each do |document|
+            %tr{:class => "document_#{document.id}"}
+              %td= link_to document.title, project_document_path(@project, :id => document), :remote => true
+              %td= document.group
+              %td
+                = link_to(edit_project_document_path(:project_id => @project, :id => document), :remote => true) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+                |            
+                = link_to(project_document_path(:project_id => @project, :id => document), :confirm => 'are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

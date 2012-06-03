@@ -3,6 +3,10 @@ class Group < ActiveRecord::Base
   has_many :members, :dependent => :delete_all
 
   validates_presence_of :title
+
+  def to_s
+    title
+  end
 end
 # == Schema Information
 #

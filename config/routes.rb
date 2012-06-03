@@ -13,6 +13,7 @@ ProjectManagementSystem::Application.routes.draw do
   match "projects/:project_id/gantt" => "gantts#show", :as => :project_gantt
   match 'projects/:project_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}, :as => :calendar
   resources :projects do
+    resources :documents
     resources :gantts, :only => [:show]
     resources :milestones
     resources :appointments
