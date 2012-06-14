@@ -1,4 +1,11 @@
 %dt
   Number
 %dd=  @intake
+%dt
+  Subjects
+%dd
+  %ul
+    - @intake.subjects.each do |s|
+      %li
+        = s.title
 =link_to "Back", admin_intakes_path

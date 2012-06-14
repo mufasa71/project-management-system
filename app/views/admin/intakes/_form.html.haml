@@ -1,6 +1,7 @@
 = simple_form_for([:admin, @intake], :html => { :class => "form-horizontal" }) do |f|
   .from-fields
     = f.input :number
+    = f.association :subjects
   .form-actions
     = f.button :submit
     or

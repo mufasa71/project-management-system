@@ -2,6 +2,26 @@ class UserPresenter < BasePresenter
   presents :user
   delegate :name, to: :user
 
+  def projects_involved
+    pluralize(user.members.size, "project")
+  end
+
+  def issues
+    user.members.each do |member|
+      member.issues
+    end
+  end
+
+  def messageble?
+    unless current_user == user
+       link_to "Send message", send_message_user_path(user), :class => "icon-envelope", :remote => true, :method => :get
+    end
+  end
+
+  def since
+    user.created_at.strftime("%d %B %Y")
+  end
+
   def profile_picture(size="")
     image_tag(profile_picture_file, :size => size)
   end

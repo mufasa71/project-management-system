@@ -1,0 +1,9 @@
+:plain
+  $('#admin_navigation li').removeClass('active');
+  $('#intake_link').removeAttr('href');
+  $('#intake_link').parent().addClass('active');
+  $('#main_container').html('<div id="intakes"></div>');
+  $(function() {
+    window.router = new ProjectManagementSystem.Routers.IntakesRouter({intakes: #{@intakes.to_json.html_safe}});
+    Backbone.history.start();
+  });

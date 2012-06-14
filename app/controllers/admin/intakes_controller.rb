@@ -1,7 +1,8 @@
 class Admin::IntakesController < Admin::BaseController
-  respond_to :html, :json
+  respond_to :js, :html, :json
   def index
     @intakes = Intake.all
+    respond_with @intakes
   end
 
   def new

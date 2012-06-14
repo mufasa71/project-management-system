@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
   belongs_to :project
+  has_many :issues, :foreign_key => "assigned_to_id"
   has_many :member_roles, :dependent => :destroy
   has_many :roles, :through => :member_roles
   has_many :appointmenizations

@@ -1,19 +1,27 @@
 #user.line
-  %table
-    %tr
-      %td
-        -present user do |user_presenter|
-          = user_presenter.profile_picture
-          %h3= user_presenter.name
+  .row
+    -present user do |user_presenter|
+      .span3
+        = user_presenter.profile_picture
+        %h3= user_presenter.name
         %p
-          Member since #{user.created_at.strftime("%d %B %Y")}
-        %dt= link_to " Send him a message", send_message_user_path(user), :class => "icon-envelope", :remote => true, :method => :get
-      %td
+          Member since #{user_presenter.since}
+        %p= user_presenter.messageble?
+      .span3
         %dt
           Involved in 
-          %b= user.members.size
-          projects 
+          %b= user_presenter.projects_involved
         %dd
           -user.members.each do |member|
             = link_to member.project, project_path(member.project)
             %br
+      .span4
+        %dt 
+          Tasks Assigned
+        %dd
+          - user.members.each do |member|
+            - member.issues.each do |issue|
+              = link_to issue, project_issue_path(:project_id => issue.project, :id => issue),  :style => "font-size:16px" 
+              in 
+              = link_to issue.project
+              %br

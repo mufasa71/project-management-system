@@ -1,0 +1,8 @@
+%tr
+  %td
+    = link_to subject.id, admin_subject_path(subject)
+  %td
+    = link_to subject.title, admin_subject_path(subject)
+  %td
+    = link_to "Edit", edit_admin_subject_path(subject), :class => "btn btn-mini btn-info"
+    = link_to "Delete", admin_subject_path(subject), :class => "btn btn-mini btn-danger", :method => :delete

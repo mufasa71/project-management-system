@@ -1,0 +1,12 @@
+%h3 Subjects
+= link_to "New Subject", new_admin_subject_path, :class => "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        &#35;
+      %th 
+        Title
+      %th
+  %tbody
+    = render @subjects

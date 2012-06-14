@@ -1,0 +1,5 @@
+%h3 Choose Intake
+%ul
+  - @intakes.each do |intake|
+    %li
+      = link_to intake, intake_path(intake)

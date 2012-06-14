@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
   has_many :followers, :through => :reverse_relationships, :source => :follower
   has_many :members, :foreign_key => "user_id"
+  has_many :projects, :through => :members
   belongs_to :intake
   cattr_accessor :current_user
   
