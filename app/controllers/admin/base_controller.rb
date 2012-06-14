@@ -1,7 +1,7 @@
 module Admin
   class BaseController < ApplicationController
-    layout 'admin'
     before_filter :verify_admin
+    layout 'admin'
 
     private 
 

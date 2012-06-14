@@ -1,0 +1,6 @@
+%tr
+  %td= link_to intake.id, [:admin, intake]
+  %td= intake
+  %td
+    = link_to "Edit", edit_admin_intake_path(intake), :class => "btn btn-mini btn-info"
+    = link_to "Delete", [:admin, intake], :method => :delete, :class => "btn btn-mini btn-danger"

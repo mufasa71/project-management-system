@@ -1,0 +1,7 @@
+= simple_form_for([:admin, @intake], :html => { :class => "form-horizontal" }) do |f|
+  .from-fields
+    = f.input :number
+  .form-actions
+    = f.button :submit
+    or
+    = link_to "Cancel", admin_intakes_path

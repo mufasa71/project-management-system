@@ -1,0 +1,12 @@
+%h2 Intakes
+= link_to "New intake", new_admin_intake_path, :class => "btn btn-success"
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        &#35;
+      %th
+        Name
+      %th
+  %tbody
+    = render @intakes

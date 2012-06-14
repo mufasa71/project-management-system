@@ -57,7 +57,7 @@ ProjectManagementSystem::Application.routes.draw do
   resources :relationships, :only => [:create, :destroy]
 
   namespace :admin do
-    resources :users, :roles
+    resources :users, :roles, :intakes
     get "home/index"
   end
 

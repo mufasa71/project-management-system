@@ -3,6 +3,10 @@ module ApplicationHelper
     "active" if params[:action] == page_name
   end
 
+  def is_active_controller?(controller_name)
+    params[:controller] == controller_name ? "active" : ""
+  end
+
   def present(object, klass = nil)
     klass ||= "#{object.class}Presenter".constantize
     presenter = klass.new(object, self)

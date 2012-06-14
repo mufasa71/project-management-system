@@ -13,6 +13,7 @@
     %link{:href => "images/apple-touch-icon.png", :rel => "apple-touch-icon"}/
     %link{:href => "images/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
     %link{:href => "images/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+    = yield :head
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -21,29 +22,65 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-            %a.brand{:href => "#{root_path}"} Project Management System
+            %a.brand{:href => root_path}
+              %img{:src => "/assets/logo.jpg"}
+            %a.brand{:href => root_path} PMS for APIIT Students
           .container.nav-collapse
             %ul.nav
-              -if user_signed_in?
-                %li.account-email= link_to current_user.email, edit_user_registration_path 
-                %li= link_to "Admin page", admin_home_index_path if current_user.admin?
-                %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+              %li= link_to "Projects", projects_path
+              %li= link_to "Users", users_path
+              %form.navbar-search.pull-right
+                %input{ :type => "text", :class => "search-query", :placeholder => "Search project here" }
+            %ul.nav.pull-right
+              %li.divider-vertical
+              %li.dropdown
+                %a.dropdown-toggle{ "data-toggle" => "dropdown", :href => "#" }
+                  Account
+                  %b.caret
+                %ul.dropdown-menu
+                  -if user_signed_in?
+                    %li.account-email
+                      = link_to edit_user_registration_path do
+                        %i{ :class => "icon-user" }
+                        My account
+                    %li
+                      = link_to messages_path do
+                        %i{ :class => "icon-comment" }
+                        Messages
+                        -if current_user.receipts.inbox.unread.any?
+                          %span{ :class => "badge badge-info" } #{current_user.receipts.inbox.unread.size}
+                    %li= link_to "Admin page", admin_home_index_path if current_user.admin? 
+                    %li.divider
+                    %li
+                      = link_to destroy_user_session_path, :method => :delete do
+                        %i{ :class => "icon-off" }
+                        Sign out
+                  -else
+                    %li= link_to "Sign in", new_user_session_path
+                    %li.divider
+                    %li= link_to "Sign up", new_user_registration_path
           / /.nav-collapse
     .container
       .content
         .row
           .span12
-            =render :partial => 'common/flash', :object => flash
+            #flash
+              =render :partial => 'common/flash', :object => flash
+        .row
+          .span3
+            = render "admin/partial/navigation"
+          .span9
             = yield
-            / /.well
           / /span
         / /row
       / /content
       %footer
-        %p &copy; Company 2012
+        %p &copy; Project Management System for APIIT 2012
     / /container
     /
       Javascripts
       \==================================================
     / Placed at the end of the document so the pages load faster
     = javascript_include_tag "application"
+    = yield :javascript
+

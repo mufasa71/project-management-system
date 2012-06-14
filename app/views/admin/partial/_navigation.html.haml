@@ -1,0 +1,7 @@
+%ul.nav.nav-list
+  %li.nav-header
+    Navigation
+  %li{:class => is_active_controller?("admin/roles")}= link_to "Roles", admin_roles_path
+  %li{:class => is_active_controller?("admin/users")}= link_to "Users", admin_users_path
+  %li{:class => is_active_controller?("admin/intakes")}= link_to "Intakes", admin_intakes_path
+
