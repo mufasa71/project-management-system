@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   def create
     respond_to do |format|
       if @task.save
-        format.html { redirect_to [@project, @task], notice: 'Task was successfully created.' }
+        format.html { redirect_to project_phase_activity_tasks(@project, @phase, @activity, @task), notice: 'Task was successfully created.' }
       else
         format.html { render action: "new" }
       end

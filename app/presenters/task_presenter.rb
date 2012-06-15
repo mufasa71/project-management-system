@@ -52,14 +52,6 @@ class TaskPresenter < BasePresenter
     task.updated_at.strftime("%m/%d/%Y")
   end
 
-  def id
-    link_to(task.id, project_task_path(:project_id => @project, :id => task))
-  end
-
-  def subject
-    link_to(task.subject, project_task_path(:project_id => @project, :id => task))
-  end
-
   def description
     handle_none task.description do
       raw task.description

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615143501) do
+ActiveRecord::Schema.define(:version => 20120615173058) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -200,6 +200,11 @@ ActiveRecord::Schema.define(:version => 20120615143501) do
     t.string   "file"
     t.string   "subject"
     t.text     "description"
+  end
+
+  create_table "tasks_members", :force => true do |t|
+    t.integer "task_id"
+    t.integer "member_id"
   end
 
   create_table "time_entries", :force => true do |t|

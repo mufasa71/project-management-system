@@ -2,8 +2,8 @@ class Task < ActiveRecord::Base
   belongs_to :activity
   belongs_to :status, :class_name => 'TaskStatus', :foreign_key => 'status_id'
   belongs_to :priority, :class_name => 'TaskPriority', :foreign_key => 'priority_id'
-  belongs_to :assigned_to, :class_name => 'Member', :foreign_key => 'assigned_to_id'
   has_many :attachments, :as => :attachable
+  has_and_belongs_to_many :members
   has_one :event, :as => :eventable, :dependent => :destroy
   validates_presence_of :subject, :status, :priority
 
