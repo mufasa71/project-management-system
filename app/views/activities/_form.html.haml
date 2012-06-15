@@ -1,0 +1,5 @@
+.form-inputs
+  = f.input :title
+  = f.simple_fields_for :event, @activity.event ? @activity.event : @activity.build_event do |event|
+    = event.input :start_at, :as => :date_picker, :required => true
+    = event.input :end_at, :as => :date_picker, :required => true

@@ -1,13 +1,9 @@
 =render 'common/project_tabs'
-#row
+.row
   .span12
     #project
-      %h3= @project.name
       .span5
-        %h4 Issue tracking
-        %ul
-          - @project.issues.each do |issue|
-            %li= link_to issue.subject, project_issue_path(:project_id => @project, :id => issue)
+        %h4 Tasks tracking
       .span5
         %h4 Members
         %ul
@@ -15,13 +11,6 @@
             %li
               %em= member.roles.first
               = link_to member, project_member_path(:project_id => @project, :id => member)
-      .span5
-        %h4 Latest news
-        - if @project.news.any?
-          = link_to @project.news.last.title, project_news_path(:project_id => @project, :id => @project.news.last) if @project.news.present?
-          = timeago_tag @project.news.last.created_at, :nojs => true, :limit => 10.days.ago 
-          %br
-          = link_to "View all", project_news_index_path(@project)
-#row
+.row
   .span12
     =simple_format(@project.description)

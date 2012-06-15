@@ -1,6 +1,6 @@
-%h3 Choose module
-%ul
+%h3 Select Module
+%ul.unstyled
   - @intake.subjects.each do |subject|
     %li
-      = subject
+      = link_to subject, subject_path(subject)
 

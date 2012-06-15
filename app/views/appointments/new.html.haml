@@ -1,4 +1,0 @@
-= simple_form_for([@project, @appointment], :html => {:class => "form-vertical"}) do |f|
-  = render :partial => "form", :locals => { :f => f }
-  = link_to "Back", project_appointment_path(@project)
-  = f.button :submit, "Save", :class => "btn btn-success"

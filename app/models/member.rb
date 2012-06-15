@@ -7,6 +7,7 @@ class Member < ActiveRecord::Base
   has_many :roles, :through => :member_roles
   has_many :appointmenizations
   has_many :appointments, :through => :appointmenizations
+  has_and_belongs_to_many :phases
 
   validates_presence_of :project
   validates_uniqueness_of :user_id, :scope => :project_id

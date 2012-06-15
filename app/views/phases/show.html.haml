@@ -1,0 +1,10 @@
+=render 'common/project_tabs'
+.row
+  %h3
+    Phase:
+    = @phase.title
+  %h4 Activities:
+
+  %ul.unstyled
+    - @phase.activities.each do |activity|
+      %li= activity.title

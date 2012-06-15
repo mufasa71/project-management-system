@@ -1,0 +1,6 @@
+=render 'common/project_tabs'
+.row
+  = link_to " Back to activity list", project_phase_activities_path(:phase_id => @phase), :class => "icon-arrow-left"
+  %h3
+    Activity:
+    = @activity.title

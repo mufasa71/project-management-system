@@ -11,17 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120614151417) do
+ActiveRecord::Schema.define(:version => 20120615113018) do
 
   create_table "activities", :force => true do |t|
-    t.integer  "trackable_id"
-    t.string   "trackable_type"
-    t.integer  "owner_id"
-    t.string   "owner_type"
-    t.string   "key"
-    t.text     "parameters"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "title"
+    t.integer  "phase_id"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "appointmenizations", :force => true do |t|
@@ -162,6 +159,11 @@ ActiveRecord::Schema.define(:version => 20120614151417) do
     t.integer  "project_id"
   end
 
+  create_table "members_phases", :force => true do |t|
+    t.integer "phase_id"
+    t.integer "member_id"
+  end
+
   create_table "milestones", :force => true do |t|
     t.string   "description"
     t.integer  "issue_id"
@@ -198,6 +200,13 @@ ActiveRecord::Schema.define(:version => 20120614151417) do
   end
 
   add_index "notifications", ["conversation_id"], :name => "index_notifications_on_conversation_id"
+
+  create_table "phases", :force => true do |t|
+    t.string   "title"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.string   "name"

@@ -37,13 +37,13 @@ Feature: Issues management
     When I follow "Update"
     And I fill in "Subject" with "New subject"
     And I press "Update"
-    Then I should see "Successful updated."
+    Then I should see "Issue was successfully updated."
     And I should be on the project issue page
 
   Scenario: Delete issue
     Given I go to the project the issue page
     When I follow "Delete"
-    Then I should see "Successful deleted."
+    Then I should see "Issue was successfully deleted."
     And I should be on the project page
 
   Scenario: Selecting assignee for issue
@@ -63,12 +63,3 @@ Feature: Issues management
     And I press "Add"
     Then I should see "Category was successfully created."
     And a issue category should exist with project: the project
-
-  Scenario: View issue history
-    Given I go to the project the issue page
-    When I follow "Update"
-    And I fill in "Subject" with "New subject"
-    And I press "Update"
-    Then I should see "Updated by" within "#history"
-    And I should be on the project issue page
-

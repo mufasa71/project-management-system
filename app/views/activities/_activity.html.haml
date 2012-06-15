@@ -1,0 +1,5 @@
+%tr
+  %td
+    %i{:class=>"icon-ok-sign"}
+  %td
+    = link_to activity.title, project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity)

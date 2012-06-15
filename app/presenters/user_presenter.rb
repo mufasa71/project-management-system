@@ -14,7 +14,7 @@ class UserPresenter < BasePresenter
 
   def messageble?
     unless current_user == user
-       link_to "Send message", send_message_user_path(user), :class => "icon-envelope", :remote => true, :method => :get
+       link_to " Send message", send_message_user_path(user), :class => "icon-envelope", :remote => true, :method => :get
     end
   end
 

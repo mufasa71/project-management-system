@@ -33,12 +33,6 @@ Feature: Projects stories
     And I follow "skip this step"
     Then I should see "Project was successfully created!"
     
-  Scenario: Selecting project
-    Given a project exist with name: "Project 1"
-    And I go to the projects page
-    When I follow "Project 1" within "#project_list"
-    Then I should see "Project 1" within "#project"
-
   Scenario: Editing project
     Given a project exist
     And I go to the project edit page

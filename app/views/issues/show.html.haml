@@ -31,8 +31,3 @@
           .span10
             %dt Description:
             %dd= issue_presenter.description
--if @activities.present?
-  .row
-    .span10.well#history
-      %h3 History
-      =render :partial => "common/activities_issue", :locals => {:activities => @activities }

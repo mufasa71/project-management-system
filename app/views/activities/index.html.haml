@@ -1,14 +1,25 @@
 =render 'common/project_tabs'
 .row
-  .span12#activities
-    .line
-      %h3 Activity
-    .line
-      %h4= icon_to("Issues", "notes", project_issues_path(@project))
-      - @issues.each do |issue|
-        =render :partial => "common/activities", :locals => { :activities => issue.activities } if issue.activities
-    .line
-      %h4= icon_to("News", "rss", project_news_index_path(@project))
-      - @news.each do |news|
-        =render :partial => "common/activities", :locals => { :activities => news.activities } if news.activities
-      
+  %h3 
+    Phase:
+    = @phase.title
+  %h3
+    List of Activities
+  #activities
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+            Title
+          %th
+            Members
+          %th
+      %tbody
+        - @activities.each do |activity|
+          %tr
+            %td
+              = link_to activity.title, project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity)
+            %td
+            %td
+              = link_to "Edit", edit_project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity), :class => "btn btn-mini btn-info"
+              = link_to "Delete", project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity), :class => "btn btn-mini btn-danger", :method => :delete

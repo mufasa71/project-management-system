@@ -13,16 +13,15 @@ class Ability
       can :manage, Project
       can :manage, Issue
       can :manage, IssueCategory
-      can :manage, News
-      can :manage, Comment
       can :manage, TimeEntry
       can :manage, Attachment
       can :manage, Group
       can :manage, Member
       can :manage, Role
       can :manage, Milestone
-      can :manage, Appointment
       can :manage, Document
+      can :manage, Phase
+      can :manage, Activity
     end
   end
 end

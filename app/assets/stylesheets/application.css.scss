@@ -3,14 +3,13 @@
 @import "bootstrap_and_overrides";
 @import "users";
 @import "issues";
-@import "news";
-@import "comments";
 @import "ui.achtung"; 
-@import "appointments";
 @import "datepicker";
 @import "event_calendar";
 @import "messages";
 @import "jquery_ui";
+@import "phases";
+@import "activities";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);

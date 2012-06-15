@@ -1,0 +1,36 @@
+=render 'common/project_tabs'
+.row
+  .span6
+    %h3 Phases
+    #phases
+      %table.table.table-striped
+        %thead
+          %tr
+            %td
+            %td
+            %td
+              Start at
+            %td
+              End at
+            %td
+              Days left
+            %td
+        %tbody
+        - @phases.each do |phase|
+          %tr
+            %td
+              %i{:class => "icon-ok-sign"}
+            %td= link_to phase.title, project_phase_path(:project_id => @project, :id => phase), :remote => true
+            %td= phase.event.start_at.strftime("%d-%m-%Y")
+            %td= phase.event.end_at.strftime("%d-%m-%Y")
+            %td= ((phase.event.end_at - Time.zone.now) / 1.day).to_i
+            %td
+              = link_to " Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => phase), :class => "btn btn-mini btn-success icon-plus-sign", :remote => true
+              = link_to "Show", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-info"
+              = link_to "Edit", edit_project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-warning"
+              = link_to "Delete", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-danger", :method => :delete
+  .span5
+    %h3 Activities
+    %table.table.table-striped#activities
+.row
+  = link_to " New Phase", new_project_phase_path, :class => "btn btn-success icon-plus-sign"

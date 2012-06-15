@@ -1,0 +1,11 @@
+= simple_form_for [@project, @phase], :html => { :class => "form-horizontal" } do |f|
+  .form-inputs
+    = f.input :title
+    = f.simple_fields_for :event, @phase.event ? @phase.event : @phase.build_event do |event|
+      = event.input :start_at, :as => :date_picker, :required => true, :html => { :value => (@phase.event.start_at.present? ? @phase.event.start_at.strftime("%Y-%m-%d") : '')}
+      = event.input :end_at, :as => :date_picker, :required => true, :html => { :value => (@phase.event.start_at.present? ? @phase.event.start_at.strftime("%y-%m-%d") : '') }
+    = f.association :members, :collection => @project.members
+  .form-actions
+    = f.button :submit, :class => "btn btn-success"
+    or
+    = link_to "Back", project_phases_path

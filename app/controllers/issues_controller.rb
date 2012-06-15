@@ -9,7 +9,6 @@ class IssuesController < ApplicationController
   end
 
   def show
-    @activities = @issue.activities.sort_by{|value| -value.created_at.to_i}.take(5)
     respond_with @issue
   end
 
@@ -23,8 +22,6 @@ class IssuesController < ApplicationController
   end
 
   def create
-    @issue.activity_params = { :issue_subject => @issue.subject }
-    @issue.event.name = @issue.subject
     respond_to do |format|
       if @issue.save
         format.html { redirect_to [@project, @issue], notice: 'Issue was successfully created.' }
@@ -35,18 +32,9 @@ class IssuesController < ApplicationController
   end
 
   def update
-    @issue.attributes = params[:issue]
-    if @issue.changed?
-      tmp_params = {}
-      @issue.changed.each do |field|
-        tmp_params.merge! eval(":issue_#{field}") => eval("@issue.#{field}")
-      end
-      @issue.activity_params = tmp_params
-    end
-
     respond_to do |format|
-      if @issue.save
-        format.html { redirect_to [@project, @issue], notice: 'Successful updated.' }
+      if @issue.update_attributes(params[:project])
+        format.html { redirect_to [@project, @issue], notice: 'Issue was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -56,7 +44,7 @@ class IssuesController < ApplicationController
   def destroy
     @issue.destroy
     respond_to do |format|
-      format.html { redirect_to @project, notice: 'Successful deleted.' }
+      format.html { redirect_to @project, notice: 'Issue was successfully deleted.' }
     end
   end
 end

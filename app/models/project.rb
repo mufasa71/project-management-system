@@ -8,14 +8,11 @@ class Project < ActiveRecord::Base
 
   has_many :groups, :dependent => :destroy
   has_many :members, :include => [:user, :roles], :dependent => :destroy
-  has_many :issues, :dependent => :destroy
-  has_many :issue_categories, :dependent => :destroy, :order => "#{IssueCategory.table_name}.name"
-  has_many :news, :dependent => :destroy, :order => 'created_at DESC'
   has_many :attachments, :dependent => :destroy, :as => :attachable
   has_many :roles, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
-  has_many :appointments, :dependent => :destroy
   has_many :documents, :dependent => :destroy
+  has_many :phases, :dependent => :destroy
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups
