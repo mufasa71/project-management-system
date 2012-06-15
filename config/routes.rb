@@ -14,30 +14,23 @@ ProjectManagementSystem::Application.routes.draw do
   match 'projects/:project_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}, :as => :calendar
   resources :projects do
     resources :phases do
-      resources :activities
+      resources :activities do
+        resources :tasks
+      end
     end
     resources :documents
     resources :gantts, :only => [:show]
     resources :milestones
-    resources :appointments
     resources :project_steps
     resources :attachments
     resources :roles
-    resources :news do
-      resources :comments
-    end
     resources :members
     resources :groups 
-    resources :issue_categories
-    resources :issues do
-      resources :time_entries, :only => [:new, :create]
-    end
     member do
       get :settings
       get :statistics
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
-      get "settings/issue_categories" => 'settings#issue_categories'
       get "settings/activities" => 'settings#activities'
       get "settings/roles" => 'settings#roles'
       get "activities" => 'activities#index'
@@ -48,7 +41,7 @@ ProjectManagementSystem::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
 
-  resources :users, :only => [:show, :details, :edit, :update, :index] do
+  resources :users do
     member do
       get :following, :followers
       get :details
@@ -56,8 +49,6 @@ ProjectManagementSystem::Application.routes.draw do
       post :send_message
     end
   end
-
-  resources :relationships, :only => [:create, :destroy]
 
   namespace :admin do
     resources :users, :roles, :intakes, :subjects

@@ -5,9 +5,7 @@
       =@project.name
     %ul.nav.nav-tabs
       %li{:class => params[:controller] == "projects" && is_active?("show")} #{ link_to(@project) { content_tag(:i, "", :class => "icon-home") << "Overview" }}
-      %li{:class => params[:controller] == "phases" ? "active" : ""} #{ link_to(project_phases_path(@project)) { content_tag(:i, "", :class => "icon-tag") << "Phases" }}
-      %li{:class => params[:controller] == "issues" && params[:action] != "new" ? "active" : "" } #{ link_to(project_issues_path(@project)) { content_tag(:i, "", :class => "icon-check") << "Issues" }}
-      %li{:class => params[:controller] == "issues" && params[:action] == "new" ? "active" : ""} #{ link_to(new_project_issue_path(@project)) { content_tag(:i, "", :class => "icon-plus-sign") << "New issue" }}
+      %li{:class => params[:controller] == "phases" ? "active" : ""} #{ link_to(project_phases_path(@project)) { content_tag(:i, "", :class => "icon-tag") << "Structure" }}
       %li{:class => params[:controller] == "attachments" ? "active" : "" } #{ link_to(project_attachments_path(@project)) { content_tag(:i, "", :class => "icon-file") << "Files" }}
       %li{:class => params[:controller] == "documents" ? "active" : "" } #{ link_to(project_documents_path(@project)) { content_tag(:i, "", :class => "icon-book") << "Documents" }}
       %li{:class => params[:controller] == "settings" ? "active" : "" } #{ link_to(settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-cog") << "Settings" }}

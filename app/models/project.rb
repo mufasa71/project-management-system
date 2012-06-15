@@ -13,6 +13,8 @@ class Project < ActiveRecord::Base
   has_many :milestones, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_many :phases, :dependent => :destroy
+  has_many :activities, :through => :phases
+  has_many :tasks, :through => :activities
 
   accepts_nested_attributes_for :attachments
   accepts_nested_attributes_for :groups

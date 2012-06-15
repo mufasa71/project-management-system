@@ -1,16 +1,16 @@
-require 'spec_helper'
-
-describe TimeEntryActivity do
-  pending "add some examples to (or delete) #{__FILE__}"
+class TaskPriority < ActiveRecord::Base
+  validates_presence_of :name
+  def to_s
+    name
+  end
 end
 # == Schema Information
 #
-# Table name: time_entry_activities
+# Table name: issue_priorities
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#  active     :boolean
 #
 

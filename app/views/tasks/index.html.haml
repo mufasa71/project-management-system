@@ -1,0 +1,18 @@
+=render 'common/project_tabs'
+.row
+  .span11#issues
+    %table.table.table-striped
+      %thead
+        %tr
+          %th #
+          %th Subject
+          %th Status
+          %th Priority
+      %tbody
+        - @tasks.each do |task|
+          - present task do |task_presenter|
+            %tr
+              %td= task_presenter.id
+              %td= task_presenter.subject
+              %td= task_presenter.status
+              %td= task_presenter.priority

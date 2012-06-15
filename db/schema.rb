@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615113018) do
+ActiveRecord::Schema.define(:version => 20120615143501) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -19,20 +19,6 @@ ActiveRecord::Schema.define(:version => 20120615113018) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-  end
-
-  create_table "appointmenizations", :force => true do |t|
-    t.integer  "appointment_id"
-    t.integer  "member_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
-  create_table "appointments", :force => true do |t|
-    t.string   "location"
-    t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "attachments", :force => true do |t|
@@ -46,20 +32,6 @@ ActiveRecord::Schema.define(:version => 20120615113018) do
   end
 
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
-
-  create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
-    t.text     "comment"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "user_id"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-  end
-
-  add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "conversations", :force => true do |t|
     t.string   "subject",    :default => ""
@@ -105,45 +77,6 @@ ActiveRecord::Schema.define(:version => 20120615113018) do
     t.integer "subject_id"
   end
 
-  create_table "issue_categories", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-    t.integer  "project_id"
-    t.integer  "assigned_to_id"
-  end
-
-  create_table "issue_priorities", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "issue_statuses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "issues", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "tracker_id"
-    t.integer  "status_id"
-    t.integer  "author_id"
-    t.integer  "assigned_to_id"
-    t.integer  "fixed_version_id"
-    t.integer  "priority_id"
-    t.integer  "category_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.date     "due_date"
-    t.integer  "estimated_time"
-    t.integer  "done"
-    t.string   "file"
-    t.string   "subject"
-    t.text     "description"
-  end
-
   create_table "member_roles", :force => true do |t|
     t.integer  "member_id"
     t.integer  "role_id"
@@ -170,17 +103,6 @@ ActiveRecord::Schema.define(:version => 20120615113018) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "project_id"
-  end
-
-  create_table "news", :force => true do |t|
-    t.string   "title"
-    t.text     "summary"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "project_id"
-    t.integer  "author_id"
-    t.string   "attachment"
   end
 
   create_table "notifications", :force => true do |t|
@@ -255,6 +177,29 @@ ActiveRecord::Schema.define(:version => 20120615113018) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "task_priorities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "task_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "status_id"
+    t.integer  "priority_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "file"
+    t.string   "subject"
+    t.text     "description"
   end
 
   create_table "time_entries", :force => true do |t|

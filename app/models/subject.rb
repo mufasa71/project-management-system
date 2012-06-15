@@ -8,3 +8,13 @@ class Subject < ActiveRecord::Base
     title
   end
 end
+# == Schema Information
+#
+# Table name: subjects
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#
+

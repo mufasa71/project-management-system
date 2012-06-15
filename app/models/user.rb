@@ -1,18 +1,10 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  acts_as_messageable
-
-  # Setup accessible (or protected) attributes for your model
-  has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
-  has_many :followed_users, :through => :relationships, :source => :followed
-  has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
-  has_many :followers, :through => :reverse_relationships, :source => :follower
-  has_many :members, :foreign_key => "user_id"
-  has_many :projects, :through => :members
   belongs_to :intake
   cattr_accessor :current_user
   
@@ -23,22 +15,6 @@ class User < ActiveRecord::Base
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
-  end
-
-  def following?(other_user)
-    relationships.find_by_followed_id(other_user.id)
-  end
-
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
-  end
-
-  def unfollow!(other_user)
-    relationships.find_by_followed_id(other_user.id).destroy
-  end
-
-  def user_name
-    name
   end
 
   def to_s
