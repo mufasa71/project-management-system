@@ -23,3 +23,8 @@
       = f.input :description, :input_html => { :class => 'ckeditor' }
   .row
     =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      $(".datepicker").datepicker({ format: 'yyyy-mm-dd', minDate: new Date(#{@phase.event.start_at.strftime("%Y, %m-1, %d")})});
+    });
