@@ -1,7 +1,20 @@
 =render 'common/project_tabs'
 .row
   .span12
-    .span7
-      %h3 Activities:
-      #activities
-        =render 'activities/activities', :object => @activities
+    - present @phase do |phase_presenter|
+      %dl.dl-horizontal
+        .span3
+          %dt Title:
+          %dd= phase_presenter.title
+          %dt Start at:
+          %dd= phase_presenter.start_at
+          %dt End at:
+          %dd= phase_presenter.end_at
+        .span4
+          %dt Days left:
+          %dd= phase_presenter.days_left
+.row
+  .span7
+    %h3 Activities:
+    #activities
+      = render 'activities/activities', :object => @activities

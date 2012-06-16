@@ -12,6 +12,7 @@ class ActivitiesController < ApplicationController
   end
 
   def new
+    respond_with @activity
   end
 
   def edit

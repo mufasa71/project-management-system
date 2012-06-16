@@ -1,6 +1,18 @@
-= f.input :name
-= f.input :description, :input_html => { :class => 'ckeditor'}
-= f.input :due_date, :as => :date_picker, :placeholder => "Select date"
-= f.input :identifier
+.row
+  .span3
+    = f.input :name
+    = f.input :identifier
+  .span3
+    = f.simple_fields_for :event, @project.event ? @project.event : @project.build_event do |event|
+      = event.input :start_at, :as => :date_picker, :required => true
+      = event.input :end_at, :as => :date_picker, :required => true
 = f.input :homepage, :hint => "Length between 1 and 100 characters. Only lower case letters (a-z), numbers, dashes and underscores are allowed"
 = f.input :is_public, :label => "Public"
+= f.input :description, :input_html => { :class => 'ckeditor'}
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      $(".datepicker ").datepicker({ 
+        dateFormat: 'yy-mm-dd' 
+      });
+    });

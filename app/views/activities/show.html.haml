@@ -1,22 +1,23 @@
 =render 'common/project_tabs'
 .row
   .span12
-    %table.table
-      %thead
-        %tr
-          %th Name
-          %th Start at
-          %th End at
-          %th Days left
-          %th Status
-          %th
-      %tbody
-        %tr
-          - present @activity do |activity_presenter|
-            %td= activity_presenter.title
-            %td= activity_presenter.start_at
-            %td= activity_presenter.end_at
-            %td= activity_presenter.days_left
-            %td= activity_presenter.status
-            %td
-              = link_to "Edit", "", :class => "btn btn-mini btn-warning"
+    - present @activity do |activity_presenter|
+      %dl.dl-horizontal
+        %dt Name:
+        %dd= activity_presenter.title
+        %dt Start at:
+        %dd= activity_presenter.start_at
+        %dt End at:
+        %dd= activity_presenter.end_at
+        %dt Days left:
+        %dd= activity_presenter.days_left
+        %dt Status:
+        %dd= activity_presenter.status
+        %dt Members:
+        %dd
+          %ul
+            - @activity.members.each do |member|
+              %li
+                = member
+
+        = link_to "Edit", "", :class => "btn btn-mini btn-warning"

@@ -4,27 +4,33 @@
     .span4
       = f.input :title
       = f.simple_fields_for :event, @activity.event ? @activity.event : @activity.build_event do |event|
-        = event.input :start_at, :as => :date_picker, :required => true
+        = event.input :start_at, :as => :date_picker, :required => true, :input_html => { :value => "22" }
         = event.input :end_at, :as => :date_picker, :required => true
     .span4
       = f.association :members, :collection => @project.members
       = f.association :status, :prompt => "Select status"
   .row
-    = f.simple_fields_for :attachments do |a|
-      .row
-        .span4
-          =a.input :file, :as => :file
-        .span4
-          =a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
-        .span2
-          =a.link_to_remove " Remove",  :class => "icon-trash"
+    .span12
+      = f.simple_fields_for :attachments do |a|
+        .row
+          .span4
+            = a.input :file, :as => :file
+          .span4
+            = a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
+          .span2
+            = a.link_to_remove " Remove",  :class => "icon-trash"
   .row
     .span9
       = f.input :description, :input_html => { :class => 'ckeditor' }
   .row
-    =f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
+    .span12
+      = f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
 - content_for :javascript do
   :javascript
     $(document).ready(function(){
-      $(".datepicker").datepicker({ format: 'yyyy-mm-dd', minDate: new Date(#{@phase.event.start_at.strftime("%Y, %m-1, %d")})});
+      $(".datepicker ").datepicker({ 
+        dateFormat: 'yy-mm-dd', 
+        minDate: new Date(#{@phase.event.start_at.strftime("%Y, %m-1, %d")}),
+        maxDate: new Date(#{@phase.event.end_at.strftime("%Y, %m-1, %d")}),
+      });
     });

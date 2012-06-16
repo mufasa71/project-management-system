@@ -25,9 +25,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         if user_signed_in?
-          r = @project.roles.create(:name => "Project Leader")
           m = @project.members.create(:user => current_user)
-          m.roles << [r]
         end
         format.html { redirect_to project_project_steps_path(@project) }
       else
@@ -39,7 +37,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to settings_information_project_path(@project), notice: 'Successful update.' }
+        format.html { redirect_to settings_information_project_path(@project), notice: 'Project was successfully updated.' }
       else
         format.html { render action: "edit" }
       end
@@ -56,10 +54,6 @@ class ProjectsController < ApplicationController
   end
 
   def settings
-    @project = Project.find(params[:id])
-  end
-
-  def statistics
     @project = Project.find(params[:id])
   end
 end

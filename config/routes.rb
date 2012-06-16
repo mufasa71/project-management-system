@@ -21,18 +21,11 @@ ProjectManagementSystem::Application.routes.draw do
     resources :milestones
     resources :project_steps
     resources :attachments
-    resources :roles
     resources :members
-    resources :groups 
     member do
       get :settings
-      get :statistics
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
-      get "settings/activities" => 'settings#activities'
-      get "settings/roles" => 'settings#roles'
-      get "activities" => 'activities#index'
-      get "settings/groups" => 'settings#groups'
       get "settings/milestones" => 'settings#milestones'
     end
   end
@@ -41,7 +34,6 @@ ProjectManagementSystem::Application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
       get :details
       get :send_message
       post :send_message
@@ -49,7 +41,7 @@ ProjectManagementSystem::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, :roles, :intakes, :subjects
+    resources :users, :intakes, :subjects
     get "home/index"
   end
 

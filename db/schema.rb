@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616090934) do
+ActiveRecord::Schema.define(:version => 20120616172009) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -64,8 +64,8 @@ ActiveRecord::Schema.define(:version => 20120616090934) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
+    t.date     "start_at"
+    t.date     "end_at"
     t.boolean  "all_day",        :default => false
     t.integer  "eventable_id"
     t.string   "eventable_type"
@@ -89,11 +89,6 @@ ActiveRecord::Schema.define(:version => 20120616090934) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "project_id"
-  end
-
-  create_table "members_phases", :force => true do |t|
-    t.integer "phase_id"
-    t.integer "member_id"
   end
 
   create_table "milestones", :force => true do |t|

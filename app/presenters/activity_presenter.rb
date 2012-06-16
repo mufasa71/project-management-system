@@ -7,7 +7,7 @@ class ActivityPresenter < BasePresenter
   end
 
   def days_left
-    days = ((activity.event.end_at - Time.zone.now) / 1.day).to_i
+    days = (activity.event.end_at - Date.today).to_i
     pluralized = pluralize(days, "day")
     if days >= 3 && days <= 10
       content_tag(:span, pluralized, :class => "label label-warning")
@@ -19,11 +19,11 @@ class ActivityPresenter < BasePresenter
   end
   
   def start_at
-    activity.event.start_at.strftime("%Y-%m-%d")
+    activity.event.start_at
   end
 
   def end_at
-    activity.event.end_at.strftime("%Y-%m-%d")
+    activity.event.end_at
   end
 
   def description

@@ -1,1 +1,8 @@
-= render 'form'
+=render 'common/project_tabs'
+.row
+  .span12
+    %h3 New Activity
+    = nested_form_for([@project, @phase, @activity], :html => {:class => "form-vertical"}, :remote => true) do |f|
+      = render :partial => "form", :locals => { :f => f }
+      .form-actions
+        = f.button :submit, :class => "btn btn-success"

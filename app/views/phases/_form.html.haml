@@ -2,10 +2,16 @@
   .form-inputs
     = f.input :title
     = f.simple_fields_for :event, @phase.event ? @phase.event : @phase.build_event do |event|
-      = event.input :start_at, :as => :date_picker, :required => true, :html => { :value => (@phase.event.start_at.present? ? @phase.event.start_at.strftime("%Y-%m-%d") : '')}
-      = event.input :end_at, :as => :date_picker, :required => true, :html => { :value => (@phase.event.start_at.present? ? @phase.event.start_at.strftime("%y-%m-%d") : '') }
-    = f.association :members, :collection => @project.members
+      = event.input :start_at, :as => :date_picker, :required => true
+      = event.input :end_at, :as => :date_picker, :required => true
   .form-actions
     = f.button :submit, :class => "btn btn-success"
-    or
-    = link_to "Back", project_phases_path
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      $(".datepicker ").datepicker({ 
+        dateFormat: 'yy-mm-dd', 
+        minDate: new Date(#{@project.event.start_at.strftime("%Y, %m-1, %d")}),
+        maxDate: new Date(#{@project.event.end_at.strftime("%Y, %m-1, %d")}),
+      });
+    });

@@ -1,7 +1,8 @@
 =render 'common/project_tabs'
-#row
-  .span3
-    =render 'common/settings_nav'
-  .span8
-    #settings
-      =render :partial => 'projects/edit', :object => @project
+.row
+  .span12 
+    .span3
+      =render 'common/settings_nav'
+    .span8
+      #settings
+        =render :template => 'projects/edit', :object => @project

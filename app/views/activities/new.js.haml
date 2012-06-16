@@ -5,7 +5,7 @@
       %h3 Add Activity
     .modal-body
       %p
-        = simple_form_for([@project, @phase, @activity], :html => {:class => "form-vertical"}, :remote => true) do |f|
+        = nested_form_for([@project, @phase, @activity], :html => {:class => "form-vertical"}, :remote => true) do |f|
           = render :partial => "form", :locals => { :f => f }
           .modal-footer
             %a.btn{:href => "#", "data-dismiss" => "modal"} Close

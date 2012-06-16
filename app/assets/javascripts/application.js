@@ -10,5 +10,3 @@
 //= require jquery.ui.datepicker
 //= require etherpad
 //= require_tree .
-
-$(".datepicker").datepicker({ format: 'yyyy-mm-dd' });
