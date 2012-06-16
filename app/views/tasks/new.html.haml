@@ -1,7 +1,0 @@
-=render 'common/project_tabs'
-.row
-  .span12
-    = nested_form_for([@project, @phase, @activity, @task], :html => { :class => "form-horizontal", :multipart => true }) do |f|
-      = render :partial => 'form', :locals => { :f => f }
-      .form-actions
-        = f.button :submit, :class => "btn-success"

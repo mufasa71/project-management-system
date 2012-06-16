@@ -9,8 +9,7 @@
         %ul
           - @project.members.each do |member|
             %li
-              %em= member.roles.first
-              = link_to member, project_member_path(:project_id => @project, :id => member)
+              = link_to member, user_path(:id => member.user_id)
 .row
   .span12
     =simple_format(@project.description)

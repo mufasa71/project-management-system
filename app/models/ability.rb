@@ -10,11 +10,8 @@ class Ability
       can [:show, :following, :followers, :index, :send_message], User
       can [:edit, :details, :update], User, :user_id == user.id
       can :manage, Project
-      can :manage, Task
       can :manage, Attachment
-      can :manage, Group
       can :manage, Member
-      can :manage, Role
       can :manage, Milestone
       can :manage, Document
       can :manage, Phase

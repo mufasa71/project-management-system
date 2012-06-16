@@ -1,32 +1,19 @@
 class Project < ActiveRecord::Base
-  validates_presence_of :name, :identifier, :due_date
+  validates_presence_of :name, :identifier
   validates_uniqueness_of :identifier
   validates_length_of :name, :maximum => 255
   validates_length_of :homepage, :maximum => 255
   validates_length_of :identifier, :maximum => 255
   validates_exclusion_of :identifier, :in => %w(new)
 
-  has_many :groups, :dependent => :destroy
-  has_many :members, :include => [:user, :roles], :dependent => :destroy
+  has_many :members, :include => [:user], :dependent => :destroy
   has_many :attachments, :dependent => :destroy, :as => :attachable
-  has_many :roles, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_many :phases, :dependent => :destroy
   has_many :activities, :through => :phases
-  has_many :tasks, :through => :activities
 
   accepts_nested_attributes_for :attachments
-  accepts_nested_attributes_for :groups
-  accepts_nested_attributes_for :roles
-
-  def total_hours
-    sum = 0
-    issues.each do |issue|
-      sum += issue.time_entries.sum(:hours)
-    end
-    sum
-  end
 
   def to_s
     name

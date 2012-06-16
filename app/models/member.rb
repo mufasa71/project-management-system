@@ -1,13 +1,8 @@
 class Member < ActiveRecord::Base
   belongs_to :user
-  belongs_to :group
   belongs_to :project
-  has_many :issues, :foreign_key => "assigned_to_id"
-  has_many :member_roles, :dependent => :destroy
-  has_many :roles, :through => :member_roles
-  has_many :appointmenizations
-  has_many :appointments, :through => :appointmenizations
   has_and_belongs_to_many :phases
+  has_and_belongs_to_many :activities
 
   validates_presence_of :project
   validates_uniqueness_of :user_id, :scope => :project_id

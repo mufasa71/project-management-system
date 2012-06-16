@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120615173058) do
+ActiveRecord::Schema.define(:version => 20120616090934) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(:version => 20120615173058) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "status_id"
+    t.integer  "priority_id"
+    t.string   "file"
+  end
+
+  create_table "activities_members", :force => true do |t|
+    t.integer "activity_id"
+    t.integer "member_id"
+  end
+
+  create_table "activity_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "attachments", :force => true do |t|
@@ -59,13 +73,6 @@ ActiveRecord::Schema.define(:version => 20120615173058) do
     t.datetime "updated_at",                        :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "project_id"
-  end
-
   create_table "intakes", :force => true do |t|
     t.string   "number"
     t.datetime "created_at", :null => false
@@ -77,16 +84,8 @@ ActiveRecord::Schema.define(:version => 20120615173058) do
     t.integer "subject_id"
   end
 
-  create_table "member_roles", :force => true do |t|
-    t.integer  "member_id"
-    t.integer  "role_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "members", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "group_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "project_id"
@@ -138,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20120615173058) do
     t.datetime "updated_at",                    :null => false
     t.text     "description"
     t.boolean  "is_public",   :default => true
-    t.date     "due_date"
   end
 
   create_table "receipts", :force => true do |t|
@@ -166,64 +164,10 @@ ActiveRecord::Schema.define(:version => 20120615173058) do
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
-  create_table "roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "project_id"
-  end
-
   create_table "subjects", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "task_priorities", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "task_statuses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "tasks", :force => true do |t|
-    t.integer  "activity_id"
-    t.integer  "status_id"
-    t.integer  "priority_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.string   "file"
-    t.string   "subject"
-    t.text     "description"
-  end
-
-  create_table "tasks_members", :force => true do |t|
-    t.integer "task_id"
-    t.integer "member_id"
-  end
-
-  create_table "time_entries", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "activity_id"
-    t.integer  "project_id"
-    t.integer  "hours"
-    t.integer  "spent_on"
-    t.string   "comments"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "issue_id"
-  end
-
-  create_table "time_entry_activities", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.boolean  "active"
   end
 
   create_table "users", :force => true do |t|

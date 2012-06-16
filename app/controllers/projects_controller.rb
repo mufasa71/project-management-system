@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  respond_to :html, :xml, :json
+  respond_to :html
   before_filter :authenticate_user!
   load_and_authorize_resource
 
@@ -13,15 +13,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    respond_with @project
   end
 
   def new
-    respond_with @project
   end
 
   def edit
-    respond_with @project
   end
 
   def create

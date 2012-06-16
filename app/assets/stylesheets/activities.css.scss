@@ -1,3 +1,12 @@
 #activities{
   font-size: 16px;
+  li{
+    padding:10px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    @include box-shadow(0 0 3px 1px hsla(0, 0%, 0%, 0.65));
+  }
 }

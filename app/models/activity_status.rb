@@ -1,12 +1,15 @@
-class TaskPriority < ActiveRecord::Base
+class ActivityStatus < ActiveRecord::Base
   validates_presence_of :name
+  validates_uniqueness_of :name
+  validates_length_of :name, :maximum => 30
+
   def to_s
     name
   end
 end
 # == Schema Information
 #
-# Table name: issue_priorities
+# Table name: activity_statuses
 #
 #  id         :integer         not null, primary key
 #  name       :string(255)

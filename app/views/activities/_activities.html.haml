@@ -1,0 +1,28 @@
+%ul.unstyled
+  - @activities.each do |activity|
+    - present activity do |activity_presenter|
+      %li
+        %table.table
+          %thead
+            %tr
+              %th
+                Name
+              %th
+                Start at
+              %th
+                End at
+              %th
+                Days left
+              %th
+                Status
+              %th
+          %tbody
+            %tr
+              %td= link_to activity_presenter.title, project_phase_activity_path(@project, @phase, activity)
+              %td= activity_presenter.start_at
+              %td= activity_presenter.end_at
+              %td= activity_presenter.days_left
+              %td= activity_presenter.status
+              %td
+                = link_to "Edit", edit_project_phase_activity_path(@project, @phase, activity), :class => "btn btn-mini btn-warning"
+                = link_to "Delete", project_phase_activity_path(@project, @phase, activity), :class => "btn btn-mini btn-danger", :method => :delete

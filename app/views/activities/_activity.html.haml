@@ -1,5 +1,6 @@
-%tr
-  %td
-    %i{:class=>"icon-ok-sign"}
-  %td
-    = link_to activity.title, project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity)
+- present activity do |activity_presenter|
+  %tr
+    %td
+      = link_to activity_presenter.title, project_phase_activity_path(@project, @phase, activity)
+    %td
+      = activity_presenter.days_left

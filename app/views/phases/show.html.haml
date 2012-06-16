@@ -1,10 +1,7 @@
 =render 'common/project_tabs'
 .row
-  %h3
-    Phase:
-    = @phase.title
-  %h4 Activities:
-
-  %ul.unstyled
-    - @phase.activities.each do |activity|
-      %li= activity.title
+  .span12
+    .span7
+      %h3 Activities:
+      #activities
+        =render 'activities/activities', :object => @activities

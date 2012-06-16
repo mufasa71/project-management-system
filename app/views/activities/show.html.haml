@@ -1,29 +1,22 @@
 =render 'common/project_tabs'
 .row
-  = link_to " Back to current phase", project_phase_activities_path(:project_id => @project, :phase_id => @phase), :class => "icon-arrow-left"
-  %h3
-    Phase:
-    = link_to @phase.title, project_phase_path(@project, @phase)
-    >
-    Activity:
-    = link_to @activity.title, project_phase_activity_path(@project, @phase, @activity)
-    >
-    Tasks
-  %table.table.table-striped
-    %thead
-      %tr
-        %th #
-        %th Name
-        %th Status
-        %th Priority
-    %tbody
-      - @activity.tasks.each do |task|
-        - present task do |task_presenter|
-          %tr
-            %td= link_to task.id, project_phase_activity_task_path(:project_id => @project, :phase_id => @phase, :activity_id => @activity, :id => task)
-            /%td= task_presenter.id
-            %td= link_to task.subject, project_phase_activity_task_path(:project_id => @project, :phase_id => @phase, :activity_id => @activity, :id => task)
-            %td= task_presenter.status
-            %td= task_presenter.priority
-
-  = link_to " Add Task", new_project_phase_activity_task_path(:project_id => @project, :phase_id => @phase, :activity_id => @activity), :class => "btn btn-success icon-plus-sign"
+  .span12
+    %table.table
+      %thead
+        %tr
+          %th Name
+          %th Start at
+          %th End at
+          %th Days left
+          %th Status
+          %th
+      %tbody
+        %tr
+          - present @activity do |activity_presenter|
+            %td= activity_presenter.title
+            %td= activity_presenter.start_at
+            %td= activity_presenter.end_at
+            %td= activity_presenter.days_left
+            %td= activity_presenter.status
+            %td
+              = link_to "Edit", "", :class => "btn btn-mini btn-warning"

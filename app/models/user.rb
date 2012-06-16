@@ -13,10 +13,6 @@ class User < ActiveRecord::Base
 
   scope :not_admins, where("admin = ?", false)
 
-  def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
-  end
-
   def to_s
     name
   end

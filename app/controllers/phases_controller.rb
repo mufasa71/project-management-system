@@ -4,12 +4,15 @@ class PhasesController < ApplicationController
   load_and_authorize_resource :phase, :through => :project
 
   respond_to :js, :html
-
   def index
+    add_breadcrumb @project.name, project_path(@project)
+    add_breadcrumb "Phases", project_phases_path(@project)
   end
 
   def show
-    respond_with @phase
+    add_breadcrumb @project.name, project_path(@project)
+    add_breadcrumb @phase.title, project_phase_path(@project, @phase)
+    @activities = @phase.activities
   end
 
   def new
