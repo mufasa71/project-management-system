@@ -12,12 +12,21 @@ class Project < ActiveRecord::Base
   has_many :documents, :dependent => :destroy
   has_many :phases, :dependent => :destroy
   has_many :activities, :through => :phases
+  has_many :milestones, :dependent => :destroy
   has_one :event, :as => :eventable, :dependent => :destroy
   accepts_nested_attributes_for :event
   accepts_nested_attributes_for :attachments
 
   def to_s
     name
+  end
+
+  def complete
+    ((phases_complete.size.to_f / phases.size.to_f) * 100).to_i.to_s << "%"
+  end
+
+  def phases_complete
+    phases.where(:complete => true)
   end
 end
 # == Schema Information
@@ -32,6 +41,5 @@ end
 #  updated_at  :datetime        not null
 #  description :text
 #  is_public   :boolean         default(TRUE)
-#  due_date    :date
 #
 

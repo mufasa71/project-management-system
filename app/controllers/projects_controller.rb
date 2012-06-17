@@ -13,6 +13,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @project.phases.each do |phase|
+      if(phase.activities.size == phase.activities_done.size)
+        phase.complete = true
+      else
+        phase.complete = false
+      end
+      phase.save!
+    end
   end
 
   def new
@@ -22,6 +30,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @project.event.name = @project.name
     respond_to do |format|
       if @project.save
         if user_signed_in?
@@ -35,6 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @project.event.name = @project.name
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to settings_information_project_path(@project), notice: 'Project was successfully updated.' }

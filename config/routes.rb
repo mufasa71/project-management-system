@@ -11,6 +11,7 @@ ProjectManagementSystem::Application.routes.draw do
   get 'search' => 'messages#search'
   resources :user_steps
   match "projects/:project_id/gantt" => "gantts#show", :as => :project_gantt
+  match "projects/:project_id/phases/:phase_id/gantt" => "gantts#show", :as => :project_phase_gantt
   match 'projects/:project_id/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}, :as => :calendar
   resources :projects do
     resources :phases do
@@ -18,10 +19,10 @@ ProjectManagementSystem::Application.routes.draw do
     end
     resources :documents
     resources :gantts, :only => [:show]
-    resources :milestones
     resources :project_steps
     resources :attachments
     resources :members
+    resources :milestones
     member do
       get :settings
       get "settings/members" => 'settings#members'

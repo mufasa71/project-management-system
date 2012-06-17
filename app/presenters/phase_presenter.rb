@@ -2,6 +2,11 @@ class PhasePresenter < BasePresenter
   presents :phase
   delegate :subject, to: :phase
 
+  def complete
+    complete = ((phase.activities_done.size.to_f / phase.activities.size.to_f) * 100).to_i.to_s << "%"
+    content_tag(:div, content_tag(:div, complete, :class => "bar", :style => "width:#{complete}"), :class => "progress")
+  end
+
   def title
     phase.title
   end

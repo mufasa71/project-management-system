@@ -3,7 +3,15 @@
   .span12
     #project
       .span5
-        %h4 Tasks tracking
+        %h4 Phases completed
+        .progress
+          .bar{:style=>"width: #{@project.complete}"}= @project.complete
+        %h4 Hand in date
+        = @project.event.start_at
+        %h4 Hand out date
+        = @project.event.end_at
+        %h4 Gantt chart
+        = link_to "Show", project_gantt_path(@project), :class => "btn btn-mini btn-inverse"
       .span5
         %h4 Members
         %ul

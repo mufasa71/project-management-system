@@ -9,4 +9,15 @@
 //= require jquery.ui.autocomplete
 //= require jquery.ui.datepicker
 //= require etherpad
+//= require jquery.uniform.min.js
 //= require_tree .
+//
+
+$('.done-checkbox').click(function(){
+  $(this).closest('form').submit();
+  $(this).closest('form').closest('td').next().toggleClass('title-strike');
+});
+
+$(function(){
+  $('select, input:checkbox, input:radio, input:file').uniform();
+});

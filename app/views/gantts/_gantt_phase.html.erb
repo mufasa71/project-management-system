@@ -2,10 +2,10 @@
   <script type="text/javascript" src = "/assets/FusionCharts.js"></script>
   <script type="text/javascript"><!--
     var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1100", "600", "0", "1" );
-    myChart.setXMLData('<chart slackFillColor="FF3030" ganttPaneDuration="3" ganttPaneDurationUnit="m" palette="3" dateFormat="mm/dd/yyyy" caption="<%=@project.name%> - Project Gantt" subCaption="From <%= @project.event.start_at.strftime("#{@project.event.start_at.day.ordinalize} %b %Y")%> - <%= @project.event.end_at.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
+    myChart.setXMLData('<chart slackFillColor="FF3030" palette="3" dateFormat="mm/dd/yyyy" caption="<%=@phase.title%> - Phase Gantt" subCaption="From <%= @phase.event.start_at.strftime("#{@phase.event.start_at.day.ordinalize} %b %Y")%> - <%= @phase.event.end_at.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
     <categories>\n\
-    <% i = @project.event.end_at.month - @project.event.start_at.month + 1%>
-    <% start = @project.event.start_at %>
+    <% i = @phase.event.end_at.month - @phase.event.start_at.month + 1%>
+    <% start = @phase.event.start_at %>
     <% en = start.next_month %>
     <% if i > 0 %>
       <% i.times do %>
@@ -18,57 +18,34 @@
     <% end %>
     </categories>\n\
     <processes fontSize="12" isBold="1" align="right" headerText="Phases" headerFontSize="12" headerVAlign="bottom" headerAlign="center">\n\
-      <% @project.phases.each do |phase| %>
-        <process label="<%= phase.title %>"  />\n\
-        <% phase.activities.each do |activity| %>
+      <% @phase.activities.each do |activity| %>
           <process label="<%= activity.title %>" />\n\
-        <% end %>
       <% end %>
     </processes>\n\
     <tasks>\n\
-      <% @project.phases.each do |phase| %>
-        <task start="<%= phase.event.start_at.strftime("%m/%d/%Y")%>" end="<%= phase.event.end_at.strftime("%m/%d/%Y")%>" showAsGroup="1" label="<%=phase.title%>" showLabel="1" percentComplete="<%= phase.complete %>" showPercentLabel="1" id="<%=phase.id%>" color="<%= phase.complete == 100 ? "7cfc00" : "999999"%>" />\n\
-        <% phase.activities.each do |activity| %>
+      <% @phase.activities.each do |activity| %>
           <task start="<%= activity.event.start_at.strftime("%m/%d/%Y")%>" end="<%= activity.event.end_at.strftime("%m/%d/%Y") %>" />\n\
-        <% end %>
       <% end %>
     </tasks>\n\
-    <milestones>\n\
-        <% @project.milestones.each do |milestone| %>
-          <milestone date="<%=milestone.phase.event.end_at.strftime("%m/%d/%Y")%>" taskId="<%=milestone.phase_id%>" shape="Star" toolText="<%=milestone.description%>" color="FF5904" />\n\
-        <% end %>
-    </milestones>\n\
     <datatable headerVAlign="bottom">\n\
         <datacolumn headerText="Assignee" headerVAlign="bottom" headerAlign="center" align="center" fontSize="12">\n\
-          <% @project.phases.each do |phase| %>
-            <text label="" />\n\
-              <% phase.activities.each do |activity| %>
+          <% @phase.activities.each do |activity| %>
                 <text label="<%= activity.assignee %>" />\n\
-              <% end %>
           <% end %>
         </datacolumn>\n\
         <datacolumn headerText="Start" align="center" fontSize="12">\n\
-          <% @project.phases.each do |phase| %>
-              <text label="<%= phase.event.start_at %>"/>\n\
-              <% phase.activities.each do |activity| %>
+          <% @phase.activities.each do |activity| %>
                 <text label="<%= activity.event.start_at %>" />\n\
-              <% end %>
           <% end %>
         </datacolumn>\n\
         <datacolumn headerText="End" align="center" fontSize="12">\n\
-          <% @project.phases.each do |phase| %>
-            <text label="<%= phase.event.end_at %>"/>\n\
-              <% phase.activities.each do |activity| %>
+          <% @phase.activities.each do |activity| %>
                 <text label="<%= activity.event.end_at %>" />\n\
-              <% end %>
           <% end %>
         </datacolumn>\n\
         <datacolumn headerText="Days" align="center" fontSize="12">\n\
-          <% @project.phases.each do |phase| %>
-            <text label="<%= (phase.event.end_at - phase.event.start_at).to_i%>"/>\n\
-              <% phase.activities.each do |activity| %>
+          <% @phase.activities.each do |activity| %>
                 <text label="<%= (activity.event.end_at - activity.event.start_at).to_i %>" />\n\
-              <% end %>
           <% end %>
         </datacolumn>\n\
     </datatable>\n\

@@ -1,8 +1,8 @@
 class GanttsController < ApplicationController
   before_filter :authenticate_user!
 
-  load_and_authorize_resource :project
-
   def show
+    @project = Project.find(params[:project_id])
+    @phase = Phase.find(params[:phase_id]) if params[:phase_id]
   end
 end

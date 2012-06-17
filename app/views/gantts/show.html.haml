@@ -2,5 +2,8 @@
 #row
   .span12
     #gantt
-      = render 'gantt'
+      - if @phase
+        = render 'gantt_phase'
+      - else
+        = render 'gantt'
 

@@ -13,11 +13,10 @@
         %dd= activity_presenter.days_left
         %dt Status:
         %dd= activity_presenter.status
-        %dt Members:
-        %dd
-          %ul
-            - @activity.members.each do |member|
-              %li
-                = member
+        %dt Assigned to:
+        %dd= activity_presenter.assigned_to
+      .row
+        .span9
+          = activity_presenter.description
 
         = link_to "Edit", "", :class => "btn btn-mini btn-warning"

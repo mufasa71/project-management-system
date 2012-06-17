@@ -6,6 +6,8 @@
           %thead
             %tr
               %th
+                Done
+              %th
                 Name
               %th
                 Start at
@@ -16,13 +18,20 @@
               %th
                 Status
               %th
+                Assigned to
+              %th
           %tbody
             %tr
-              %td= link_to activity_presenter.title, project_phase_activity_path(@project, @phase, activity)
+              %td
+                = simple_form_for([@project, @phase, activity], :remote => true) do |f|
+                  = f.input :done, :label => false, :input_html => { :class => "done-checkbox" }
+
+              %td{:class => activity_presenter.done ? 'title-strike' : '' }= link_to activity_presenter.title, project_phase_activity_path(@project, @phase, activity)
               %td= activity_presenter.start_at
               %td= activity_presenter.end_at
               %td= activity_presenter.days_left
               %td= activity_presenter.status
+              %td= activity_presenter.assigned_to
               %td
                 = link_to "Edit", edit_project_phase_activity_path(@project, @phase, activity), :class => "btn btn-mini btn-warning"
                 = link_to "Delete", project_phase_activity_path(@project, @phase, activity), :class => "btn btn-mini btn-danger", :method => :delete

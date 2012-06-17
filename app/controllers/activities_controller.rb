@@ -20,6 +20,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
+    @activity.event.name = @activity.title
     if @activity.save
       respond_with @activity, :location => project_phases_path(:project_id => @project), :notice => "Activity was successfully created."
     else
@@ -28,12 +29,18 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    @activity.event.name = @activity.title
     if @activity.update_attributes(params[:activity])
       flash[:notice] = "Activity was successfully updated."
-      respond_with @activity, :location => project_phase_activity_path(@project, @phase, @activity), :notice => "Activity was successfully updated."
+      respond_with @activity, :location => project_phase_activity_path(@project, @phase, @activity)
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @activity.destroy
+    redirect_to project_phase_path(@project, @phase), :notice => "Activity was successfully deleted."
   end
 
   private

@@ -19,6 +19,7 @@ class PhasesController < ApplicationController
   end
 
   def create
+    @phase.event.name = @phase.title
     if @phase.save
       redirect_to project_phases_path, :notice => "Phase was successfully created."
     else
@@ -27,6 +28,7 @@ class PhasesController < ApplicationController
   end
 
   def update
+    @phase.event.name = @phase.title
     if @phase.update_attributes(params[:phase])
       redirect_to project_phases_path, :notice => "Phase was successfully updated."
     else
@@ -38,7 +40,7 @@ class PhasesController < ApplicationController
   end
 
   def destroy
-    @phase.delete
+    @phase.destroy
     redirect_to project_phases_path, :notice => "Phase was successfully deleted."
   end
 end

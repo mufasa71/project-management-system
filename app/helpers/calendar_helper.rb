@@ -21,11 +21,13 @@ module CalendarHelper
     calendar event_calendar_opts do |args|
       event, day = args[:event], args[:day]
       path = ""
+      event.start_at = DateTime.parse(event.start_at.to_s)
+      event.end_at = DateTime.parse(event.end_at.to_s)
       case event.eventable_type
-      when /Appointment/
-        path = project_appointment_path(:project_id => @project, :id => event.eventable_id)
-      when /Issue/
-        path = project_issue_path(:project_id => @project, :id => event.eventable_id)
+      when /Milestone/
+        path = project_milestone_path(@project, :id => event.eventable_id)
+      when /Phase/
+        path = project_phase_path(@project, :id => event.eventable_id)
       else
         path = ""
       end

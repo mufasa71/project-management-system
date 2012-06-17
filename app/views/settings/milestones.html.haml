@@ -5,4 +5,4 @@
   .span8
     #settings
       =render :template => 'milestones/index', :object => @milestones
-      =link_to " Add new milestone", new_project_milestone_path(:project_id => @project), :class => "btn btn-success icon-plus-sign", :remote => true
+      =link_to " New milestone", new_project_milestone_path(:project_id => @project), :class => "btn btn-success icon-plus-sign", :remote => true

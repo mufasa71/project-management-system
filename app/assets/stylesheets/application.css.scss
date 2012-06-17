@@ -10,6 +10,7 @@
 @import "jquery_ui";
 @import "phases";
 @import "activities";
+@import "uniform.default";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);

@@ -1,0 +1,7 @@
+%tr{:class => "milestone_#{milestone.id}"}
+  %td= milestone.phase.title
+  %td= milestone.description
+  %td
+    = link_to(edit_project_milestone_path(:project_id => @project, :id => milestone), :remote => true) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
+    |            
+    = link_to(project_milestone_path(:project_id => @project, :id => milestone), :confirm => 'Are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

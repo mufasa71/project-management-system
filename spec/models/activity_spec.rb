@@ -13,5 +13,10 @@ end
 #  description :text
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
+#  status_id   :integer
+#  priority_id :integer
+#  file        :string(255)
+#  member_id   :integer
+#  done        :boolean         default(FALSE)
 #
 

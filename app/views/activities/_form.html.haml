@@ -7,8 +7,9 @@
         = event.input :start_at, :as => :date_picker, :required => true, :input_html => { :value => "22" }
         = event.input :end_at, :as => :date_picker, :required => true
     .span4
-      = f.association :members, :collection => @project.members
+      = f.association :assignee, :collection => @project.members
       = f.association :status, :prompt => "Select status"
+      = f.input :done
   .row
     .span12
       = f.simple_fields_for :attachments do |a|

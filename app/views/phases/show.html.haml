@@ -13,8 +13,12 @@
         .span4
           %dt Days left:
           %dd= phase_presenter.days_left
+          %dt Complete %:
+          %dd= phase_presenter.complete
+          %dt Gantt chart:
+          %dd= link_to "Show", project_phase_gantt_path(@project, @phase), :class => "btn btn-mini btn-inverse"
 .row
-  .span7
+  .span10
     %h3 Activities:
     #activities
       = render 'activities/activities', :object => @activities

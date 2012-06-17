@@ -2,6 +2,16 @@ class ActivityPresenter < BasePresenter
   presents :activity
   delegate :subject, to: :activity
 
+  def done
+    activity.done
+  end
+
+  def assigned_to
+    handle_none activity.assignee do
+      activity.assignee
+    end
+  end
+
   def title
     content_tag(:span, "", :class => "icon-ok-sign") << " " << activity.title
   end
@@ -27,8 +37,8 @@ class ActivityPresenter < BasePresenter
   end
 
   def description
-    handle_none task.description do
-      raw task.description
+    handle_none activity.description do
+      raw activity.description
     end
   end
   

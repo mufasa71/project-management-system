@@ -1,15 +1,15 @@
 %table.table.table-striped#milestones
   %thead
     %tr
+      %th Phase
       %th Description
-      %th Issue
       %th
   %tbody
     -@milestones.each do |milestone|
       %tr{:class => "milestone_#{milestone.id}"}
+        %td= milestone.phase.title
         %td= milestone.description
-        %td= milestone.issue
         %td
           = link_to(edit_project_milestone_path(:project_id => @project, :id => milestone), :remote => true) { content_tag(:i, "", :class => "icon-pencil icon-white") << " Edit" }
           |            
-          = link_to(project_milestone_path(:project_id => @project, :id => milestone), :confirm => 'are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}
+          = link_to(project_milestone_path(:project_id => @project, :id => milestone), :confirm => 'Are you sure?', :method => :delete, :remote => true) { content_tag(:i, "", :class => "icon-trash icon-white") << " Delete"}

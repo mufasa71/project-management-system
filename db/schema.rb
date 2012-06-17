@@ -11,22 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120616172009) do
+ActiveRecord::Schema.define(:version => 20120617142604) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
     t.integer  "phase_id"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
     t.integer  "status_id"
     t.integer  "priority_id"
     t.string   "file"
-  end
-
-  create_table "activities_members", :force => true do |t|
-    t.integer "activity_id"
-    t.integer "member_id"
+    t.integer  "member_id"
+    t.boolean  "done",        :default => false
   end
 
   create_table "activity_statuses", :force => true do |t|
@@ -93,9 +90,9 @@ ActiveRecord::Schema.define(:version => 20120616172009) do
 
   create_table "milestones", :force => true do |t|
     t.string   "description"
-    t.integer  "issue_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "phase_id"
     t.integer  "project_id"
   end
 
@@ -120,8 +117,9 @@ ActiveRecord::Schema.define(:version => 20120616172009) do
   create_table "phases", :force => true do |t|
     t.string   "title"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "complete",   :default => false
   end
 
   create_table "projects", :force => true do |t|
