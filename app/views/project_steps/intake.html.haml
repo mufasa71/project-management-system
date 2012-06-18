@@ -1,0 +1,3 @@
+%h2 Select intake
+= render layout: 'form' do |f|
+  = f.association :intake, :collection => Intake.all, :required => true

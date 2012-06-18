@@ -6,12 +6,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :intake
+  has_many :assignees, :class_name => "Member", :foreign_key => "user_id"
   cattr_accessor :current_user
   
   #Carrierwave uploader
   mount_uploader :profile_picture, ProfilePictureUploader
 
   scope :not_admins, where("admin = ?", false)
+  scope :admins, where("admin = ?", true)
 
   def to_s
     name

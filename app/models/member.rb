@@ -1,8 +1,8 @@
 class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
-  has_and_belongs_to_many :activities
-  validates_presence_of :project
+  has_many :activities
+  validates_presence_of :project, :user
   validates_uniqueness_of :user_id, :scope => :project_id
 
   def to_s

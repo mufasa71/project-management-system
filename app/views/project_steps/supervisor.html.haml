@@ -1,0 +1,3 @@
+%h2 Select supervisor
+= render layout: 'form' do |f|
+  = f.association :supervisor, :collection => Supervisor.all, :requred => true

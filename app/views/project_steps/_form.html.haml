@@ -1,6 +1,7 @@
 = nested_form_for(@project, :url => wizard_path, :html => { :class => "form-horizontal"}) do |f|
   = f.error_notification
-  = yield f
+  .form-inputs
+    = yield f
   .form-actions
     = f.button :submit, "Continue >>", :class => "btn-large btn-info"
     or

@@ -1,0 +1,3 @@
+%h2 Select module
+= render layout: 'form' do |f|
+  = f.association :subject, :label => "Module", :collection => Subject.all, :required => true

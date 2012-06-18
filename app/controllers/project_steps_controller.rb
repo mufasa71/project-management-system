@@ -1,6 +1,6 @@
 class ProjectStepsController < ApplicationController
   include Wicked::Wizard
-  steps :members, :groups, :roles
+  steps :intake, :subject, :supervisor, :members
 
   def show
     @project = Project.find(params[:project_id])

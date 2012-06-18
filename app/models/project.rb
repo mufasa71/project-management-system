@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  validates_presence_of :name, :identifier
+  validates_presence_of :name, :identifier, :intake, :subject, :supervisor
   validates_uniqueness_of :identifier
   validates_length_of :name, :maximum => 255
   validates_length_of :homepage, :maximum => 255
@@ -14,6 +14,9 @@ class Project < ActiveRecord::Base
   has_many :activities, :through => :phases
   has_many :milestones, :dependent => :destroy
   has_one :event, :as => :eventable, :dependent => :destroy
+  belongs_to :intake
+  belongs_to :subject
+  belongs_to :supervisor
   accepts_nested_attributes_for :event
   accepts_nested_attributes_for :attachments
 
@@ -22,7 +25,9 @@ class Project < ActiveRecord::Base
   end
 
   def complete
-    ((phases_complete.size.to_f / phases.size.to_f) * 100).to_i.to_s << "%"
+    unless phases.empty? && phases_complete.empty?
+      ((phases_complete.size.to_f / phases.size.to_f) * 100).to_i.to_s << "%"
+    end
   end
 
   def phases_complete

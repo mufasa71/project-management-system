@@ -3,7 +3,7 @@ class UserPresenter < BasePresenter
   delegate :name, to: :user
 
   def projects_involved
-    pluralize(user.members.size, "project")
+    pluralize(user.assignees.size, "project")
   end
 
   def issues

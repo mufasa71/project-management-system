@@ -4,24 +4,22 @@
       .span3
         = user_presenter.profile_picture
         %h3= user_presenter.name
-        %p
-          Member since #{user_presenter.since}
         %p= user_presenter.messageble?
       .span3
         %dt
           Involved in 
           %b= user_presenter.projects_involved
         %dd
-          -user.members.each do |member|
-            = link_to member.project, project_path(member.project)
+          -user.assignees.each do |assignee|
+            = link_to assignee.project, project_path(assignee.project)
             %br
       .span4
         %dt 
-          Tasks Assigned
+          Activities Assigned
         %dd
-          - user.members.each do |member|
-            - member.issues.each do |issue|
-              = link_to issue, project_issue_path(:project_id => issue.project, :id => issue),  :style => "font-size:16px" 
+          - user.assignees.each do |assignee|
+            - assignee.activities.each do |activity|
+              = link_to activity.title, project_phase_activity_path(assignee.project, activity.phase, activity),  :style => "font-size:16px" 
               in 
-              = link_to issue.project
+              = link_to assignee.project, project_path(assignee.project)
               %br
