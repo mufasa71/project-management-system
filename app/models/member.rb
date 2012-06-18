@@ -1,6 +1,7 @@
 class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :project
+  belongs_to :group
   has_many :activities
   validates_presence_of :project, :user
   validates_uniqueness_of :user_id, :scope => :project_id

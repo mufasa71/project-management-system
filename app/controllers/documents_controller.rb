@@ -7,13 +7,12 @@ class DocumentsController < ApplicationController
 
   def index
     session[:ep_sessions] = {}
-    @groups = @project.groups
     respond_with @documents
   end
 
   def show
     ether = EtherpadLite.connect(:local, File.new('/home/hawk/Downloads/APIKEY.txt'))
-    @group = ether.group(@document.group.id)
+    @group = ether.group(@project.group.id)
     @pad = @group.pad(@document.pad_id)
     author = ether.author("project_user_#{current_user.id}", :name => current_user)
     sess = session[:ep_sessions][@group.id] ? ether.get_session(session[:ep_sessions][@group.id]) : @group.create_session(author, 60)
@@ -26,6 +25,7 @@ class DocumentsController < ApplicationController
     cookies[:sessionID] = { :value => sess.id, :host => "http://0.0.0.0:9001" }
 
     respond_to do |format|
+      format.html
       format.js
     end
   end

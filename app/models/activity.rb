@@ -4,9 +4,19 @@ class Activity < ActiveRecord::Base
   belongs_to :assignee, :class_name => 'Member', :foreign_key => 'member_id'
   has_many :attachments, :as => :attachable
   has_one :event, :as => :eventable, :dependent => :destroy
+  has_one :document, :as => :documentable, :dependent => :destroy
+  has_many :attachments, :dependent => :destroy, :as => :attachable
   accepts_nested_attributes_for :event
   accepts_nested_attributes_for :attachments
-  validates_presence_of :title, :phase, :status, :event, :assignee
+  validates_presence_of :title, :status, :assignee
+
+  after_create :create_document
+  after_create :update_document
+
+  def update_document
+    self.document.project = self.phase.project
+    self.document.save!
+  end
 end
 # == Schema Information
 #

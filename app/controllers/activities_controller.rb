@@ -1,14 +1,15 @@
 class ActivitiesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :add_breadcrumbs
-  load_and_authorize_resource :activity, :through => @phase
+  load_and_authorize_resource :phase
+  load_and_authorize_resource :activity, :through => :phase
 
-  respond_to :js, :html
+  respond_to :html
   def index
   end
 
   def show
-    add_breadcrumb @activity.title, project_phase_activity_path(@project, @phase, @activity)
+    add_breadcrumb "Activity -> " << @activity.title, project_phase_activity_path(@project, @phase, @activity)
   end
 
   def new
@@ -16,13 +17,13 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    add_breadcrumb @activity.title, project_phase_activity_path(@project, @phase, @activity)
+    add_breadcrumb "Activity -> " << @activity.title, project_phase_activity_path(@project, @phase, @activity)
   end
 
   def create
     @activity.event.name = @activity.title
     if @activity.save
-      respond_with @activity, :location => project_phases_path(:project_id => @project), :notice => "Activity was successfully created."
+      redirect_to project_phase_activity_path(@project, @phase, @activity), :notice => "Activity was successfully created."
     else
       render 'new'
     end
@@ -31,8 +32,7 @@ class ActivitiesController < ApplicationController
   def update
     @activity.event.name = @activity.title
     if @activity.update_attributes(params[:activity])
-      flash[:notice] = "Activity was successfully updated."
-      respond_with @activity, :location => project_phase_activity_path(@project, @phase, @activity)
+      redirect_to project_phase_activity_path(@project, @phase, @activity), :notice => "Activity was successfully updated."
     else
       render 'edit'
     end
@@ -48,8 +48,7 @@ class ActivitiesController < ApplicationController
   def add_breadcrumbs
     @project = Project.find(params[:project_id])
     @phase = Phase.find(params[:phase_id])
-    add_breadcrumb @project.name, project_path(@project)
-    add_breadcrumb @phase.title, project_phase_path(@project, @phase)
+    add_breadcrumb "Project -> " << @project.name, project_path(@project)
+    add_breadcrumb "Phase -> " << @phase.title, project_phase_path(@project, @phase)
   end
 end
-

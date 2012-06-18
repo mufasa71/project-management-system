@@ -12,7 +12,8 @@
       = f.input :done
   .row
     .span12
-      = f.simple_fields_for :attachments do |a|
+      = f.simple_fields_for :attachments, @activity.attachments.build do |a|
+        = a.input :project_id, :as => :hidden, :input_html => { :value => @project.id }
         .row
           .span4
             = a.input :file, :as => :file
@@ -21,11 +22,12 @@
           .span2
             = a.link_to_remove " Remove",  :class => "icon-trash"
   .row
-    .span9
-      = f.input :description, :input_html => { :class => 'ckeditor' }
-  .row
     .span12
       = f.link_to_add " Add file", :attachments, :class => "btn btn-mini btn-primary icon-plus-sign", :style => "margin-left: 120px"
+  %br
+  .row
+    .span9
+      = f.input :description, :input_html => { :class => 'ckeditor' }
 - content_for :javascript do
   :javascript
     $(document).ready(function(){

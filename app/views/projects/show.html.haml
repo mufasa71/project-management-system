@@ -6,18 +6,26 @@
         %h4 Project complete
         .progress
           .bar{:style=>"width: #{@project.complete}"}= @project.complete
-        %h4 Hand in date
-        = @project.event.start_at
-        %h4 Hand out date
-        = @project.event.end_at
-        %h4 Gantt chart
+        .project_details_header Hand in date:
+        %h4= @project.event.start_at
+        .project_details_header Hand out date:
+        %h4= @project.event.end_at
+        %br
+        %h4 Gantt chart 
+        %br
         = link_to "Show", project_gantt_path(@project), :class => "btn btn-mini btn-inverse"
-      .span5
+      .span4
         %h4 Members
         %ul
           - @project.members.each do |member|
             %li
               = link_to member, user_path(:id => member.user_id)
+        .project_details_header Intake:
+        %h4= @project.intake
+        .project_details_header Module:
+        %h4= @project.subject
+        .project_details_header Supervisor/Lecturer:
+        %h4= @project.supervisor
 .row
   .span12
     =simple_format(@project.description)

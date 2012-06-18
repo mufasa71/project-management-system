@@ -3,7 +3,10 @@ class PhasePresenter < BasePresenter
   delegate :subject, to: :phase
 
   def complete
-    complete = ((phase.activities_done.size.to_f / phase.activities.size.to_f) * 100).to_i.to_s << "%"
+    complete = 0
+    unless phase.activities.empty? && phase.activities_done.empty?
+      complete = ((phase.activities_done.size.to_f / phase.activities.size.to_f) * 100).to_i.to_s << "%"
+    end
     content_tag(:div, content_tag(:div, complete, :class => "bar", :style => "width:#{complete}"), :class => "progress")
   end
 

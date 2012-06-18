@@ -1,11 +1,10 @@
 class Document < ActiveRecord::Base
-  belongs_to :project
   belongs_to :group
-
-  validates_presence_of :title, :project
-
+  belongs_to :project
+  belongs_to :documentable, :polymorphic => true
   before_save :create_pad
 
+  validates_presence_of :project
   def create_pad
     self.pad_id = SecureRandom.hex(2)
   end

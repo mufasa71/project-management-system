@@ -1,9 +1,20 @@
-= simple_form_for [@project, @phase], :html => { :class => "form-horizontal" } do |f|
+= nested_form_for [@project, @phase], :html => { :class => "form-horizontal" } do |f|
   .form-inputs
     = f.input :title
     = f.simple_fields_for :event, @phase.event ? @phase.event : @phase.build_event do |event|
       = event.input :start_at, :as => :date_picker, :required => true
       = event.input :end_at, :as => :date_picker, :required => true
+  .row
+    .span12
+      = f.simple_fields_for :attachments, @phase.attachments.build do |a|
+        = a.input :project_id, :as => :hidden, :input_html => { :value => @project.id }
+        .row
+          .span4
+            = a.input :file, :as => :file
+          .span4
+            = a.input :description, :placeholder => "Optional description", :input_html => { :style => "width: 200px"}
+          .span2
+            = a.link_to_remove " Remove",  :class => "icon-trash"
   .form-actions
     = f.button :submit, :class => "btn btn-success"
 - content_for :javascript do

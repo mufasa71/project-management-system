@@ -1,2 +1,3 @@
 :plain
+  $('#app_pad').before("<h3>#{@document.documentable.title}</h3>");
   $('#app_pad').pad({ 'padId':"#{@pad.id}", 'userName': "#{current_user.name}"});

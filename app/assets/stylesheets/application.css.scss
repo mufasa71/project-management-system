@@ -2,7 +2,6 @@
 @import "bourbon";
 @import "bootstrap_and_overrides";
 @import "users";
-@import "issues";
 @import "ui.achtung"; 
 @import "datepicker";
 @import "event_calendar";
@@ -11,6 +10,7 @@
 @import "phases";
 @import "activities";
 @import "uniform.default";
+@import "projects";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);
@@ -66,4 +66,10 @@ textarea{
 
 footer{
   margin-top: 300px;
+}
+
+.project_details_header{
+  margin-top: 5px;      
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #808080;
 }

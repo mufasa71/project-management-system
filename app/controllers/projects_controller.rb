@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project.phases.each do |phase|
-      if(phase.activities.size == phase.activities_done.size)
+      if(phase.activities.any? && phase.activities.size == phase.activities_done.size)
         phase.complete = true
       else
         phase.complete = false

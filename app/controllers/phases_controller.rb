@@ -5,13 +5,12 @@ class PhasesController < ApplicationController
 
   respond_to :js, :html
   def index
-    add_breadcrumb @project.name, project_path(@project)
-    add_breadcrumb "Phases", project_phases_path(@project)
+    add_breadcrumb "Project -> " << @project.name, project_path(@project)
   end
 
   def show
-    add_breadcrumb @project.name, project_path(@project)
-    add_breadcrumb @phase.title, project_phase_path(@project, @phase)
+    add_breadcrumb "Project -> " << @project.name, project_path(@project)
+    add_breadcrumb "Phase -> " << @phase.title, project_phase_path(@project, @phase)
     @activities = @phase.activities
   end
 
@@ -37,6 +36,8 @@ class PhasesController < ApplicationController
   end
 
   def edit
+    add_breadcrumb "Project -> " << @project.name, project_path(@project)
+    add_breadcrumb "Phase -> " << @phase.title, project_phase_path(@project, @phase)
   end
 
   def destroy

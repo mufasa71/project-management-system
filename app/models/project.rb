@@ -7,18 +7,18 @@ class Project < ActiveRecord::Base
   validates_exclusion_of :identifier, :in => %w(new)
 
   has_many :members, :include => [:user], :dependent => :destroy
-  has_many :attachments, :dependent => :destroy, :as => :attachable
   has_many :milestones, :dependent => :destroy
   has_many :documents, :dependent => :destroy
   has_many :phases, :dependent => :destroy
   has_many :activities, :through => :phases
   has_many :milestones, :dependent => :destroy
+  has_many :attachments
   has_one :event, :as => :eventable, :dependent => :destroy
+  has_one :group, :dependent => :destroy
   belongs_to :intake
   belongs_to :subject
   belongs_to :supervisor
   accepts_nested_attributes_for :event
-  accepts_nested_attributes_for :attachments
 
   def to_s
     name
@@ -27,6 +27,8 @@ class Project < ActiveRecord::Base
   def complete
     unless phases.empty? && phases_complete.empty?
       ((phases_complete.size.to_f / phases.size.to_f) * 100).to_i.to_s << "%"
+    else
+      0.to_s << "%"
     end
   end
 

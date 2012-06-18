@@ -10,6 +10,13 @@
           %dd= phase_presenter.start_at
           %dt End at:
           %dd= phase_presenter.end_at
+          %dt Attachments
+          %dd
+            %ul.unstyled
+              - if @phase.attachments.any?
+                - @phase.attachments.each do |attachment|
+                  %li= link_to attachment.file.file.original_filename, attachment.file.url  
+              
         .span4
           %dt Days left:
           %dd= phase_presenter.days_left

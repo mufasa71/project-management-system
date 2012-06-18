@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618040742) do
+ActiveRecord::Schema.define(:version => 20120618140215) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20120618040742) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.integer  "status_id"
-    t.integer  "priority_id"
     t.string   "file"
     t.integer  "member_id"
     t.boolean  "done",        :default => false
@@ -40,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20120618040742) do
     t.string   "attachable_type"
     t.integer  "number_of_downloads"
     t.string   "file"
+    t.integer  "project_id"
   end
 
   add_index "attachments", ["attachable_id"], :name => "index_attachments_on_attachable_id"
@@ -51,12 +51,13 @@ ActiveRecord::Schema.define(:version => 20120618040742) do
   end
 
   create_table "documents", :force => true do |t|
-    t.string   "title"
     t.integer  "pad_id"
-    t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "group_id"
+    t.integer  "documentable_id"
+    t.string   "documentable_type"
+    t.integer  "project_id"
   end
 
   create_table "events", :force => true do |t|
@@ -68,6 +69,12 @@ ActiveRecord::Schema.define(:version => 20120618040742) do
     t.string   "eventable_type"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "intakes", :force => true do |t|
@@ -86,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120618040742) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "project_id"
+    t.integer  "group_id"
   end
 
   create_table "milestones", :force => true do |t|

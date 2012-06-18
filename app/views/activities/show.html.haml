@@ -2,21 +2,27 @@
 .row
   .span12
     - present @activity do |activity_presenter|
-      %dl.dl-horizontal
-        %dt Name:
-        %dd= activity_presenter.title
-        %dt Start at:
-        %dd= activity_presenter.start_at
-        %dt End at:
-        %dd= activity_presenter.end_at
-        %dt Days left:
-        %dd= activity_presenter.days_left
-        %dt Status:
-        %dd= activity_presenter.status
-        %dt Assigned to:
-        %dd= activity_presenter.assigned_to
+      .span4
+        .project_details_header Name:
+        %h4= activity_presenter.title
+        .project_details_header Start at:
+        %h4= activity_presenter.start_at
+        .project_details_header End at:
+        %h4= activity_presenter.end_at
+        .project_details_header Days left:
+        %h4= activity_presenter.days_left
+      .span4
+        .project_details_header Status:
+        %h4= activity_presenter.status
+        .project_details_header Assigned to:
+        %h4= activity_presenter.assigned_to
+        .project_details_header Documentation:
+        = link_to "Edit document", project_document_path(@project, @activity.document)
+        .project_details_header Attachments:
+        %ul.unstyled
+          - if @activity.attachments.any?
+            - @activity.attachments.each do |attachment|
+              %li= link_to attachment.file.file.original_filename, attachment.file.url  
       .row
         .span9
           = activity_presenter.description
-
-        = link_to "Edit", "", :class => "btn btn-mini btn-warning"

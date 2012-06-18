@@ -1,0 +1,11 @@
+=render 'common/project_tabs'
+.row
+  .span12
+    #app_pad
+
+- content_for :javascript do
+  :javascript
+    $(document).ready(function(){
+      $('#app_pad').before("<h3>#{@document.documentable.title}</h3>");
+      $('#app_pad').pad({ 'padId':"#{@pad.id}", 'userName': "#{current_user.name}"});
+    });

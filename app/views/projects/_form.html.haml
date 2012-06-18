@@ -1,11 +1,15 @@
 .row
   .span3
     = f.input :name
-    = f.input :identifier
+    - unless @project.new_record?
+      = f.association :intake, :collection => Intake.all
+      = f.association :subject, :collection => Subject.all
+      = f.association :supervisor, :collection => User.admins.where("id != ?", current_user.id)
   .span3
     = f.simple_fields_for :event, @project.event ? @project.event : @project.build_event do |event|
       = event.input :start_at, :as => :date_picker, :required => true
       = event.input :end_at, :as => :date_picker, :required => true
+= f.input :identifier
 = f.input :homepage, :hint => "Length between 1 and 100 characters. Only lower case letters (a-z), numbers, dashes and underscores are allowed"
 = f.input :is_public, :label => "Public"
 = f.input :description, :input_html => { :class => 'ckeditor'}
