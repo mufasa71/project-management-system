@@ -1,3 +1,4 @@
 :plain
   $('#app_pad').before("<h3>#{@document.documentable.title}</h3>");
+  $('#app_pad').before("#{j link_to "Save", project_document_path(@project, @document), :class => "btn btn-success", :remote => true, :method => :put}")
   $('#app_pad').pad({ 'padId':"#{@pad.id}", 'userName': "#{current_user.name}"});

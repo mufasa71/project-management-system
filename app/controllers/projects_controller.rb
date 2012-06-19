@@ -76,4 +76,9 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @reports = @project.reports
   end
+
+  def download
+    @project = Project.find(params[:id])
+    respond_with @project
+  end
 end

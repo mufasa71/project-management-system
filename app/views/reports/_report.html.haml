@@ -3,5 +3,5 @@
   %td= report.created_at.to_date
   %td= report.prepared_by
   %td
-    = link_to " Download", project_report_path(@project, report), :class => "btn btn-mini btn-info icon-download", :remote => true
+    = link_to " Download", project_report_path(@project, report, :format => :pdf), :class => "btn btn-mini btn-info icon-download"
     = link_to " Delete", project_report_path(@project, report), :method => :delete, :class => "btn btn-mini btn-danger icon-trash", :remote => true

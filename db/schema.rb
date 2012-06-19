@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619071333) do
+ActiveRecord::Schema.define(:version => 20120619100638) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120619071333) do
     t.integer  "documentable_id"
     t.string   "documentable_type"
     t.integer  "project_id"
+    t.text     "body"
   end
 
   create_table "events", :force => true do |t|

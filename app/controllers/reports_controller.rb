@@ -4,7 +4,7 @@ class ReportsController < ApplicationController
   load_and_authorize_resource :project
   load_and_authorize_resource :report, :through => :project
 
-  respond_to :js, :html
+  respond_to :js, :html, :pdf
 
   def index
   end
@@ -15,10 +15,11 @@ class ReportsController < ApplicationController
 
   def create
     @report.prepared_by = current_user.name
-    @report.activities = []
+    @report.activities = Array.new
     @project.phases.each do |phase|
       @report.activities << phase.activities_in_progress.to_a
     end
+    @report.activities.flatten!
     if @report.save
       respond_with @report, :location => project_reports_path(@project)
     else
@@ -32,5 +33,9 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  def show
+    respond_with :report
   end
 end

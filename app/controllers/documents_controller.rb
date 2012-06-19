@@ -50,6 +50,10 @@ class DocumentsController < ApplicationController
   end
 
   def update
+    ether = EtherpadLite.connect(:local, File.new('/home/hawk/Downloads/APIKEY.txt'))
+    @group = ether.group(@project.group.id)
+    @pad = @group.pad(@document.pad_id)
+    @document.body = @pad.text
     respond_to do |format|
       if @document.update_attributes(params[:document])
         format.html { redirect_to project_documents_path(@project), notice: 'Document was successfully updated.' }

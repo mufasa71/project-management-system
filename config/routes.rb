@@ -25,6 +25,7 @@ ProjectManagementSystem::Application.routes.draw do
     resources :milestones
     resources :reports
     member do
+      get :download
       get :settings
       get :workload
       get :progress_report

@@ -11,9 +11,10 @@
         .project_details_header Hand out date:
         %h4= @project.event.end_at
         %br
-        %h4 Gantt chart 
-        %br
-        = link_to "Show", project_gantt_path(@project), :class => "btn btn-mini btn-inverse"
+        .project_details_header Gantt chart: 
+        = link_to " Show", project_gantt_path(@project), :class => "btn btn-small btn-inverse icon-eye-open"
+        .project_details_header Documentation:
+        = link_to " Download in PDF", download_project_path(@project, :format => :pdf), :class => "btn btn-small btn-info icon-download"
       .span4
         %h4 Members
         %ul
