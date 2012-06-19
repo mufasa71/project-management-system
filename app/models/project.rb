@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
   has_many :activities, :through => :phases
   has_many :milestones, :dependent => :destroy
   has_many :attachments
+  has_many :reports, :dependent => :destroy
   has_one :event, :as => :eventable, :dependent => :destroy
   has_one :group, :dependent => :destroy
   belongs_to :intake

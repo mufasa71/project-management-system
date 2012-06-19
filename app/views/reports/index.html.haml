@@ -1,0 +1,11 @@
+= link_to "Generate Report", new_project_report_path(@project), :class => "btn btn-success", :remote => true
+%br
+%table.table#reports
+  %thead
+    %tr
+      %th Description
+      %th Date of report
+      %th Prepared by
+      %th
+  %tbody
+    = render @reports

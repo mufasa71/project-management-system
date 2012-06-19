@@ -1,6 +1,7 @@
 =render 'common/project_tabs'
 .row
   .span12
+    = link_to "Download PDF", workload_project_path(@project, :format => :pdf)
     %table.table
       %thead
         %tr

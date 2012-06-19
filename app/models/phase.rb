@@ -13,6 +13,10 @@ class Phase < ActiveRecord::Base
     activities.where(:done => true)
   end
 
+  def activities_in_progress
+    activities.where(:done => false)
+  end
+
   after_create :create_document
   after_create :update_document
 

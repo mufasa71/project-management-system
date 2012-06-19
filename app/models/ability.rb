@@ -16,6 +16,7 @@ class Ability
       can :manage, Document
       can :manage, Phase
       can :manage, Activity
+      can :manage, Report
     end
   end
 end

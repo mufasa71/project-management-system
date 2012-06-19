@@ -1,0 +1,4 @@
+:plain
+  $('#new_report').modal('hide');
+  $.achtung({message: 'Report was successfully created!', timeout: 3, className: "achtungSuccess"});
+  $('#reports').append('#{j render @report}')

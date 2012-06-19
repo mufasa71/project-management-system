@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  respond_to :html
+  respond_to :html, :pdf
   before_filter :authenticate_user!
   load_and_authorize_resource
 
@@ -69,5 +69,11 @@ class ProjectsController < ApplicationController
 
   def workload
     @project = Project.find(params[:id])
+    respond_with @project
+  end
+
+  def progress_report
+    @project = Project.find(params[:id])
+    @reports = @project.reports
   end
 end

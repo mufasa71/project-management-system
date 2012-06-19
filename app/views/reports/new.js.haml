@@ -1,0 +1,18 @@
+- @modal = capture do
+  .modal#new_report
+    .modal-header
+      = button_tag '×', :class => "close", "data-dismiss" => "modal"
+      %h3 Report
+    .modal-body
+      %p
+        = simple_form_for([@project, @report], :html => {:class => "form-vertical"}, :remote => true) do |f|
+          = render :partial => "form", :locals => { :f => f }
+          .modal-footer
+            %a.btn{:href => "#", "data-dismiss" => "modal"} Close
+            = f.button :submit, :class => "btn btn-success"
+
+:plain
+  $('#new_report').modal('hide');
+  $('#new_report').remove();
+  $('body').append("#{j @modal}");
+  $('#new_report').modal('show');

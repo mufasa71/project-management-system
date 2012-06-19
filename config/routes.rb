@@ -23,9 +23,11 @@ ProjectManagementSystem::Application.routes.draw do
     resources :attachments
     resources :members
     resources :milestones
+    resources :reports
     member do
       get :settings
       get :workload
+      get :progress_report
       get "settings/members" => 'settings#members'
       get "settings/information" => 'settings#information'
       get "settings/milestones" => 'settings#milestones'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618140215) do
+ActiveRecord::Schema.define(:version => 20120619071333) do
 
   create_table "activities", :force => true do |t|
     t.string   "title"
@@ -167,6 +167,16 @@ ActiveRecord::Schema.define(:version => 20120618140215) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "reports", :force => true do |t|
+    t.string   "prepared_by"
+    t.text     "description"
+    t.text     "comments"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "activities"
+  end
 
   create_table "subjects", :force => true do |t|
     t.string   "title"
