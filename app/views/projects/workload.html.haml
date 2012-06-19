@@ -1,0 +1,16 @@
+=render 'common/project_tabs'
+.row
+  .span12
+    %table.table
+      %thead
+        %tr
+          %th Components/Students
+          - @project.members.each do |member|
+            %th= member
+      %tbody
+        - @project.phases.each do |phase|
+          %tr
+            %td= phase.title
+            - @project.members.each do |member|
+              %td= member.workload_for(phase)
+

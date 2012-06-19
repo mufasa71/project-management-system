@@ -9,6 +9,23 @@ class Member < ActiveRecord::Base
   def to_s
     user.name
   end
+
+  def workload_for(phase)
+    n = 0
+    if activities.size > 0
+      activities.each do |activity|
+        if activity.phase.eql?(phase)
+          n += 1
+        end
+      end
+    end
+    unless n == 0 && phase.activities.empty?
+      ((n.to_f / phase.activities.size.to_f) * 100).to_i.to_s << " %"
+    else
+      "0 %"
+       
+    end
+  end
 end
 # == Schema Information
 #

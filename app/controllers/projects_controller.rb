@@ -66,4 +66,8 @@ class ProjectsController < ApplicationController
   def settings
     @project = Project.find(params[:id])
   end
+
+  def workload
+    @project = Project.find(params[:id])
+  end
 end
