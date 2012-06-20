@@ -44,4 +44,12 @@ class PhasesController < ApplicationController
     @phase.destroy
     redirect_to project_phases_path, :notice => "Phase was successfully deleted."
   end
+
+  def sort
+    @phases.each do |phase|
+      phase.position = params['phase'].index(phase.id.to_s) + 1
+      phase.save
+    end
+    render :nothing => true
+  end
 end

@@ -2,37 +2,75 @@
 .row
   .span12
     .span6
-      #phases
-        %table.table.table-striped
-          %thead
-            %tr
-              %td
-              %td
-              %td
-                Start at
-              %td
-                End at
-              %td
-                Days left
-              %td
-          %tbody
-          - @phases.each do |phase|
-            - present phase do |phase_presenter|
-              %tr
-                %td
-                  %i{:class => "icon-ok-sign"}
-                %td= link_to phase_presenter.title, project_phase_path(:project_id => @project, :id => phase), :remote => true
-                %td= phase_presenter.start_at
-                %td= phase_presenter.end_at
-                %td= phase_presenter.days_left
-                %td
-                  = link_to " Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => phase), :class => "btn btn-mini btn-success icon-plus-sign"
-                  = link_to "Show", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-info"
-                  = link_to "Edit", edit_project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-warning"
-                  = link_to "Delete", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-danger", :method => :delete
+      %ul.unstyled#phases
+        - @phases.each do |phase|
+          %li{ :id => "phase_#{phase.id}"}
+            %table.table.table-striped
+              %thead
+                %tr
+                  %td
+                  %td
+                  %td Start at
+                  %td End at
+                  %td Days left
+                  %td
+              %tbody
+                - present phase do |phase_presenter|
+                  %tr
+                    %td
+                      %span{:class => "icon-ok-sign"}
+                    %td= link_to phase_presenter.title, project_phase_path(:project_id => @project, :id => phase), :remote => true
+                    %td= phase_presenter.start_at
+                    %td= phase_presenter.end_at
+                    %td= phase_presenter.days_left
+                    %td
+                      = link_to "Show", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-info"
+                      = link_to "Edit", edit_project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-warning"
+                      = link_to "Delete", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-danger", :method => :delete
     .span5
       %h3 Activities
       %table.table.table-striped#activities
 .row
   .span12
-    = link_to " New Phase", new_project_phase_path, :class => "btn btn-success icon-plus-sign"
+    .span2
+      = link_to " New Phase", new_project_phase_path, :class => "btn btn-success icon-plus-sign"
+    .span3
+      #circularG
+        #circularG_1.circularG
+        #circularG_2.circularG
+        #circularG_3.circularG
+        #circularG_4.circularG
+        #circularG_5.circularG
+        #circularG_6.circularG
+        #circularG_7.circularG
+        #circularG_8.circularG
+
+- content_for :javascript do
+  :javascript
+    $(function(){
+      $('#phases').sortable({
+        axis: 'y',
+        dropOnEmpty: false,
+        handle: '.icon-ok-sign',
+        cursor: 'crosshair',
+        items: 'li',
+        opacity: '0.4',
+        scroll: true,
+        update: function(){
+          $.ajax({
+            type: 'post',
+            data: $('#phases').sortable('serialize'),
+            dataType: 'script',
+            beforeSend: function(){
+              $('#circularG').show();
+            },
+            complete: function(request){
+              $('#circularG').hide();
+              $('#phases').effect('highlight');
+            },
+            url: "#{sort_project_phases_path(@project)}"
+          })
+        }
+      });
+      $('#sortable').disableSelection();
+    });

@@ -26,6 +26,7 @@ gem 'mailboxer'
 gem 'etherpad-lite'
 gem 'breadcrumbs_on_rails'
 gem 'prawn_rails'
+gem 'acts_as_list'
 
 # Gems used only for assets and not required
 # in production environments by default.

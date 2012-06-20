@@ -9,7 +9,7 @@ class Project < ActiveRecord::Base
   has_many :members, :include => [:user], :dependent => :destroy
   has_many :milestones, :dependent => :destroy
   has_many :documents, :dependent => :destroy
-  has_many :phases, :dependent => :destroy
+  has_many :phases, :dependent => :destroy, :order => "position"
   has_many :activities, :through => :phases
   has_many :milestones, :dependent => :destroy
   has_many :attachments

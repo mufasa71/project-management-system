@@ -8,6 +8,8 @@
 //= require event_calendar
 //= require jquery.ui.autocomplete
 //= require jquery.ui.datepicker
+//= require jquery.effects.highlight
+//= require jquery.ui.sortable
 //= require etherpad
 //= require jquery.uniform.min.js
 //= require_tree .
@@ -21,3 +23,4 @@ $('.done-checkbox').click(function(){
 $(function(){
   $('select, input:checkbox, input:radio, input:file').uniform();
 });
+

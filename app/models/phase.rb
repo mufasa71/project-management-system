@@ -1,5 +1,6 @@
 class Phase < ActiveRecord::Base
   belongs_to :project
+  acts_as_list :scope => :project
   has_many :activities, :dependent => :destroy
   has_many :milestones, :dependent => :destroy
   has_one :event, :as => :eventable, :dependent => :destroy

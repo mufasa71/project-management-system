@@ -26,6 +26,7 @@
           %dd= link_to "Show", project_phase_gantt_path(@project, @phase), :class => "btn btn-mini btn-inverse"
 .row
   .span10
+    = link_to " Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => phase), :class => "btn btn-mini btn-success icon-plus-sign"
     %h3 Activities:
     #activities
       = render 'activities/activities', :object => @activities

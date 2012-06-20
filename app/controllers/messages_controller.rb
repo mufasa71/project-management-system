@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
     @messages = current_user.mailbox.inbox if @box == 'inbox'
     @messages = current_user.mailbox.sentbox if @box == 'sent'
     @messages = current_user.mailbox.trash if @box == 'trash'
+    #UserMailer.try_mail(User.find(1)).deliver
   end
 
   def new
@@ -33,6 +34,7 @@ class MessagesController < ApplicationController
       end
 
       receipt = current_user.reply_to_conversation(@conversation, @message.body, nil, true, true, @message.attachment)
+
     else
       unless @message.valid?
         return render :new

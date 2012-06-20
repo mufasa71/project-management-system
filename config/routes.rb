@@ -16,6 +16,9 @@ ProjectManagementSystem::Application.routes.draw do
   resources :projects do
     resources :phases do
       resources :activities
+      collection do
+        post :sort
+      end
     end
     resources :documents
     resources :gantts, :only => [:show]
