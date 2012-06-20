@@ -30,6 +30,13 @@ class User < ActiveRecord::Base
       scoped
     end
   end
+
+  before_destroy :check_relations
+  def check_relations
+    errors.add :base, "Cannot delete user involved in project, first delete from project" if self.assignees.any?
+    errors.add :base, "Cannot delete user as supervisor, first delete supervisor" unless Supervisor.where(:user_id => self.id).nil?
+    errors.empty?
+  end
 end
 # == Schema Information
 #

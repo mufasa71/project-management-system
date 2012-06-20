@@ -49,7 +49,7 @@ ProjectManagementSystem::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, :intakes, :subjects
+    resources :users, :intakes, :subjects, :supervisors
     get "home/index"
   end
 

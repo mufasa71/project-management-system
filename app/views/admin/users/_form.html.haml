@@ -1,6 +1,11 @@
-= simple_form_for [:admin, @user], :html => { :class => 'form-horizontal' } do |f|
-  = f.input :email
-  = f.input :name
-  .form-actions
-    = f.button :submit, :class => 'btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_users_path, :class => 'btn'
+.row
+  .span2
+    = image_tag @user.profile_picture if @user.profile_picture.present?
+  .span5
+    = simple_form_for [:admin, @user], :html => { :class => 'form-horizontal' } do |f|
+      = f.input :email
+      = f.input :name
+      = f.input :profile_picture
+      .form-actions
+        = f.button :submit, :class => 'btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), admin_users_path, :class => 'btn'

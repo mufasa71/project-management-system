@@ -40,6 +40,8 @@
                   %b.caret
                 %ul.dropdown-menu
                   -if user_signed_in?
+                    %li
+                      = link_to current_user, ""
                     %li.account-email
                       = link_to edit_user_registration_path do
                         %i{ :class => "icon-user" }

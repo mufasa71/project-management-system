@@ -7,6 +7,7 @@
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:email)
       %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:admin)
       /%th= model_class.human_attribute_name(:reset_password_sent_at)
       /%th= model_class.human_attribute_name(:remember_created_at)
       /%th= model_class.human_attribute_name(:sign_in_count)
@@ -22,6 +23,7 @@
         %td= link_to user.id, admin_user_path(user)
         %td= user.email
         %td= user.name
+        %td= user.admin
         /%td= user.reset_password_sent_at
         /%td= user.remember_created_at
         /%td= user.sign_in_count

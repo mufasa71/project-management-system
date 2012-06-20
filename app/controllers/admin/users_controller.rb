@@ -5,7 +5,7 @@ module Admin
 
 
     def index
-      @users = User.not_admins
+      @users = User.all
       respond_with @users
     end
 
@@ -30,10 +30,14 @@ module Admin
 
     def destroy
       @user = User.find(params[:id])
-      if @user.destroy
-        flash[:notice] = "User successfully deleted."
+      unless @user == current_user 
+        if @user.destroy
+          flash[:notice] = "User successfully deleted."
+        else
+          flash[:alert] = @user.errors[:base][0].to_s
+        end
       else
-        flash[:alert] = "Sorry, but can not delete user."
+        flash[:alert] = "Sorry, but you can not delete yourself."
       end
       redirect_to admin_users_path
     end

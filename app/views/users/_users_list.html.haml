@@ -2,6 +2,7 @@
   -@users.each do |user|
     -present user do |user_presenter|
       %li
-        = user_presenter.profile_picture("50x50")
+        = user_presenter.profile_picture :thumb
         = link_to user_presenter.name, user_path(user)
         %b #{user_presenter.number}
+        %b= "Supervisor" if user.admin?

@@ -22,8 +22,16 @@ class UserPresenter < BasePresenter
     user.created_at.strftime("%d %B %Y")
   end
 
-  def profile_picture(size="")
-    image_tag(profile_picture_file, :size => size)
+  def profile_picture(type = "")
+    if user.profile_picture.present?
+      if type == :thumb
+        image_tag user.profile_picture.thumb
+      else
+        image_tag user.profile_picture
+      end
+    else
+      image_tag "default.png", :size => type == :thumb ? "50x50" : ""
+    end
   end
 
   def name
@@ -87,13 +95,5 @@ class UserPresenter < BasePresenter
 
   def site_link(content)
     #link_to_if(user.url.present?, content, user.url
-  end
-
-  def profile_picture_file
-    if user.profile_picture.present?
-      user.profile_picture
-    else
-      "default.png"
-    end
   end
 end
