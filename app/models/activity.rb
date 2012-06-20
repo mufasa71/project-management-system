@@ -17,6 +17,10 @@ class Activity < ActiveRecord::Base
     self.document.project = self.phase.project
     self.document.save!
   end
+
+  def self.delayed_activities
+    UserMailer.try_mail(1).deliver
+  end
 end
 # == Schema Information
 #

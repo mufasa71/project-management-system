@@ -1,7 +1,7 @@
 =render 'common/project_tabs'
 .row
   .span12
-    .span6
+    .span7#phases_list
       %ul.unstyled#phases
         - @phases.each do |phase|
           %li{ :id => "phase_#{phase.id}"}
@@ -27,23 +27,12 @@
                       = link_to "Show", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-info"
                       = link_to "Edit", edit_project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-warning"
                       = link_to "Delete", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-danger", :method => :delete
-    .span5
+    .span4
       %h3 Activities
       %table.table.table-striped#activities
 .row
   .span12
-    .span2
-      = link_to " New Phase", new_project_phase_path, :class => "btn btn-success icon-plus-sign"
-    .span3
-      #circularG
-        #circularG_1.circularG
-        #circularG_2.circularG
-        #circularG_3.circularG
-        #circularG_4.circularG
-        #circularG_5.circularG
-        #circularG_6.circularG
-        #circularG_7.circularG
-        #circularG_8.circularG
+    = link_to " New Phase", new_project_phase_path, :class => "btn btn-success icon-plus-sign"
 
 - content_for :javascript do
   :javascript
@@ -62,10 +51,10 @@
             data: $('#phases').sortable('serialize'),
             dataType: 'script',
             beforeSend: function(){
-              $('#circularG').show();
+              $('#phases_list').addClass('loader');
             },
             complete: function(request){
-              $('#circularG').hide();
+              $('#phases_list').removeClass('loader');
               $('#phases').effect('highlight');
             },
             url: "#{sort_project_phases_path(@project)}"

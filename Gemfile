@@ -27,6 +27,9 @@ gem 'etherpad-lite'
 gem 'breadcrumbs_on_rails'
 gem 'prawn_rails'
 gem 'acts_as_list'
+gem 'resque_mailer'
+gem 'resque', :require => 'resque/server'
+gem 'whenever'
 
 # Gems used only for assets and not required
 # in production environments by default.

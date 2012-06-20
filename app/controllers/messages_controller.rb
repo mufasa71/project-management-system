@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @messages = current_user.mailbox.inbox if @box == 'inbox'
     @messages = current_user.mailbox.sentbox if @box == 'sent'
     @messages = current_user.mailbox.trash if @box == 'trash'
-    #UserMailer.try_mail(User.find(1)).deliver
+    UserMailer.try_mail(User.find(1).id).deliver
   end
 
   def new
