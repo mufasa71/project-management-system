@@ -12,7 +12,7 @@
       = f.input :done
   .row
     .span12
-      = f.simple_fields_for :attachments do |a|
+      = f.simple_fields_for :attachments, @activity.attachments.build do |a|
         = a.input :project_id, :as => :hidden, :input_html => { :value => @project.id }
         .row
           .span4

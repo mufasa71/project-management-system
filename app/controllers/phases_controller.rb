@@ -32,7 +32,7 @@ class PhasesController < ApplicationController
   def update
     @phase.event.name = @phase.title
     if @phase.update_attributes(params[:phase])
-      redirect_to project_phases_path, :notice => "Phase was successfully updated."
+      redirect_to project_phase_path(@project,@phase), :notice => "Phase was successfully updated."
     else
       render 'edit'
     end

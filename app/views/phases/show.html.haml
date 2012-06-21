@@ -28,7 +28,8 @@
           %dd= link_to " Edit document", project_document_path(@project, @phase.document), :class => "btn btn-mini btn-info icon-pencil"
 .row
   .span10
-    = link_to " New Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => @phase), :class => "btn btn-small btn-success icon-plus-sign"
+    = link_to "Edit Phase", edit_project_phase_path(:project_id => @project, :id => @phase), :class => "btn btn-small btn-warning"
+    = link_to " Add Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => @phase), :class => "btn btn-small btn-success icon-plus-sign"
     %br
     %br
     #activities
