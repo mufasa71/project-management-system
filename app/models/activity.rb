@@ -11,10 +11,11 @@ class Activity < ActiveRecord::Base
   validates_presence_of :title, :status, :assignee
 
   after_create :create_document
-  after_create :update_document
+  after_create :set_document
 
-  def update_document
+  def set_document
     self.document.project = self.phase.project
+    self.document.pad_id = SecureRandom.hex
     self.document.save!
   end
 

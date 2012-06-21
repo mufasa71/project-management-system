@@ -14,13 +14,14 @@
         .project_details_header Gantt chart: 
         = link_to " Show", project_gantt_path(@project), :class => "btn btn-small btn-inverse icon-eye-open"
         .project_details_header Documentation:
-        = link_to " Download in PDF", download_project_path(@project, :format => :pdf), :class => "btn btn-small btn-info icon-download"
+        = image_tag "images/pdf.jpg", :size => "32x32"
+        = link_to " Download PDF", download_project_path(@project, :format => :pdf), :class => "btn btn-small btn-info icon-download"
       .span4
         %h4 Members
         %ul
           - @project.members.each do |member|
             %li
-              = link_to member, user_path(:id => member.user_id)
+              = link_to member, user_path(:id => member.user_id), :class => "member_#{member.id}"
         .project_details_header Intake:
         %h4= @project.intake
         .project_details_header Module:
@@ -30,3 +31,19 @@
 .row
   .span12
     =simple_format(@project.description)
+- content_for :javascript do
+  -@project.members.each do |member|
+    :javascript
+      $('.member_#{member.id}').popover({
+        title: "#{member}",
+        animation: true,
+        trigger: 'hover',
+        content: '#{image_tag member.user.profile_picture.thumb, :style => "margin-right: 10px"}#{mail_to member.user.email, " " + member.user.email, :class => "icon-envelope"}<br /><br />#{link_to "Facebook", "", :class => "facebook-icon"}<br /><br />#{link_to "Twitter", "", :class => "twitter-icon"}<br /><br />#{link_to "Skype", "", :class => "skype-icon"}'
+      });
+      $('.member_#{member.id}').hover(
+        function(){
+          $('.member_#{member.id}').popover('show');
+        },
+        function(){
+        }
+      );

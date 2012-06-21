@@ -19,10 +19,11 @@ class Phase < ActiveRecord::Base
   end
 
   after_create :create_document
-  after_create :update_document
+  after_create :set_document
 
-  def update_document
+  def set_document
     self.document.project = self.project
+    self.document.pad_id = SecureRandom.hex
     self.document.save!
   end
 

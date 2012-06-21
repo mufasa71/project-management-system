@@ -1,0 +1,25 @@
+- @phases.each do |phase|
+  %li{ :id => "phase_#{phase.id}"}
+    %table.table.table-striped
+      %thead
+        %tr
+          %td
+          %td
+          %td Start at
+          %td End at
+          %td Days left
+          %td
+          %tbody
+            - present phase do |phase_presenter|
+              %tr
+                %td
+                  %span{:class => "icon-ok-sign"}
+                %td= link_to phase_presenter.title, project_phase_path(:project_id => @project, :id => phase), :remote => true
+                %td= phase_presenter.start_at
+                %td= phase_presenter.end_at
+                %td= phase_presenter.days_left
+                %td
+                  = link_to "Show", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-info"
+                  = link_to "Edit", edit_project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-warning"
+                  = link_to "Delete", project_phase_path(:project_id => @project, :id => phase), :class => "btn btn-mini btn-danger", :method => :delete, :confirm => "Are you sure?"
+= paginate @phases

@@ -6,6 +6,9 @@ class PhasesController < ApplicationController
   respond_to :js, :html
   def index
     add_breadcrumb "Project -> " << @project.name, project_path(@project)
+    params[:per_page] ||= 4
+    @phases = @project.phases.page(params[:page]).per(params[:per_page])
+    respond_with @phases
   end
 
   def show

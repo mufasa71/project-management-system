@@ -19,4 +19,4 @@
             %td
             %td
               = link_to "Edit", edit_project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity), :class => "btn btn-mini btn-info"
-              = link_to "Delete", project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity), :class => "btn btn-mini btn-danger", :method => :delete
+              = link_to "Delete", project_phase_activity_path(:project_id => @project, :phase_id => @phase, :id => activity), :class => "btn btn-mini btn-danger", :method => :delete, :confirm => "Are you sure?"

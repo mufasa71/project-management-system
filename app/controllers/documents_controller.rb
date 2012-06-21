@@ -11,6 +11,14 @@ class DocumentsController < ApplicationController
   end
 
   def show
+    add_breadcrumb "Project -> " << @project.name, project_path(@project)
+    if @document.documentable_type.eql?("Activity")
+      add_breadcrumb "Phase -> " << @document.documentable.phase.title, project_phase_path(@project, @document.documentable.phase)
+      add_breadcrumb "Activity -> " << @document.documentable.title, project_phase_activity_path(@project, @document.documentable.phase, @document.documentable)
+    else
+      add_breadcrumb "Phase -> " << @document.documentable.title, project_phase_path(@project, @document.documentable)
+    end
+    session[:ep_sessions] ||= {}
     ether = EtherpadLite.connect(:local, File.new('/home/hawk/Downloads/APIKEY.txt'))
     @group = ether.group(@project.group.id)
     @pad = @group.pad(@document.pad_id)

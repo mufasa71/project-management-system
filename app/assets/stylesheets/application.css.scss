@@ -11,6 +11,7 @@
 @import "activities";
 @import "uniform.default";
 @import "projects";
+@import "members";
 
 @mixin icon($width: 20px, $height: 25px, $url: ''){
   background-image: url($url);
@@ -18,6 +19,7 @@
   height: $height;
   width: $width;
   padding-left: 27px;
+  padding-bottom: 10px;
   overflow: hidden;
 
   /* half transparent */
@@ -39,16 +41,25 @@
 a{
   &:hover{
     text-decoration:none;
-}
-&.notes-icon { 
-  @include icon(20px, 25px, 'glyphicons/glyphicons_039_notes.png');
-}
-&.rss-icon {
-  @include icon(20px, 25px, 'glyphicons/glyphicons_397_rss.png');
-}
-&.group-icon {
-  @include icon(4px, 4px, 'glyphicons/glyphicons_043_group.png');
-}
+  }
+  &.notes-icon { 
+    @include icon(20px, 25px, 'glyphicons/glyphicons_039_notes.png');
+  }
+  &.rss-icon {
+    @include icon(20px, 25px, 'glyphicons/glyphicons_397_rss.png');
+  }
+  &.group-icon {
+    @include icon(4px, 4px, 'glyphicons/glyphicons_043_group.png');
+  }
+  &.facebook-icon{
+    @include icon(4px, 4px, 'glyphicons/glyphicons_390_facebook.png');
+  }
+  &.twitter-icon{
+    @include icon(4px, 4px, 'glyphicons/glyphicons_391_twitter_t.png');
+  }
+  &.skype-icon{
+    @include icon(4px, 4px, 'glyphicons/glyphicons_398_skype.png');
+  }
 }
 
 .line{

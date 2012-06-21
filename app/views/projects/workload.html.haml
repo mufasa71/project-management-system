@@ -1,7 +1,8 @@
 =render 'common/project_tabs'
 .row
   .span12
-    = link_to "Download PDF", workload_project_path(@project, :format => :pdf)
+    = image_tag "images/pdf.jpg", :size => "32x32"
+    = link_to " Download PDF", workload_project_path(@project, :format => :pdf), :class => "btn btn-info icon-download"
     %table.table
       %thead
         %tr

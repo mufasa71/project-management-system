@@ -26,6 +26,13 @@ class Member < ActiveRecord::Base
        
     end
   end
+
+  before_destroy :check_activities
+  
+  def check_activities
+    errors.add :base, "Member with activities can not be deleted, first modify activities" if self.activities.any?
+    errors.empty?
+  end
 end
 # == Schema Information
 #

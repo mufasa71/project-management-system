@@ -1,3 +1,4 @@
+%h3= "Activities:" if @activities.any?
 %ul.unstyled
   - @activities.each do |activity|
     - present activity do |activity_presenter|

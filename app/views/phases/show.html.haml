@@ -24,9 +24,12 @@
           %dd= phase_presenter.complete
           %dt Gantt chart:
           %dd= link_to "Show", project_phase_gantt_path(@project, @phase), :class => "btn btn-mini btn-inverse"
+          %dt Document:
+          %dd= link_to " Edit document", project_document_path(@project, @phase.document), :class => "btn btn-mini btn-info icon-pencil"
 .row
   .span10
-    = link_to " Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => phase), :class => "btn btn-mini btn-success icon-plus-sign"
-    %h3 Activities:
+    = link_to " New Activity", new_project_phase_activity_path(:project_id => @project, :phase_id => @phase), :class => "btn btn-small btn-success icon-plus-sign"
+    %br
+    %br
     #activities
       = render 'activities/activities', :object => @activities

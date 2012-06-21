@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   load_and_authorize_resource :member, :through => :project
 
   def index
-    @users = User.find(:all, :conditions => ['id not in (?)', @project.members.map(&:user_id)])
+    @users = User.find(:all, :conditions => ['id not in (?) and admin="f"', @project.members.map(&:user_id)])
     respond_with @users
   end
 
@@ -40,10 +40,11 @@ class MembersController < ApplicationController
 
   def destroy
     @member_id = @member.id
-    @member.destroy
-    respond_to do |format|
-      format.html { redirect_to settings_members_project_path(@project), :notice => "Successful updated." }
-      format.js
+    if @member.destroy
+      flash[:notice] = "Member was successfully deleted."
+    else
+      flash[:notice] = @member.errors[:base][0].to_s
     end
+    respond_with @member, :location => settings_members_project_path(@project)
   end
 end

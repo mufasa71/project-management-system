@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require rails-timeago
 //= require twitter/bootstrap
+//= require bootstrap-popover
 //= require ckeditor-jquery
 //= require simple_nested_form
 //= require ui.achtung
