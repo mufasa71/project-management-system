@@ -36,6 +36,8 @@ http://yuml.me/edit/8e3c6516
 (Manage Activities)<(Assign student)
 (Manage Activities)<(Attach file)
 (Manage Activities)<(Select status)
+
+http://yuml.me/edit/71f4b38a
 [Student]-(View Workload Matrix)
 (View Workload Matrix)<(Download matrix)
 [Student]-(Manage report)
