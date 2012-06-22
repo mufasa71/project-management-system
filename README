@@ -15,3 +15,34 @@ cucumber
 rspec
 devise
 cancan
+
+// Use Case Diagram yuml.com
+[Student]-(Manage project)
+(Manage Project)<(Add phase)
+(Manage Project)<(Generate documentation)
+(Manage Project)<(View Gantt Chart)
+(Manage Project)<(Assign members)
+(Manage Project)<(Assign supervisor)
+(Manage Project)<(Assign intake)
+(Manage Project)<(Assign module)
+[Student]-(Manage phases)
+(Manage Phases)<(Edit document)
+(Manage Phases)<(Attach file)
+(Manage Phases)<(Add activity)
+(Manage Phases)<(Add Milestone)
+[Student]-(Manage Activities)
+(Manage Activities)<(Edit document)
+(Manage Activities)<(Assign student)
+(Manage Activities)<(Attach file)
+(Manage Activities)<(Select status)
+[Student]-(View Workload Matrix)
+(View Workload Matrix)<(Download matrix)
+[Student]-(Manage report)
+(Manage Report)<(Generate report)
+(Manage Report)<(Download report)
+[Student]-(Messages)
+(Messages)<(Send message)
+[Student]-(Authentication)
+(Authentication)<(Sign up)
+(Authentication)<(Sign in)
+
