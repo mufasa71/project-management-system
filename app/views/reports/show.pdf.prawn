@@ -16,6 +16,17 @@ prawn_document(:filename => @project.name + "_report_" + @report.created_at.to_d
     pdf.text "Report number: " + (@project.reports.index(@report) + 1).to_s
   end
   pdf.font_size = 12
+  pdf.grid([2,0], [2,1]).bounding_box do
+    pdf.text "COMPLETED SINCE LAST REPORT", :style => :bold
+    last_report = @project.reports.where("created_at < ?", @report.created_at).reverse.first
+    unless last_report.nil?
+      data_table = [["Description", "Date Completed"],[last_report.description, last_report.created_at.strftime("%d/%m/%Y")]]
+      pdf.table data_table, 
+        :row_colors => ["FFFFFF", "DDDDDD"],
+        :header => true,
+        :column_widths => [400, 100]
+    end
+  end  
   pdf.grid([3,0], [3,1]).bounding_box do
     pdf.text "IN PROGRESS", :style => :bold
     data_table = [["Activity","Description", "Est. Compl. Date"]]
@@ -29,17 +40,6 @@ prawn_document(:filename => @project.name + "_report_" + @report.created_at.to_d
       :row_colors => ["FFFFFF", "DDDDDD"],
       :header => true,
       :column_widths => [50, 350, 100]
-  end  
-  pdf.grid([2,0], [2,1]).bounding_box do
-    pdf.text "COMPLETED SINCE LAST REPORT", :style => :bold
-    last_report = @project.reports.where("created_at < ?", @report.created_at).reverse.first
-    unless last_report.nil?
-      data_table = [["Description", "Date Completed"],[last_report.description, last_report.created_at.strftime("%d/%m/%Y")]]
-      pdf.table data_table, 
-        :row_colors => ["FFFFFF", "DDDDDD"],
-        :header => true,
-        :column_widths => [400, 100]
-    end
   end  
   pdf.grid([4,0], [4,1]).bounding_box do
     pdf.text "ISSUES/COMMENTS", :style => :bold

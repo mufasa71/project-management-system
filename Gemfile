@@ -62,6 +62,8 @@ group :test, :development do
   gem 'launchy'
   gem 'cancan'
   gem 'pickle'
+  gem 'railroady'
+  gem 'rails-erd'
 end
 
 gem "mocha", :group => :test

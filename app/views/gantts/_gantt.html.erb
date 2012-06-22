@@ -1,7 +1,7 @@
 <% content_for :javascript do %>
   <script type="text/javascript" src = "/assets/FusionCharts.js"></script>
   <script type="text/javascript"><!--
-    var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1100", "600", "0", "1" );
+    var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1100", "1000", "0", "1" );
     myChart.setXMLData('<chart slackFillColor="FF3030" ganttPaneDuration="3" ganttPaneDurationUnit="m" palette="3" dateFormat="mm/dd/yyyy" caption="<%=@project.name%> - Project Gantt" subCaption="From <%= @project.event.start_at.strftime("#{@project.event.start_at.day.ordinalize} %b %Y")%> - <%= @project.event.end_at.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
     <categories>\n\
     <% i = @project.event.end_at.month - @project.event.start_at.month + 1%>

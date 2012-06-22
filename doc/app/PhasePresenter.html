@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class PhasePresenter - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/presenters/phase_presenter.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="BasePresenter.html">BasePresenter</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-complete">#complete</a>
+    
+    <li><a href="#method-i-days_left">#days_left</a>
+    
+    <li><a href="#method-i-description">#description</a>
+    
+    <li><a href="#method-i-done">#done</a>
+    
+    <li><a href="#method-i-end_at">#end_at</a>
+    
+    <li><a href="#method-i-start_at">#start_at</a>
+    
+    <li><a href="#method-i-title">#title</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/HomeController.html">Admin::HomeController</a>
+  
+    <li><a href="./Admin/HomeHelper.html">Admin::HomeHelper</a>
+  
+    <li><a href="./Admin/IntakesController.html">Admin::IntakesController</a>
+  
+    <li><a href="./Admin/RolesHelper.html">Admin::RolesHelper</a>
+  
+    <li><a href="./Admin/SubjectsController.html">Admin::SubjectsController</a>
+  
+    <li><a href="./Admin/SupervisorsController.html">Admin::SupervisorsController</a>
+  
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
+  
+    <li><a href="./Admin/UsersHelper.html">Admin::UsersHelper</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ActivitiesController.html">ActivitiesController</a>
+  
+    <li><a href="./ActivitiesHelper.html">ActivitiesHelper</a>
+  
+    <li><a href="./Activity.html">Activity</a>
+  
+    <li><a href="./ActivityPresenter.html">ActivityPresenter</a>
+  
+    <li><a href="./ActivityStatus.html">ActivityStatus</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./AttachmentsHelper.html">AttachmentsHelper</a>
+  
+    <li><a href="./BasePresenter.html">BasePresenter</a>
+  
+    <li><a href="./CalendarController.html">CalendarController</a>
+  
+    <li><a href="./CalendarHelper.html">CalendarHelper</a>
+  
+    <li><a href="./DatePickerInput.html">DatePickerInput</a>
+  
+    <li><a href="./Document.html">Document</a>
+  
+    <li><a href="./DocumentsController.html">DocumentsController</a>
+  
+    <li><a href="./DocumentsHelper.html">DocumentsHelper</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./FileUploader.html">FileUploader</a>
+  
+    <li><a href="./GanttsController.html">GanttsController</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./Intake.html">Intake</a>
+  
+    <li><a href="./IntakesController.html">IntakesController</a>
+  
+    <li><a href="./IssueCategoriesHelper.html">IssueCategoriesHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./Milestone.html">Milestone</a>
+  
+    <li><a href="./MilestonesController.html">MilestonesController</a>
+  
+    <li><a href="./MilestonesHelper.html">MilestonesHelper</a>
+  
+    <li><a href="./Phase.html">Phase</a>
+  
+    <li><a href="./PhasePresenter.html">PhasePresenter</a>
+  
+    <li><a href="./PhasesController.html">PhasesController</a>
+  
+    <li><a href="./ProfilePictureUploader.html">ProfilePictureUploader</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectManagementController.html">ProjectManagementController</a>
+  
+    <li><a href="./ProjectManagementHelper.html">ProjectManagementHelper</a>
+  
+    <li><a href="./ProjectStepsController.html">ProjectStepsController</a>
+  
+    <li><a href="./ProjectStepsHelper.html">ProjectStepsHelper</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./ProjectsHelper.html">ProjectsHelper</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Report.html">Report</a>
+  
+    <li><a href="./ReportsController.html">ReportsController</a>
+  
+    <li><a href="./SettingsController.html">SettingsController</a>
+  
+    <li><a href="./Subject.html">Subject</a>
+  
+    <li><a href="./SubjectsController.html">SubjectsController</a>
+  
+    <li><a href="./Supervisor.html">Supervisor</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
+  
+    <li><a href="./UserPresenter.html">UserPresenter</a>
+  
+    <li><a href="./UserStepsController.html">UserStepsController</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class PhasePresenter</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-complete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">complete</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="complete-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">complete</span>
+  <span class="ruby-identifier">complete</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">activities</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">activities_done</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">complete</span> = ((<span class="ruby-identifier">phase</span>.<span class="ruby-identifier">activities_done</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">activities</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_f</span>) * <span class="ruby-value">100</span>).<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;%&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-identifier">complete</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;bar&quot;</span>, <span class="ruby-value">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;width:#{complete}&quot;</span>), <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;progress&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- complete-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- complete-method -->
+
+    
+      <div id="method-i-days_left" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">days_left</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="days_left-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">days_left</span>
+  <span class="ruby-identifier">days</span> = (<span class="ruby-identifier">phase</span>.<span class="ruby-identifier">event</span>.<span class="ruby-identifier">end_at</span> <span class="ruby-operator">-</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>).<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">pluralized</span> = <span class="ruby-identifier">pluralize</span>(<span class="ruby-identifier">days</span>, <span class="ruby-string">&quot;day&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">days</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">days</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-value">10</span>
+    <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:span</span>, <span class="ruby-identifier">pluralized</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;label label-warning&quot;</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">days</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">3</span>
+    <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:span</span>, <span class="ruby-identifier">pluralized</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;label label-important&quot;</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:span</span>, <span class="ruby-identifier">pluralized</span>, <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;label label-success&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- days_left-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- days_left-method -->
+
+    
+      <div id="method-i-description" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">description</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="description-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">description</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">description</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">raw</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">description</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- description-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- description-method -->
+
+    
+      <div id="method-i-done" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">done</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="done-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">done</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">done</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">content_tag</span> <span class="ruby-value">:div</span>, <span class="ruby-identifier">content_tag</span>(<span class="ruby-value">:div</span>, <span class="ruby-node">&quot;#{phase.done.to_s &lt;&lt; '%'}&quot;</span>,<span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;bar&quot;</span>, <span class="ruby-value">:style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;width: #{phase.done.to_s &lt;&lt; '%'}&quot;</span>), <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;progress&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- done-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- done-method -->
+
+    
+      <div id="method-i-end_at" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">end_at</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="end_at-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">end_at</span>
+  <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">event</span>.<span class="ruby-identifier">end_at</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- end_at-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- end_at-method -->
+
+    
+      <div id="method-i-start_at" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">start_at</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="start_at-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">start_at</span>
+  <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">event</span>.<span class="ruby-identifier">start_at</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- start_at-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- start_at-method -->
+
+    
+      <div id="method-i-title" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">title</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="title-source">
+            <pre><span class="ruby-comment"># File app/presenters/phase_presenter.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>
+  <span class="ruby-identifier">phase</span>.<span class="ruby-identifier">title</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- title-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- title-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

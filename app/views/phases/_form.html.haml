@@ -6,7 +6,7 @@
       = event.input :end_at, :as => :date_picker, :required => true
   .row
     .span12
-      = f.simple_fields_for :attachments, @phase.attachments.build do |a|
+      = f.simple_fields_for :attachments do |a|
         = a.input :project_id, :as => :hidden, :input_html => { :value => @project.id }
         .row
           .span4

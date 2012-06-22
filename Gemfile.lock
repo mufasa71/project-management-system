@@ -180,6 +180,7 @@ GEM
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
+    railroady (1.0.7)
     rails (3.2.2)
       actionmailer (= 3.2.2)
       actionpack (= 3.2.2)
@@ -188,6 +189,10 @@ GEM
       activesupport (= 3.2.2)
       bundler (~> 1.0)
       railties (= 3.2.2)
+    rails-erd (0.4.5)
+      activerecord (~> 3.0)
+      activesupport (~> 3.0)
+      ruby-graphviz (~> 0.9.18)
     rails-timeago (1.1.1)
       actionpack (>= 3.1)
       activesupport (>= 3.1)
@@ -225,6 +230,7 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.9.0)
+    ruby-graphviz (0.9.21)
     ruby-rc4 (0.1.5)
     rubyzip (0.9.8)
     sass (3.1.18)
@@ -326,7 +332,9 @@ DEPENDENCIES
   mocha
   pickle
   prawn_rails
+  railroady
   rails (= 3.2.2)
+  rails-erd
   rails-timeago
   redcarpet
   resque

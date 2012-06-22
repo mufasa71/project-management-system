@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class UserPresenter - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/presenters/user_presenter.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="BasePresenter.html">BasePresenter</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-email">#email</a>
+    
+    <li><a href="#method-i-facebook">#facebook</a>
+    
+    <li><a href="#method-i-homepage">#homepage</a>
+    
+    <li><a href="#method-i-intake">#intake</a>
+    
+    <li><a href="#method-i-issues">#issues</a>
+    
+    <li><a href="#method-i-member_since">#member_since</a>
+    
+    <li><a href="#method-i-messageble-3F">#messageble?</a>
+    
+    <li><a href="#method-i-msn">#msn</a>
+    
+    <li><a href="#method-i-name">#name</a>
+    
+    <li><a href="#method-i-number">#number</a>
+    
+    <li><a href="#method-i-profile_picture">#profile_picture</a>
+    
+    <li><a href="#method-i-projects_involved">#projects_involved</a>
+    
+    <li><a href="#method-i-since">#since</a>
+    
+    <li><a href="#method-i-skype">#skype</a>
+    
+    <li><a href="#method-i-twitter">#twitter</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Admin.html">Admin</a>
+  
+    <li><a href="./Admin/BaseController.html">Admin::BaseController</a>
+  
+    <li><a href="./Admin/HomeController.html">Admin::HomeController</a>
+  
+    <li><a href="./Admin/HomeHelper.html">Admin::HomeHelper</a>
+  
+    <li><a href="./Admin/IntakesController.html">Admin::IntakesController</a>
+  
+    <li><a href="./Admin/RolesHelper.html">Admin::RolesHelper</a>
+  
+    <li><a href="./Admin/SubjectsController.html">Admin::SubjectsController</a>
+  
+    <li><a href="./Admin/SupervisorsController.html">Admin::SupervisorsController</a>
+  
+    <li><a href="./Admin/UsersController.html">Admin::UsersController</a>
+  
+    <li><a href="./Admin/UsersHelper.html">Admin::UsersHelper</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./ActivitiesController.html">ActivitiesController</a>
+  
+    <li><a href="./ActivitiesHelper.html">ActivitiesHelper</a>
+  
+    <li><a href="./Activity.html">Activity</a>
+  
+    <li><a href="./ActivityPresenter.html">ActivityPresenter</a>
+  
+    <li><a href="./ActivityStatus.html">ActivityStatus</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Attachment.html">Attachment</a>
+  
+    <li><a href="./AttachmentsController.html">AttachmentsController</a>
+  
+    <li><a href="./AttachmentsHelper.html">AttachmentsHelper</a>
+  
+    <li><a href="./BasePresenter.html">BasePresenter</a>
+  
+    <li><a href="./CalendarController.html">CalendarController</a>
+  
+    <li><a href="./CalendarHelper.html">CalendarHelper</a>
+  
+    <li><a href="./DatePickerInput.html">DatePickerInput</a>
+  
+    <li><a href="./Document.html">Document</a>
+  
+    <li><a href="./DocumentsController.html">DocumentsController</a>
+  
+    <li><a href="./DocumentsHelper.html">DocumentsHelper</a>
+  
+    <li><a href="./Event.html">Event</a>
+  
+    <li><a href="./FileUploader.html">FileUploader</a>
+  
+    <li><a href="./GanttsController.html">GanttsController</a>
+  
+    <li><a href="./Group.html">Group</a>
+  
+    <li><a href="./Intake.html">Intake</a>
+  
+    <li><a href="./IntakesController.html">IntakesController</a>
+  
+    <li><a href="./IssueCategoriesHelper.html">IssueCategoriesHelper</a>
+  
+    <li><a href="./Member.html">Member</a>
+  
+    <li><a href="./MembersController.html">MembersController</a>
+  
+    <li><a href="./MembersHelper.html">MembersHelper</a>
+  
+    <li><a href="./MessagesController.html">MessagesController</a>
+  
+    <li><a href="./Milestone.html">Milestone</a>
+  
+    <li><a href="./MilestonesController.html">MilestonesController</a>
+  
+    <li><a href="./MilestonesHelper.html">MilestonesHelper</a>
+  
+    <li><a href="./Phase.html">Phase</a>
+  
+    <li><a href="./PhasePresenter.html">PhasePresenter</a>
+  
+    <li><a href="./PhasesController.html">PhasesController</a>
+  
+    <li><a href="./ProfilePictureUploader.html">ProfilePictureUploader</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectManagementController.html">ProjectManagementController</a>
+  
+    <li><a href="./ProjectManagementHelper.html">ProjectManagementHelper</a>
+  
+    <li><a href="./ProjectStepsController.html">ProjectStepsController</a>
+  
+    <li><a href="./ProjectStepsHelper.html">ProjectStepsHelper</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./ProjectsHelper.html">ProjectsHelper</a>
+  
+    <li><a href="./RegistrationsController.html">RegistrationsController</a>
+  
+    <li><a href="./Report.html">Report</a>
+  
+    <li><a href="./ReportsController.html">ReportsController</a>
+  
+    <li><a href="./SettingsController.html">SettingsController</a>
+  
+    <li><a href="./Subject.html">Subject</a>
+  
+    <li><a href="./SubjectsController.html">SubjectsController</a>
+  
+    <li><a href="./Supervisor.html">Supervisor</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UserMailer.html">UserMailer</a>
+  
+    <li><a href="./UserPresenter.html">UserPresenter</a>
+  
+    <li><a href="./UserStepsController.html">UserStepsController</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./UsersHelper.html">UsersHelper</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class UserPresenter</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-email" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">email</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="email-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">email</span>
+  <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">email</span>, <span class="ruby-node">&quot;mailto:#{user.email}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- email-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- email-method -->
+
+    
+      <div id="method-i-facebook" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">facebook</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="facebook-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">facebook</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">facebook</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">facebook</span>, <span class="ruby-node">&quot;http://facebook.com/#{user.facebook}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- facebook-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- facebook-method -->
+
+    
+      <div id="method-i-homepage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">homepage</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="homepage-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">homepage</span>
+  <span class="ruby-identifier">link_to</span>(<span class="ruby-identifier">user_url</span>(<span class="ruby-identifier">user</span>), <span class="ruby-identifier">user_url</span>(<span class="ruby-identifier">user</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- homepage-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- homepage-method -->
+
+    
+      <div id="method-i-intake" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">intake</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="intake-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">intake</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">intake</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- intake-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- intake-method -->
+
+    
+      <div id="method-i-issues" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">issues</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="issues-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">issues</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">members</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">member</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">member</span>.<span class="ruby-identifier">issues</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- issues-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- issues-method -->
+
+    
+      <div id="method-i-member_since" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">member_since</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="member_since-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">member_since</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">created_at</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%B %e, %Y&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- member_since-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- member_since-method -->
+
+    
+      <div id="method-i-messageble-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">messageble?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="messageble-3F-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">messageble?</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">current_user</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">user</span>
+     <span class="ruby-identifier">link_to</span> <span class="ruby-string">&quot; Send message&quot;</span>, <span class="ruby-identifier">send_message_user_path</span>(<span class="ruby-identifier">user</span>), <span class="ruby-value">:class</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;icon-envelope&quot;</span>, <span class="ruby-value">:remote</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:get</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- messageble-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- messageble-3F-method -->
+
+    
+      <div id="method-i-msn" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">msn</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="msn-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">msn</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">msn</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">msn</span>, <span class="ruby-node">&quot;http://msn.com/#{user.msn}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- msn-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- msn-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
+
+    
+      <div id="method-i-number" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">number</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="number-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">number</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">number</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- number-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- number-method -->
+
+    
+      <div id="method-i-profile_picture" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">profile_picture</span><span
+            class="method-args">(type = "")</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="profile_picture-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 25</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">profile_picture</span>(<span class="ruby-identifier">type</span> = <span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_picture</span>.<span class="ruby-identifier">present?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:thumb</span>
+      <span class="ruby-identifier">image_tag</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_picture</span>.<span class="ruby-identifier">thumb</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">image_tag</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">profile_picture</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">image_tag</span> <span class="ruby-string">&quot;default.png&quot;</span>, <span class="ruby-value">:size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:thumb</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;50x50&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- profile_picture-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- profile_picture-method -->
+
+    
+      <div id="method-i-projects_involved" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">projects_involved</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="projects_involved-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">projects_involved</span>
+  <span class="ruby-identifier">pluralize</span>(<span class="ruby-identifier">user</span>.<span class="ruby-identifier">assignees</span>.<span class="ruby-identifier">size</span>, <span class="ruby-string">&quot;project&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- projects_involved-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- projects_involved-method -->
+
+    
+      <div id="method-i-since" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">since</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="since-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">since</span>
+  <span class="ruby-identifier">user</span>.<span class="ruby-identifier">created_at</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d %B %Y&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- since-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- since-method -->
+
+    
+      <div id="method-i-skype" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">skype</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="skype-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">skype</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">skype</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">skype</span>, <span class="ruby-node">&quot;callto://#{user.skype}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- skype-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- skype-method -->
+
+    
+      <div id="method-i-twitter" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">twitter</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="twitter-source">
+            <pre><span class="ruby-comment"># File app/presenters/user_presenter.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">twitter</span>
+  <span class="ruby-identifier">handle_none</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">twitter</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">link_to</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">twitter</span>, <span class="ruby-node">&quot;http://twitter.com/#{user.twitter}&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- twitter-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- twitter-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
