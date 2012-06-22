@@ -17,6 +17,7 @@ devise
 cancan
 
 // Use Case Diagram yuml.com
+http://yuml.me/edit/8e3c6516
 [Student]-(Manage project)
 (Manage Project)<(Add phase)
 (Manage Project)<(Generate documentation)
