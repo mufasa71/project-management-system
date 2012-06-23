@@ -49,3 +49,26 @@ http://yuml.me/edit/71f4b38a
 (Authentication)<(Sign up)
 (Authentication)<(Sign in)
 
+http://yuml.me/96c18909
+(start)->(Do Sign up)->|a|,|a|->(Navigate to sign up page)->(Validate User details)->|b|-><c>,|a|->(Render sign up form)->|b|, |b|-><c>, <c>->(Reject User details)-><e>,<c>->(Finish Sign up)-><e>,<e>->(end)
+
+http://yuml.me/299bfa0e
+(start)->(Do Sign in)->|a|,|a|->(Navigate to sign in page)->(Validate User details)->|b|,|a|->(Render sign in form)->|b|,|b|-><c>,<c>->(Finish with sign in)-><e>, <c>->(Reject User details)-><e>,<e>->(end)
+
+http://yuml.me/dd6d6db0
+(start)->(Make Project)->(Add members)->(Select hand in and hand out dates)->(end)
+
+http://yuml.me/5822ebd7
+(start)->(Create Activity)->|a|,|a|->(Select phase)->|b|,|a|->(Select start and end dates)->(Assign member)->|b|,|b|->(Verify activity)-><c>,<c>->(Reject activity)-><e>,<c>->(Finish with activity)-><e>,<e>->(end)
+
+http://yuml.me/2df8d10f
+(start)->(Create Phase)->|a|,|a|->(Select project)->|b|,|a|->(Select hand in and hand out dates)->|b|,|a|->(Make milestone)->|b|,|a|->(Attach file)->|b|,|b|->(Verify phase)-><c>,<c>->(Reject phase)-><e>,<c>->(Finish with phase)-><e>,<e>->(end)
+
+http://yuml.me/3ce8003f
+(start)->(View workload matrix)->|a|,|a|->(Do calculation)->|b|,|a|->(Select project)->(Render matrix)->|b|,|b|->(Download matrix)->(end)
+
+http://yuml.me/6c3b3b34
+(start)->(Generate Report)->|a|,|a|->(Select project)->|b|,|a|->(Provide report details)->(Finish report generation)->|b|,|b|->(Download report)->(end)
+
+http://yuml.me/38fe84ca
+(start)->(Do conversation)->(Navigate to messages page)->|a|,|a|->(Select recipient)->|b|,|a|->(Provide message details)->|b|,|b|->(Validate message)-><c>,<c>->(Send message)-><e>,<c>->(Reject message)-><e>,<e>->(end)
