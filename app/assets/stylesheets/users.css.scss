@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #sign{
+  text-align: center;
   .btn-sign{
     @include button(simple, #3FB344);
     font-size: 16px;

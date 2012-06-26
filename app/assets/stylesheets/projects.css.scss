@@ -10,6 +10,7 @@
     border-radius: 20px;
     @include box-shadow(0 0 3px 1px hsla(0, 0%, 0%, 0.65));
   }
+  text-align: center;
 }
 
 #new-project-button{

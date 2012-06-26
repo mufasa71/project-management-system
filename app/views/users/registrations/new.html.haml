@@ -1,11 +1,12 @@
-#sign.well
-  %h2 Sign up
-  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = f.error_notification
-    .inputs
-      = f.input :email, :required => true, :autofocus => true
-      = f.input :password, :required => true
-      = f.input :password_confirmation, :required => true
-    .actions
-      = f.button :submit, "Sign up", :class => "btn-sign"
-  = render "links"
+.row
+  .span12.offset4
+    .span3.well#sign
+      %h2 Sign up
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-vertical"}) do |f|
+        = f.error_notification
+        .form-inputs
+          = f.input :email, :required => true, :autofocus => true
+          = f.input :password, :required => true
+          = f.input :password_confirmation, :required => true
+        = f.button :submit, "Sign up", :class => "btn-sign"
+      = render "links"

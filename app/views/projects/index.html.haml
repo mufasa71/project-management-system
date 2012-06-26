@@ -4,9 +4,7 @@
       %ul.unstyled
         - @projects.each do |project|
           %li.project
-            %h2{:style => "text-align:center"}= link_to project.name, project_path(project)
+            %h2= link_to project.name, project_path(project)
             .project_details_header Intake:
             %h4= project.intake
-.row
-  .offset5
-    =link_to "New project", new_project_path, :id => "new-project-button"
+      = link_to "New project", new_project_path, :id => "new-project-button"

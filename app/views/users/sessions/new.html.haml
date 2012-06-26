@@ -1,13 +1,15 @@
-#sign.well
-  %h2 Sign in
-  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    .inputs
-      = f.input :email, :required => false, :autofocus => true
-      = f.input :password, :required => false
-      .control-group
-        -if devise_mapping.rememberable?
-          =check_box_tag "user[remember_me]", resource.remember_me 
-          Remember me
-    .actions
-      = f.button :submit, "Sign in", :class => "btn-sign"
-  = render "links"
+.row
+  .span12.offset4
+    #sign.well.span3
+      %h2 Sign in
+      = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+        .inputs
+          = f.input :email, :required => false, :autofocus => true
+          = f.input :password, :required => false
+        .control-group
+          -if devise_mapping.rememberable?
+            = check_box_tag "user[remember_me]", resource.remember_me 
+            Remember me
+        .actions
+        = f.button :submit, "Sign in", :class => "btn-sign"
+      = render "links"

@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.2'
 
@@ -65,6 +65,4 @@ group :test, :development do
   gem 'railroady'
   gem 'rails-erd'
   gem 'mocha'
-  gem 'capistrano'
-  gem 'rubber'
 end

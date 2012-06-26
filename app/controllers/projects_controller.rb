@@ -33,9 +33,6 @@ class ProjectsController < ApplicationController
     @project.event.name = @project.name
     respond_to do |format|
       if @project.save
-        if user_signed_in?
-          m = @project.members.create(:user => current_user)
-        end
         format.html { redirect_to project_project_steps_path(@project) }
       else
         format.html { render action: "new" }

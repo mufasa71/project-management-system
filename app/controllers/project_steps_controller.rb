@@ -11,8 +11,8 @@ class ProjectStepsController < ApplicationController
     @project = Project.find(params[:project_id])
     case step
     when :members
-      params[:project][:members][:user_id].each do |user_id|
-        @project.members << Member.new(:user_id => user_id) if user_id.present?
+      params[:project][:user_ids].each do |user_id|
+        @project.members << Member.new(:user_id => user_id)
       end
     else
       @project.attributes = params[:project]

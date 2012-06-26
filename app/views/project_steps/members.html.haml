@@ -1,6 +1,9 @@
 %h2 Add members
 = render layout: 'form' do |f|
   .form-controls
-    = f.simple_fields_for :members, @project.members.build do |a|
-      = a.association :user, :collection => User.not_admins.where("id != ?", current_user.id), :as => :check_boxes, :label => ""
-    
+    - User.not_admins.each do |user|
+      = label_tag(dom_id(user), :class => "checkbox") do
+        = check_box_tag("project[user_ids][]", user.id, false, id: dom_id(user)) << user
+
+     
+= @project.errors.full_messages
