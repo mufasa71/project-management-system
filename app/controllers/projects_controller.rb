@@ -81,4 +81,9 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     respond_with @project
   end
+
+  def statistics
+    @project = Project.find(params[:id])
+    respond_with @project
+  end
 end

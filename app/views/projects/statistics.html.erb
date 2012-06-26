@@ -1,95 +1,64 @@
 <%= render 'common/project_tabs' %>
-<div id="row">
-  <div class="span12">
-    <% content_for :javascript do %>
-        <script type="text/javascript" src="/assets/highcharts.js"></script>
-        <script type="text/javascript">
-          $(function () {
-            var chart;
-            var pie;
-            $(document).ready(function() {
-              chart = new Highcharts.Chart({
-                chart: {
-                  renderTo: 'container',
-                },
-                title: {
-                  text: 'Time log for project',
-                },
-                subtitle: {
-                  text: 'Source: time spent for each issue',
-                },
-                xAxis: {
-                  type: 'datetime'
-                },
-                yAxis: {
-                  maxPadding: 1,
-                  title: {
-                    text: 'hours'
-                  },
-                  plotLines:[{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                  }]
-                },
-                legend: {
-                  layout: 'vertical'
-                },
-                series: [
-                          <% @project.issues.each do |issue| %>
-                            {
-                              pointInterval: <%= 1.day * 1000 %>,
-                              pointStart: <%= @project.created_at.to_i * 1000 %>,
-                              name: '<%= issue %>',
-                              data: <%= (@project.created_at.to_date..Date.today).map {|date| issue.total_on(date).to_f}.inspect %>
-                            },
-                          <% end %>
-                        ]
-              });
-              pie = new Highcharts.Chart({
-                chart: {
-                    renderTo: 'pie',
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
-                },
-                title: {
-                    text: 'Overall time spent report'
-                },
-                tooltip: {
-                    formatter: function() {
-                        return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            color: '#000000',
-                            connectorColor: '#000000',
-                            formatter: function(){
-                                return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    type:'pie',
-                    name: 'Time spent',
-                    data: [
-                      <% @project.issues.each do |issue| %>
-                        ['<%= issue %>', <%= (issue.total.to_f / @project.total_hours.to_f) * 100 %>],
-                      <% end %>
-                    ]
-                }]
-              });
-            });
-          });
-        </script>
-    <% end %>
-    <div id="container" style="width: 1000px; height: 500px;"></div>
-    <div id="pie" style="width: 1000px; height: 500px"></div>
+<div class='row'>
+  <div class='span12'>
+    <h3>Activities overdue</h3>
+    <table class='table'>
+      <% @project.activities_overdue.each do |activity| %>
+        <tr>
+          <td><%= activity.title %></td>
+          <td><%= activity.assignee %></td>
+          <td> End day was: <%= activity.event.end_at %>
+        </tr>
+      <% end %>
+    </table>
+    <div id='pie' style = 'width: 700px; height: 400px'>
   </div>
-</div>
+</div<
+<% content_for :javascript do %>
+  <script type="text/javascript" src="/assets/highcharts.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      var pie;
+      $(document).ready(function() {
+      pie = new Highcharts.Chart({
+        chart: {
+          renderTo: 'pie',
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: 'Activities'
+        },
+        tooltip: {
+          formatter: function() {
+            return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+          }
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+              enabled: true,
+              color: '#000000',
+              connectorColor: '#000000',
+              formatter: function(){
+                return '<b>' + this.point.name + '</b>: ' + this.percentage + ' %';
+                }
+              }
+            }
+          },
+          series: [{
+            type:'pie',
+            name: 'Activities',
+            data: [
+              ['Activities Pending', <%= (((@project.activities.size - @project.activities_done.size).to_f / @project.activities.size.to_f) * 100.0).round(2) %>],
+              ['Activities Complete', <%= ((@project.activities_done.size.to_f / @project.activities.size.to_f) * 100.0).round(2) %>]
+            ]
+          }]
+        });
+      });
+    });
+  </script>
+<% end %>

@@ -36,6 +36,14 @@ class Project < ActiveRecord::Base
   def phases_complete
     phases.where(:complete => true)
   end
+
+  def activities_done
+    activities.where(:done => true)
+  end
+  
+  def activities_overdue
+    activities.joins(:event).where("end_at <= ? and done = ?", Date.today, false)
+  end
 end
 # == Schema Information
 #

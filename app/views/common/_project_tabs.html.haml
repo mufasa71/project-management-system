@@ -11,6 +11,6 @@
       %li{:class => params[:controller] == "projects" && is_active?("workload")} #{ link_to(workload_project_path(@project)) { content_tag(:i, "", :class => "icon-list-alt") << "Workload Matrix" }}
       %li{:class => params[:controller] == "gantts" ? "active" : "" } #{ link_to(project_gantt_path(@project)) { content_tag(:i, "", :class => "icon-random") << "Gantt" }}
       %li{:class => params[:controller] == "projects" && is_active?("progress_report")} #{ link_to(progress_report_project_path(@project)) { content_tag(:i, "", :class => "icon-eye-open") << "Progress Report" }}
-      /%li{:class => params[:controller] == "calendar" ? "active" : "" } #{ link_to(calendar_path(@project)) { content_tag(:i, "", :class => "icon-calendar") << "Calendar" }}
+      %li{:class => params[:controller] == "project" && is_active?("Statistics")} #{ link_to(statistics_project_path(@project)) { content_tag(:i, "", :class => "icon-calendar") << "Statistics" }}
       %li{:class => params[:controller] == "settings" ? "active" : "" } #{ link_to(settings_information_project_path(@project)) { content_tag(:i, "", :class => "icon-cog") << "Settings" }}
     = render_breadcrumbs
