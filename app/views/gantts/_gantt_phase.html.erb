@@ -2,7 +2,7 @@
   <script type="text/javascript" src = "/assets/FusionCharts.js"></script>
   <script type="text/javascript"><!--
     var myChart = new FusionCharts( "/assets/Gantt.swf", "myChartId", "1100", "600", "0", "1" );
-    myChart.setXMLData('<chart slackFillColor="FF3030" palette="3" dateFormat="mm/dd/yyyy" caption="<%=@phase.title%> - Phase Gantt" subCaption="From <%= @phase.event.start_at.strftime("#{@phase.event.start_at.day.ordinalize} %b %Y")%> - <%= @phase.event.end_at.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
+    myChart.setDataXML('<chart slackFillColor="FF3030" palette="3" dateFormat="mm/dd/yyyy" caption="<%=@phase.title%> - Phase Gantt" subCaption="From <%= @phase.event.start_at.strftime("#{@phase.event.start_at.day.ordinalize} %b %Y")%> - <%= @phase.event.end_at.strftime("#{Date.today.day.ordinalize} %b %Y") %>">\n\
     <categories>\n\
     <% i = @phase.event.end_at.month - @phase.event.start_at.month + 1%>
     <% start = @phase.event.start_at %>
