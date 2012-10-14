@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(:version => 20120621084745) do
     t.boolean  "done",        :default => false
   end
 
+  create_table "activity_priorities", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "activity_statuses", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -52,12 +58,12 @@ ActiveRecord::Schema.define(:version => 20120621084745) do
 
   create_table "documents", :force => true do |t|
     t.string   "pad_id"
+    t.integer  "project_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "group_id"
     t.integer  "documentable_id"
     t.string   "documentable_type"
-    t.integer  "project_id"
     t.text     "body"
   end
 
@@ -99,9 +105,9 @@ ActiveRecord::Schema.define(:version => 20120621084745) do
 
   create_table "milestones", :force => true do |t|
     t.string   "description"
+    t.integer  "issue_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "phase_id"
     t.integer  "project_id"
   end
 
@@ -190,6 +196,18 @@ ActiveRecord::Schema.define(:version => 20120621084745) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "activity_id"
+    t.integer  "status_id"
+    t.integer  "priority_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.date     "start_date"
+    t.string   "file"
+    t.string   "subject"
+    t.text     "description"
   end
 
   create_table "users", :force => true do |t|

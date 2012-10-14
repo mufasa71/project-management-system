@@ -30,6 +30,7 @@ gem 'acts_as_list'
 gem 'resque_mailer'
 gem 'resque', :require => 'resque/server'
 gem 'whenever'
+gem 'cancan'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -45,24 +46,27 @@ end
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-group :test, :development do
-  gem 'cucumber-rails', '~> 1.3.0'
-  gem 'database_cleaner', '~> 0.7.2'
-  gem 'rspec-rails', '~> 2.9.0'
-  gem 'capybara', '~> 1.1.2'
-  gem 'spork-rails'
+
+group :development, :test do
+  gem 'railroady'
+  gem 'rails-erd'
   gem 'guard-rails'
   gem 'guard-cucumber'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'libnotify'
+end
+
+group :test do
+  gem 'cucumber-rails', '~> 1.3.0'
+  gem 'database_cleaner', '~> 0.7.2'
+  gem 'rspec-rails', '~> 2.9.0'
+  gem 'capybara', '~> 1.1.2'
+  gem 'spork-rails'
   gem 'factory_girl'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'launchy'
-  gem 'cancan'
   gem 'pickle'
-  gem 'railroady'
-  gem 'rails-erd'
   gem 'mocha'
 end
